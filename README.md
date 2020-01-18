@@ -11,4 +11,4 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   
  * Automatismes :
  
- - [Diaporama](Automatismes/2019-2020) (à partir du 18/01/2020)
+ - [Diaporama](Automatismes/2019-2020/PremiereAutomatismes-2019-2020.pdf) (à partir du 18/01/2020)
