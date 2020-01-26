@@ -2,31 +2,33 @@
 
 \usetheme{Warsaw} 
 
-%thèmes prédéfinis de Beamer 
+%thÃ¨mes prÃ©dÃ©finis de Beamer 
 %Antibes, boxes, classic, Darmstadt, Madrid
 % Montpellier, Warsaw, Bergen, Berkeley, Goettingen, sidebar
 
 
 %%%%%%%Tit\title{Titre principal}
 
-\title[automatismes]{Automatismes en première 2019/2020}
+\title[automatismes]{Automatismes en premi\'ere 2019/2020}
 %\subtitle{Sous titre}
-\author[F.Junier]{Frédéric Junier}
-\institute[Le Parc]{{\centering Lycée du Parc \\
+\author[F.Junier]{Fr\'ed\'eric Junier}
+\institute[Le Parc]{{\centering Lyc\'ee du Parc \\
 1 Boulevard Anatole France \\ 69006 Lyon }}
 \date[\today]{\today}
 
-%%%%%%%%%%%%%%Fontes et Symboles%%%%%%%%%%%
+\usepackage{etex}
 
-\usepackage[latin1]{inputenc}
+%%%%%%%%%%%%Encodage du fichier source %%%%%%%%%%%
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
 \usepackage{lmodern}
 \usepackage{url}
 \usepackage[np]{numprint}
 
 
-%%%%%%%%%%%%Là encore il y a de grosses différences entre le monde anglo-saxon et les francophones.Le séparateur des décimales est un point en anglais et une virgule en français. Leséparateur des milliers est une virgule en anglais et une espace insécable en français. Ilest préférable d’utiliser le package numprint (\usepackage{numprint}) qui associé àfrenchb produira la bonne typographie.
-%123456789 = 123456789 \numprint{123456789} = 123 456 789  \numprint{3,1415926535897932384626} = 3,141 592 653 589 793 238 462 6  \numprint{12.34} = 12,34  En plus tu peux préciser les unités de cette façon : \numprint[kg]{12.34} = 12,34 kg ou encore \numprint[\degres C]{22} = 22°C Si tu veux utiliser le raccourci \np{} au lieu de \numprint{}, il te faut charger le package de cette façon : \usepackage[np]{numprint}
+%%%%%%%%%%%%LÃ  encore il y a de grosses diffÃ©rences entre le monde anglo-saxon et les francophones.Le sÃ©parateur des dÃ©cimales est un point en anglais et une virgule en franÃ§ais. LesÃ©parateur des milliers est une virgule en anglais et une espace insÃ©cable en franÃ§ais. Ilest prÃ©fÃ©rable dÂ’utiliser le package numprint (\usepackage{numprint}) qui associÃ© Ã frenchb produira la bonne typographie.
+%123456789 = 123456789 \numprint{123456789} = 123 456 789  \numprint{3,1415926535897932384626} = 3,141 592 653 589 793 238 462 6  \numprint{12.34} = 12,34  En plus tu peux prÃ©ciser les unitÃ©s de cette faÃ§on : \numprint[kg]{12.34} = 12,34 kg ou encore \numprint[\degres C]{22} = 22Â°C Si tu veux utiliser le raccourci \np{} au lieu de \numprint{}, il te faut charger le package de cette faÃ§on : \usepackage[np]{numprint}
 
 
 %%%%%%%%%%PSTricks%%%%%%%%%%%%
@@ -54,8 +56,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%Commandes Tikz Perso%%%%%%%%%%%%%%%
 
-% Définition des nouvelles options xmin, xmax, ymin, ymax
-% Valeurs par défaut : -3, 3, -3, 3
+% DÃ©finition des nouvelles options xmin, xmax, ymin, ymax
+% Valeurs par dÃ©faut : -3, 3, -3, 3
 \tikzset{
 xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
 xmax/.store in=\xmax, xmax/.default=3, xmax=3,
@@ -72,7 +74,7 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 \draw (0.95*\xmax, 0) node[above] {$x$};
 \draw (0, 0.95*\ymax) node[left] {$y$};
 }
-% Commande qui limite l?affichage à (xmin,ymin) et (xmax,ymax)
+% Commande qui limite l?affichage Ã  (xmin,ymin) et (xmax,ymax)
 \newcommand {\fenetre}
 {\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
 
@@ -85,14 +87,14 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 %\end{tikzpicture}
 %\end{center}
 
-%style pour la perspective cavalière française
+%style pour la perspective cavaliÃ¨re franÃ§aise
 %voir Tikz pour l'impatient page 68
 \tikzset{math3d/.style=
 {x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
 
 %%%%%%%Symbole pour code calculatrice%%%%%%
 
-%Flèche remplie pour défilement de menu
+%FlÃ¨che remplie pour dÃ©filement de menu
 
 \newcommand{\flechefillright}{
 \begin{tikzpicture}[scale=0.15] \fill (0,0)--(2,1)--(0,2)--cycle;
@@ -100,11 +102,88 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 
 %%%%%%%%%%%%%Symboles pour calculatrice Casio%%%%
 \newcommand{\execasio}{\Pisymbol{psy}{191}} %Retour chariot
-\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Â« Disp Â»
+\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Ã‚Â« Disp Ã‚Â»
 \newcommand{\dispcasiotikz}{\begin{tikzpicture}[scale=0.2]
 \fill (0,0) -- (1,0) -- (1,1) -- cycle;
-\end{tikzpicture}} %Triangle Â« Disp Â»
+\end{tikzpicture}} %Triangle Ã‚Â« Disp Ã‚Â»
 %
+
+
+%%%%%%%%%%%%%%%%%%%PrÃ©sentation de codes sources%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+%On utilise l?environnement lstlisting pour insÃ©rer
+%un code source.
+%En plus de l?environnement lstlisting, on peut Ã©galement utiliser la
+%commande \lstinline qui fonctionne comme la commande \verb, en ce
+%sens qu?on peut utiliser n?importe quel caractÃ¨re comme dÃ©limiteur. Enfin,
+%la commande \lstinputlisting permet de charger un code source depuis
+%un fichier externe.
+%Il y a deux maniÃ¨res de prÃ©ciser des options : soit via l?option de l?envi-
+%ronnement ou de la commande, soit en utilisant la commande \lstset
+%qui permet de dÃ©finir des options de maniÃ¨re globale.
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny,  % the style that is used for the line-numbers
+  %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  breakindent=1cm,
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{red},       % comment style
+  %stringstyle=\ttfamily\color{green},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...},              % if you want to add more keywords to the set
+  deletekeywords={...}              % if you want to delete keywords from the given language
+  upquote=true,columns=flexible,
+xleftmargin=1cm,xrightmargin=1cm,
+ inputencoding=utf8,			%Les lignes qui suivent sont pour le codage utf8
+  extendedchars=true,
+  literate=%
+            {Ã©}{{\'{e}}}1
+            {Ã¨}{{\`{e}}}1
+            {Ãª}{{\^{e}}}1
+            {Ã«}{{\Â¨{e}}}1
+            {Ã»}{{\^{u}}}1
+            {Ã¹}{{\`{u}}}1
+            {Ã¢}{{\^{a}}}1
+            {Ã }{{\`{a} }}1
+            {Ã®}{{\^{i}}}1
+            {Ã´}{{\^{o}}}1
+            {Ã§}{{\c{c}}}1
+            {Ã‡}{{\c{C}}}1
+            {Ã‰}{{\'{E}}}1
+            {ÃŠ}{{\^{E}}}1
+            {Ã€}{{\`{A}}}1
+            {Ã‚}{{\^{A}}}1
+            {ÃŽ}{{\^{I}}}1
+}
+
+\lstdefinestyle{rond}{
+  numbers=none,
+  backgroundcolor=\color{gristclair},
+  frameround =tttt
+}
+
+\lstdefinestyle{compil}{
+  numbers=none,
+  backgroundcolor=\color{gristclair}
+}
+%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
 
 %%%%%%%%%%%AmsMaths%%%%%%
 \usepackage{amsmath,amsfonts,amssymb}
@@ -112,7 +191,7 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 \usepackage{ bclogo}
 
 
-%%%%%Commande \DeclareMathOperator pour définir de nouveaux opérateurs (en lettres romaines droites)%%%%%
+%%%%%Commande \DeclareMathOperator pour dÃ©finir de nouveaux opÃ©rateurs (en lettres romaines droites)%%%%%
 %\DeclareMathOperator{\sh}{sh}
 %\DeclareMathOperator{\ch}{ch}
 
@@ -163,7 +242,7 @@ ymax/.store in=\ymax, ymax/.default=3, ymax=3,
 \newcommand{\re}[1]{\text{Re}\left(#1\right)}
 \newcommand{\Arg}[1]{\text{arg}\left(#1\right)}
 \newcommand{\Mod}[1]{\left[#1\right]}
-%Parties entiÃ¨re, rÃ©elle, imaginaire, nombre i
+%Parties entiÃƒÂ¨re, rÃƒÂ©elle, imaginaire, nombre i
 \newcommand{\ent}[1]{\text{E}\left(#1\right)}
 \renewcommand{\Re}{\mathop{\rm Re}\nolimits}
 \renewcommand{\Im}{\mathop{\rm Im}\nolimits}
@@ -214,22 +293,22 @@ _{\substack{x \to #1 \\ x < #1 }} #2}
 \newcommand{\limited}[2]{\lim\limits
 _{\substack{x \to #1 \\ x > #1 }} #2}
 
-%%%%%%%%%%Continuité%%%%%%%%%%%
-\newcommand{\TVI}{théorème des valeurs intermédiaires}
+%%%%%%%%%%ContinuitÃ©%%%%%%%%%%%
+\newcommand{\TVI}{thÃ©orÃ¨me des valeurs intermÃ©diaires}
 
 %%%%%%%%%%%Suites%%%%%%%%%%%%
 \newcommand{\suite}[1]{\ensuremath{\left(#1_{n}\right)}}
 \newcommand{\Suite}[2]{\ensuremath{\left(#1\right)_{#2}}}
 %
 
-%%%%%%%%%%%%%%%Calcul intégral%%%%%%
+%%%%%%%%%%%%%%%Calcul intÃ©gral%%%%%%
 \newcommand{\dx}{\ensuremath{\text{d}x}}		% dx
 \newcommand{\dt}{\ensuremath{\text{d}t}}		% dt
 \newcommand{\dtheta}{\ensuremath{\text{d}\theta}}		% dtheta
 \newcommand{\dy}{\ensuremath{\text{d}y}}		% dy
 \newcommand{\dq}{\ensuremath{\text{d}q}}		% dq
 
-%%%Intégrale%%%
+%%%IntÃ©grale%%%
 \newcommand{\integralex}[3]{\int_{#1}^{#2} #3 \ \dx}
 \newcommand{\integralet}[3]{\int_{#1}^{#2} #3 \ \dt}
 \newcommand{\integraletheta}[3]{\int_{#1}^{#2} #3 \ \dtheta}
@@ -294,9 +373,9 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 \newcommand{\valabs}[1]{\big| \, #1 \, \big|}
 %
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%Degré%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%DegrÃ©%%%%%%
 %\newcommand{\Degre}{\ensuremath{^\circ}}
-%La commande \degre est déjà définie dans le package babel
+%La commande \degre est dÃ©jÃ  dÃ©finie dans le package babel
 
 %%%%%%%%%%Vecteurs%%%%%%%%%%%
 \newcommand{\vect}[1]{\mathchoice%
@@ -407,7 +486,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 %%%%%%%%%%%%%%Calculs en Latex%%%%%%%%%%%%%
 
-\usepackage[first=1,last=100]{lcg}  %%%%%%%générer des nombres pseudo aléatoires
+\usepackage[first=1,last=100]{lcg}  %%%%%%%gÃ©nÃ©rer des nombres pseudo alÃ©atoires
 %%%%
 \usepackage{calc} %   pour faire des calculs%%
 
@@ -416,7 +495,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 \usepackage{fancybox}
 \usepackage{lastpage}
 \usepackage{hyperref}
-%À mettre dans le préambule pour faire apparaitre le plan à chaque section 
+%Ã€ mettre dans le prÃ©ambule pour faire apparaitre le plan Ã  chaque section 
 
 \AtBeginSection[ ]
 {
@@ -426,7 +505,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 \end{frame}
 }
 
-%%%%%%%¨Puces%%%%%%%%%%%%
+%%%%%%%Â¨Puces%%%%%%%%%%%%
 \usepackage{enumerate}
 
 
@@ -436,10 +515,10 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
  
 
 
-%%%%%%Numérotation des automatismes%%%%%%
+%%%%%%NumÃ©rotation des automatismes%%%%%%
 \newcounter{autocompteur}
 \setcounter{autocompteur}{0}
-\newcommand{\automatisme}[1]{\addtocounter{autocompteur}{1}\frametitle{Automatisme  \theautocompteur  \textit{ thème : #1}}}
+\newcommand{\automatisme}[1]{\addtocounter{autocompteur}{1}\frametitle{Automatisme  \theautocompteur  \textit{ thÃ¨me : #1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%Francisation%%%%%%%%%%%%%%
@@ -454,14 +533,14 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 \frame{\titlepage}
 
-\section{Dérivation Globale}
+\section{DÃ©rivation Globale}
 
 \label{derivationglobale}
 
-\begin{frame}[label=programme]
-\automatisme{dérivation}
+\begin{frame}
+\automatisme{dÃ©rivation}
 
-Déterminer une expression de la fonction dérivée pour la fonction $f$ dérivable sur l'intervalle I.
+DÃ©terminer une expression de la fonction dÃ©rivÃ©e pour la fonction $f$ dÃ©rivable sur l'intervalle I.
 \begin{itemize}
 \item $f:x \mapsto \frac{x^3-1}{5x^{2}+1}$ sur $\R$ ;
  \item $f:x \mapsto x^2\sqrt{x}$ sur $\Interoo{0}{+\infty}$ ;
@@ -471,13 +550,13 @@ Déterminer une expression de la fonction dérivée pour la fonction $f$ dérivable 
 
 \end{frame}
 
-\begin{frame}[label=programme] 
+\begin{frame}
 
-\automatisme{dérivation}
+\automatisme{dÃ©rivation}
 
-Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau de variation ci-dessous.
+Soit $f$ une fonction dÃ©rivable sur $\Interff{-8}{6}$ dont on donne le tableau de variation ci-dessous.
 
-%:-+-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/TableauxVariations/
+%:-+-+-+-+- EngendrÃ© par : http://math.et.info.free.fr/TikZ/TableauxVariations/
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 % Styles 
@@ -488,7 +567,7 @@ Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau d
 \def\Lrg{1.5}
 \def\HtX{1}
 \def\HtY{0.5}
-% Dimensions Calculées
+% Dimensions CalculÃ©es
 \def\lignex{-0.5*\HtX}
 \def\lignef{-1.5*\HtX}
 \def\separateur{-0.5*\Lrg}
@@ -512,7 +591,7 @@ Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau d
 \node (f3) at (4*\Lrg,{-1*\HtX+(-2)*\HtY}) {$-1$};
 \node (f4) at (6*\Lrg,{-1*\HtX+(-1)*\HtY}) {$0$};
 \node (f5) at (8*\Lrg,{-1*\HtX+(0)*\HtY}) {$$};
-% Flèches
+% FlÃ¨ches
 \draw[fleche] (f1) -- (f2);
 \draw[fleche] (f2) -- (f3);
 \draw[fleche] (f3) -- (f4);
@@ -525,7 +604,7 @@ Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau d
 \end{center}
 %:-+-+-+-+- Fin
 
-%:>>>>> code du tableau à ré-injecter
+%:>>>>> code du tableau Ã  rÃ©-injecter
 %[
 %	["x", "f'(x)", "f(x)"],
 %	["-8", "", "-", "4"],
@@ -536,15 +615,53 @@ Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau d
 %]
 
 \begin{enumerate}
-	\item Dresser le tableau de signes de la fonction dérivée $f'$ de $f$ sur l'intervalle $\Interff{-8}{6}$.
+	\item Dresser le tableau de signes de la fonction dÃ©rivÃ©e $f'$ de $f$ sur l'intervalle $\Interff{-8}{6}$.
 	
-	\item Dresser le tableau de variations d'une fonction $F$ dérivable sur l'intervalle $\Interff{-8}{6}$ et dont la dérivée est $f$.
+	\item Dresser le tableau de variations d'une fonction $F$ dÃ©rivable sur l'intervalle $\Interff{-8}{6}$ et dont la dÃ©rivÃ©e est $f$.
 	
 \end{enumerate}
 
 \end{frame}
 
 
+\section{Suites numÃ©riques}
+
+
+
+\begin{frame}
+\automatisme{suites}
+
+
+\begin{itemize}
+\item Soit la suite $\suite{u}$ dÃ©finie pour tout entier naturel $n$ par $u_{n}=n^{2}-n$. Calculer $u_{4}$ et $u_{7}$.
+ \item Soit la suite $\suite{u}$ dÃ©finie pour tout entier naturel $n$ par $u_{0}=4$ et $u_{n+1}=2u_{n}-1$. Calculer $u_{1}$, $u_{2}$ et $u_{3}$.
+ \item Soit la suite $\suite{u}$ dÃ©finie pour tout entier naturel $n$ par $u_{0}=1$ et $u_{n}=u_{n-1}-n+1$. Calculer $u_{1}$, $u_{2}$ et $u_{3}$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\automatisme{suites}
+\begin{lstlisting}
+#On dÃ©finit la suite (Un) par Un=f(n)
+def f(n):
+  if n==0:
+    return 1
+  else:
+    return 1/n**2  
+# n**2 signifie le carrÃ© de n
+\end{lstlisting}
+
+Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
+
+\begin{itemize}
+	\item $u_{0}=1$ Vrai ou Faux ?
+	\item $u_{1}=0,5$ Vrai ou Faux ?
+	\item $u_{50}=0,0004$ Vrai ou Faux ?
+	\item La suite n'est pas d\'efinie en $0$. Vrai ou Faux ?
+\end{itemize}
+\end{frame}
 
 
 \end{document}
