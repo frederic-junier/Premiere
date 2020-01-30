@@ -53,18 +53,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#section-1"><span class="toc-section-number">1</span> Section 1</a><ul>
-<li><a href="#sous-section"><span class="toc-section-number">1.1</span> Sous-Section</a><ul>
-<li><a href="#exercice-1"><span class="toc-section-number">1.1.1</span> Exercice 1</a></li>
-<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">1.1.2</span> Un exemple de tableau</a></li>
+<li><a href="#commandes-pour-compiler"><span class="toc-section-number">1</span> Commandes pour compiler</a></li>
+<li><a href="#section-1"><span class="toc-section-number">2</span> Section 1</a><ul>
+<li><a href="#sous-section"><span class="toc-section-number">2.1</span> Sous-Section</a><ul>
+<li><a href="#exercice-1"><span class="toc-section-number">2.1.1</span> Exercice 1</a></li>
+<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">2.1.2</span> Un exemple de tableau</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </div>
-<h1 id="section-1"><span class="header-section-number">1</span> Section 1</h1>
-<h2 id="sous-section"><span class="header-section-number">1.1</span> Sous-Section</h2>
+<h1 id="commandes-pour-compiler"><span class="header-section-number">1</span> Commandes pour compiler</h1>
+<ul>
+<li><p>pour HTML : <code>pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html</code></p></li>
+<li><p>pour PDF : <code>pandoc -s sample.md --listings --template=montemplate-pandoc.tex --filter ./filtre.py -V junier  -o sample.pdf</code></p></li>
+</ul>
+<h1 id="section-1"><span class="header-section-number">2</span> Section 1</h1>
+<h2 id="sous-section"><span class="header-section-number">2.1</span> Sous-Section</h2>
 <hr />
-<h3 id="exercice-1"><span class="header-section-number">1.1.1</span> Exercice 1</h3>
+<h3 id="exercice-1"><span class="header-section-number">2.1.1</span> Exercice 1</h3>
 <ol style="list-style-type: decimal">
 <li>question 1</li>
 <li>question2</li>
@@ -92,7 +98,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Here is a paragraph.</p>
 <p>And another.</p>
 </div>
-<h3 id="un-exemple-de-tableau"><span class="header-section-number">1.1.2</span> Un exemple de tableau</h3>
+<h3 id="un-exemple-de-tableau"><span class="header-section-number">2.1.2</span> Un exemple de tableau</h3>
 <p><a href="http://www.tablesgenerator.com/markdown_tables#" class="uri">http://www.tablesgenerator.com/markdown_tables#</a></p>
 <table>
 <thead>
