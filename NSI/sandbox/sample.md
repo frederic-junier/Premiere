@@ -6,6 +6,15 @@ fontsize: 11pt
 ---
 
 
+
+#Commandes pour compiler
+
+
+* pour HTML : `pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html`
+
+* pour PDF : `pandoc -s sample.md --listings --template=montemplate-pandoc.tex --filter ./filtre.py -V junier  -o sample.pdf`
+
+
 # Section 1
 
 ## Sous-Section
