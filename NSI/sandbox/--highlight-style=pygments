@@ -1,0 +1,158 @@
+---
+author: 'Chenevois-Jouhet-Junier'
+css: 'style_nsi.css'
+fontsize: 11pt
+geometry: margin=1cm
+numbersections: True
+title: Corrigé du TP de Révisions
+---
+
+-   [Section 1](#section-1)
+    -   [Sous-Section](#sous-section)
+        -   [Exercice 1](#exercice-1)
+
+Section 1
+=========
+
+Sous-Section
+------------
+
+------------------------------------------------------------------------
+
+### Exercice 1
+
+1.  question 1
+2.  question2
+
+<div id="exemple" class="exercice" latex="true">
+
+-   Here is a paragraph.
+-   And another.
+-   Un lien [mon site](https://frederic-junier.org/)
+
+</div>
+
+``` {.python}
+def f(x):
+    return x ** 2
+```
+
+<div class="theoreme" latex="true">
+
+Here is a paragraph.
+
+And another.
+
+</div>
+
+<div class="definition" latex="true">
+
+Here is a paragraph.
+
+And another.
+
+</div>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Chenevois-Jouhet-Junier" />
+<title>
+Corrigé du TP de Révisions
+</title>
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet" href="style_nsi.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+
+<h1 class="title">
+Corrigé du TP de Révisions
+</h1>
+<h2 class="author">
+Chenevois-Jouhet-Junier
+</h2>
+
+</div>
+
+<div id="TOC">
+
+<ul>
+<li>
+<a href="#section-1">[1]{.toc-section-number} Section 1</a>
+<ul>
+<li>
+<a href="#sous-section">[1.1]{.toc-section-number} Sous-Section</a>
+<ul>
+<li>
+<a href="#exercice-1">[1.1.1]{.toc-section-number} Exercice 1</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+<h1 id="section-1">
+[1]{.header-section-number} Section 1
+</h1>
+<h2 id="sous-section">
+[1.1]{.header-section-number} Sous-Section
+</h2>
+<hr />
+<h3 id="exercice-1">
+[1.1.1]{.header-section-number} Exercice 1
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+question 1
+</li>
+<li>
+question2
+</li>
+</ol>
+<div id="exemple" class="exercice" latex="true">
+
+<ul>
+<li>
+Here is a paragraph.
+</li>
+<li>
+And another.
+</li>
+<li>
+Un lien <a href="https://frederic-junier.org/">mon site</a>
+</li>
+</ul>
+
+</div>
+
+<div class="theoreme" latex="true">
+
+<p>
+Here is a paragraph.
+</p>
+<p>
+And another.
+</p>
+
+</div>
+
+<div class="definition" latex="true">
+
+<p>
+Here is a paragraph.
+</p>
+<p>
+And another.
+</p>
+
+</div>
+
+</body>
+</html>
