@@ -16,13 +16,13 @@ import json
 def latex(x):
     return RawBlock('latex', x)
 
-
 def latexdivs(key, value, format, meta):
+    global compteur_exo, compteur_theoreme, compteur_definition
     if key == 'Div':
         [[ident, classes, kvs], contents] = value
         #if ["latex","true"] in kvs:
         #print(kvs)
-        if format == "latex":
+        if format == "latex":            
             if ident == "":
                 label = ""
             else:
@@ -56,7 +56,22 @@ def latexdivs(key, value, format, meta):
                 left = []
                 right = []
             return left + body + right
+        elif format == "markdown":
+            #deboggage
+            if classes[0] == "exercice":                
+                compteur_exo += 1
+                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Exercice ' + str(compteur_exo)}]}]  + contents
+            elif classes[0] == "theoreme":
+                f.write(str(contents[0]['c']))
+                compteur_theoreme += 1
+                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Théorème' + str(compteur_theoreme)}]}]  + contents
+            elif classes[0] == "definition":
+                compteur_definition += 1
+                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Définition' + str(compteur_definition)}]}]  + contents
 
+compteur_exo = 0
+compteur_theoreme = 0
+compteur_definition = 0
 f = open('sortie3.txt', 'w')
 
 if __name__ == "__main__":

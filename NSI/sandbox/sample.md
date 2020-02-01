@@ -18,6 +18,8 @@ fontsize: 11pt
 
 * Pour Diaporama HTML : `pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html`
 
+* Pour Github : `pandoc -s sample.md  --filter ./filtre.py -V colorlinks -t markdown -o sample_github.md`
+
 * Pour afficher la structure AST générée à partir du document lu par pandoc : ` pandoc -s -t native   sample.md` , voir  [https://pandoc.org/filters.html](https://pandoc.org/filters.html)
 
 # Section 1
@@ -25,12 +27,14 @@ fontsize: 11pt
 ## Sous-Section
 
 --------------------
-### Exercice 1
+### Des exemples
+
+
+
+<div id="exemple" class="exercice">
 
 1. question 1
 2. question2
-
-<div id="exemple" class="exercice">
 
 * Here is a paragraph.
 * And another.
@@ -61,6 +65,18 @@ Image3
 texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte 
 :::
 
+:::exercice
+Here is a paragraph.
+
+And another.
+:::
+
+:::exercice
+Here is a paragraph.
+
+And another.
+:::
+
 
 :::theoreme
 Here is a paragraph.
@@ -69,11 +85,25 @@ And another.
 :::
 
 
+:::theoreme
+* un
+* deux
+:::
+
+
+
 :::definition
 Here is a paragraph.
 
 And another.
 :::
+
+
+:::definition
+1. Un
+2. Deux
+:::
+
 
 ![une image flottante](image.png){ width=80% }
 

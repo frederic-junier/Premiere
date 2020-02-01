@@ -99,6 +99,7 @@ Frédéric Junier
 <li><p>pour PDF : <code>pandoc -s sample.md --listings --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks -o sample.pdf</code></p></li>
 <li><p>pour Beamer : <code>pandoc -s sample.md --listings --template=template-pandoc-beamerV1.tex --filter ./filtre.py -V colorlinks -t beamer -V theme=Warsaw -V navigation=vertical -o sample-beamer.pdf</code></p></li>
 <li><p>Pour Diaporama HTML : <code>pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html</code></p></li>
+<li><p>Pour Github : <code>pandoc -s sample.md  --filter ./filtre.py -V colorlinks -t markdown -o sample_github.md</code></p></li>
 <li><p>Pour afficher la structure AST générée à partir du document lu par pandoc : <code>pandoc -s -t native   sample.md</code> , voir <a href="https://pandoc.org/filters.html">https://pandoc.org/filters.html</a></p></li>
 </ul>
 </div>
@@ -108,12 +109,12 @@ Frédéric Junier
 </div>
 <div class="slide section level1" number="2">
 
-<h3 number="2.0.1" id="exercice-1" number="2.0.1"><span class="header-section-number">2.0.1</span> Exercice 1</h3>
+<h3 number="2.0.1" id="des-exemples" number="2.0.1"><span class="header-section-number">2.0.1</span> Des exemples</h3>
+<div id="exemple" class="exercice">
 <ol style="list-style-type: decimal">
 <li>question 1</li>
 <li>question2</li>
 </ol>
-<div id="exemple" class="exercice">
 <ul>
 <li>Here is a paragraph.</li>
 <li>And another.</li>
@@ -129,13 +130,33 @@ Frédéric Junier
 &amp; Image3 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
 &amp; texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte</p>
 </div>
+<div class="exercice">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
+<div class="exercice">
+<p>Here is a paragraph.</p>
+<p>And another.</p>
+</div>
 <div class="theoreme">
 <p>Here is a paragraph.</p>
 <p>And another.</p>
 </div>
+<div class="theoreme">
+<ul>
+<li>un</li>
+<li>deux</li>
+</ul>
+</div>
 <div class="definition">
 <p>Here is a paragraph.</p>
 <p>And another.</p>
+</div>
+<div class="definition">
+<ol style="list-style-type: decimal">
+<li>Un</li>
+<li>Deux</li>
+</ol>
 </div>
 <div class="figure">
 <img src="image.png" style="width:80.0%" alt="" />
