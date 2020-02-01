@@ -32,7 +32,7 @@
 
 <div id="exemple" class="exercice">
 
-1.  question 1
+1.  \_question 1\_
 2.  question2
 
 <!-- end list -->
