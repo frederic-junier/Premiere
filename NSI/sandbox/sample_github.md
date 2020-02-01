@@ -16,7 +16,7 @@
     -t slidy sample.md -c style_nsi.css -o sample-slidy.html`
 
   - Pour Github : `pandoc -s sample.md --filter ./filtre.py -V
-    colorlinks -t markdown -o sample_github.md`
+    colorlinks -t gfm -o sample_github.md`
 
   - Pour afficher la structure AST générée à partir du document lu par
     pandoc : `pandoc -s -t native sample.md` , voir
@@ -30,7 +30,7 @@
 
 ### Des exemples
 
-<div id="exemple" class="exercice">
+Exercice1
 
 1.  question 1
 2.  question2
@@ -48,8 +48,6 @@ for k in range(3):
     print(k)
 ```
 
-</div>
-
 **Exemple d’environnements minipage juxtaposés**
 
 <div class="minipage" data-center="true" width="0.2\linewidth">
@@ -66,51 +64,39 @@ texte texte texte
 
 </div>
 
-<div class="exercice">
+Exercice2
 
 Here is a paragraph.
 
 And another.
 
-</div>
-
-<div class="exercice">
+Exercice3
 
 Here is a paragraph.
 
 And another.
 
-</div>
-
-<div class="theoreme">
+Théorème1
 
 Here is a paragraph.
 
 And another.
 
-</div>
-
-<div class="theoreme">
+Théorème2
 
   - un
   - deux
 
-</div>
-
-<div class="definition">
+Définition1
 
 Here is a paragraph.
 
 And another.
 
-</div>
-
-<div class="definition">
+Définition2
 
 1.  Un
 2.  Deux
-
-</div>
 
 ![une image flottante](image.png)
 
