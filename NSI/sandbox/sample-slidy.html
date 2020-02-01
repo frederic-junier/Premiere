@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Frédéric Junier" />
   <title>Test pandoc</title>
-  <style>
+  <style type="text/css">
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     span.underline{text-decoration: underline;}
@@ -76,45 +78,41 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="style_nsi.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="style_nsi.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Test pandoc</h1>
-<p class="author">Frédéric Junier</p>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#commandes-pour-compiler"><span class="toc-section-number">1</span> Commandes pour compiler</a></li>
-<li><a href="#section-1"><span class="toc-section-number">2</span> Section 1</a>
-<ul>
-<li><a href="#sous-section"><span class="toc-section-number">2.1</span> Sous-Section</a>
-<ul>
-<li><a href="#exercice-1"><span class="toc-section-number">2.1.1</span> Exercice 1</a></li>
-<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">2.1.2</span> Un exemple de tableau</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-<h1 data-number="1" id="commandes-pour-compiler" data-number="1"><span class="header-section-number">1</span> Commandes pour compiler</h1>
+<div class="slide titlepage">
+  <h1 class="title">Test pandoc</h1>
+  <p class="author">
+Frédéric Junier
+  </p>
+</div>
+<div id="commandes-pour-compiler" class="slide section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Commandes pour compiler</h1>
 <ul>
 <li><p>pour HTML : <code>pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html</code></p></li>
 <li><p>pour PDF : <code>pandoc -s sample.md --listings --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks -o sample.pdf</code></p></li>
 <li><p>pour Beamer : <code>pandoc -s sample.md --listings --template=template-pandoc-beamerV1.tex --filter ./filtre.py -V colorlinks -t beamer -V theme=Warsaw -V navigation=vertical -o sample-beamer.pdf</code></p></li>
-<li><p>Pour Diaporama HTML : <code>pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html</code></p></li>
+<li><p>Pour Diaporama HTML : ``</p></li>
 </ul>
-<h1 data-number="2" id="section-1" data-number="2"><span class="header-section-number">2</span> Section 1</h1>
-<h2 data-number="2.1" id="sous-section" data-number="2.1"><span class="header-section-number">2.1</span> Sous-Section</h2>
-<hr />
-<h3 data-number="2.1.1" id="exercice-1" data-number="2.1.1"><span class="header-section-number">2.1.1</span> Exercice 1</h3>
-<ol type="1">
+</div>
+<div id="section-1" class="slide section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Section 1</h1>
+<h2 number="2.1" id="sous-section" number="2.1"><span class="header-section-number">2.1</span> Sous-Section</h2>
+</div>
+<div class="slide section level1" number="3">
+
+<h3 number="3.0.1" id="exercice-1" number="3.0.1"><span class="header-section-number">3.0.1</span> Exercice 1</h3>
+<ol style="list-style-type: decimal">
 <li>question 1</li>
 <li>question2</li>
 </ol>
-<div id="exemple" class="exercice">
+<div id="exemple" class="exercice" latex="true">
 <ul>
 <li>Here is a paragraph.</li>
 <li>And another.</li>
@@ -123,10 +121,11 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">print</span>(k)</span></code></pre></div>
 </div>
-<figure>
-<img src="image.png" alt="" /><figcaption>une image</figcaption>
-</figure>
-<div class="minipage" data-center="true">
+<div class="figure">
+<img src="image.png" alt="" />
+<p class="caption">une image</p>
+</div>
+<div class="minipage" center="true">
 <p><img src="image.png" style="width:50.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
 </p>
 </div>
@@ -142,38 +141,39 @@
 <p>Here is a paragraph.</p>
 <p>And another.</p>
 </div>
-<h3 data-number="2.1.2" id="un-exemple-de-tableau" data-number="2.1.2"><span class="header-section-number">2.1.2</span> Un exemple de tableau</h3>
+<h3 number="3.0.2" id="un-exemple-de-tableau" number="3.0.2"><span class="header-section-number">3.0.2</span> Un exemple de tableau</h3>
 <p><a href="http://www.tablesgenerator.com/markdown_tables#">http://www.tablesgenerator.com/markdown_tables#</a></p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;">a</th>
-<th style="text-align: center;">b</th>
-<th style="text-align: center;">a and b</th>
+<th align="center">a</th>
+<th align="center">b</th>
+<th align="center">a and b</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 </tbody>
 </table>
+</div>
 </body>
 </html>

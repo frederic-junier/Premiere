@@ -6,14 +6,19 @@ fontsize: 11pt
 ---
 
 
+# Préambule non numéroté : Commandes pour compiler {-}
 
-#Commandes pour compiler
 
 
 * pour HTML : `pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html`
 
-* pour PDF : `pandoc -s sample.md --listings --template=montemplate-pandoc.tex --filter ./filtre.py -V junier  -o sample.pdf`
+* pour PDF : `pandoc -s sample.md --listings --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks -o sample.pdf`
 
+* pour Beamer :  `pandoc -s sample.md --listings --template=template-pandoc-beamerV1.tex --filter ./filtre.py -V colorlinks -t beamer -V theme=Warsaw -V navigation=vertical -o sample-beamer.pdf`
+
+* Pour Diaporama HTML : `pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html`
+
+* Pour afficher la structure AST générée à partir du document lu par pandoc : ` pandoc -s -t native   sample.md` , voir  [https://pandoc.org/filters.html](https://pandoc.org/filters.html)
 
 # Section 1
 
@@ -25,11 +30,11 @@ fontsize: 11pt
 1. question 1
 2. question2
 
-<div id="exemple" latex="true" class="exercice">
+<div id="exemple" class="exercice">
 
 * Here is a paragraph.
 * And another.
-* Un lien [mon site](https://frederic-junier.org/)
+* Un lien  vers [mon site](https://frederic-junier.org/)
 
 
 ~~~python
@@ -42,24 +47,32 @@ for k in range(3):
 
 
 
-![une image](image.png)
+__Exemple d'environnements minipage juxtaposés__
 
-![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=50% }\
+:::{.minipage  center="true" width="0.2\linewidth"}
+![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte 
+:::
 
 
-
-<div latex="true" class="theoreme">
+:::theoreme
 Here is a paragraph.
 
 And another.
-</div>
+:::
 
 
-<div latex="true" class="definition">
+:::definition
 Here is a paragraph.
 
 And another.
-</div>
+:::
+
+![une image flottante](image.png){ width=80% }
+
+
 
 ### Un exemple de tableau 
 
@@ -71,3 +84,4 @@ And another.
 | 0 | 1 |    0    |
 | 1 | 0 |    0    |
 | 1 | 1 |    1    |
+
