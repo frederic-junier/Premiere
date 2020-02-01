@@ -10,14 +10,14 @@ will becomes
 \begin{note}...\end{note}
 """
 
-from pandocfilters import toJSONFilter, RawBlock, Div, stringify
+from pandocfilters import toJSONFilter, RawBlock, Div, stringify, Strong, Para
 import json
 
 def latex(x):
     return RawBlock('latex', x)
 
-def latexdivs(key, value, format, meta):
-    global compteur_exo, compteur_theoreme, compteur_definition
+def convertdivs(key, value, format, meta):
+    global compteur_exercice, compteur_theoreme, compteur_definition
     if key == 'Div':
         [[ident, classes, kvs], contents] = value
         #if ["latex","true"] in kvs:
@@ -56,24 +56,23 @@ def latexdivs(key, value, format, meta):
                 left = []
                 right = []
             return left + body + right
-        elif format == "markdown":
-            #deboggage
+        elif format == "gfm":  #pour GitHub markdown
             if classes[0] == "exercice":                
-                compteur_exo += 1
-                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Exercice ' + str(compteur_exo)}]}]  + contents
+                compteur_exercice += 1
+                return  [{'t': 'Plain', 'c': [ {'t': 'Strong', 'c' : [{'t': 'Str', 'c' : 'Exercice ' + str(compteur_exercice)}]}]}]  + contents
             elif classes[0] == "theoreme":
                 f.write(str(contents[0]['c']))
                 compteur_theoreme += 1
-                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Théorème' + str(compteur_theoreme)}]}]  + contents
+                return [{'t': 'Plain', 'c': [ {'t': 'Strong', 'c' : [{'t': 'Str', 'c' : 'Théorème ' + str(compteur_theoreme)}]}]}]   + contents
             elif classes[0] == "definition":
                 compteur_definition += 1
-                return  [{'t': 'Plain', 'c': [ {'t': 'Str', 'c' : 'Définition' + str(compteur_definition)}]}]  + contents
+                return  [{'t': 'Plain', 'c': [ {'t': 'Strong', 'c' : [{'t': 'Str', 'c' : 'Définition' + str(compteur_definition)}]}]}]     + contents
 
-compteur_exo = 0
+compteur_exercice = 0
 compteur_theoreme = 0
 compteur_definition = 0
-f = open('sortie3.txt', 'w')
+f = open('sortie3.txt', 'w') #deboggage
 
 if __name__ == "__main__":
-    toJSONFilter(latexdivs)
+    toJSONFilter(convertdivs)
 

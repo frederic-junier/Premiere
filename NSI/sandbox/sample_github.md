@@ -3,7 +3,7 @@
   - pour HTML : `pandoc -s sample.md -c style_nsi.css --toc -o
     sample.html`
 
-  - pour PDF : `pandoc -s sample.md --listings 
+  - pour PDF : `pandoc -s sample.md --listings
     --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks
     -o sample.pdf`
 
@@ -30,9 +30,9 @@
 
 ### Des exemples
 
-Exercice1
+**Exercice 1**
 
-1.  \_question 1\_
+1.  question 1
 2.  question2
 
 <!-- end list -->
@@ -64,36 +64,36 @@ texte texte texte
 
 </div>
 
-Exercice2
+**Exercice 2**
 
 Here is a paragraph.
 
 And another.
 
-Exercice3
+**Exercice 3**
 
 Here is a paragraph.
 
 And another.
 
-Théorème1
+**Théorème 1**
 
 Here is a paragraph.
 
 And another.
 
-Théorème2
+**Théorème 2**
 
   - un
   - deux
 
-Définition1
+**Définition1**
 
 Here is a paragraph.
 
 And another.
 
-Définition2
+**Définition2**
 
 1.  Un
 2.  Deux
