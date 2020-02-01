@@ -1,0 +1,1 @@
+[{'t': 'Str', 'c': 'Here'}, {'t': 'Space'}, {'t': 'Str', 'c': 'is'}, {'t': 'Space'}, {'t': 'Str', 'c': 'a'}, {'t': 'Space'}, {'t': 'Str', 'c': 'paragraph.'}][[{'t': 'Plain', 'c': [{'t': 'Str', 'c': 'un'}]}], [{'t': 'Plain', 'c': [{'t': 'Str', 'c': 'deux'}]}]]

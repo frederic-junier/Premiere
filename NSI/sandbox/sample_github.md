@@ -16,7 +16,7 @@
     -t slidy sample.md -c style_nsi.css -o sample-slidy.html`
 
   - Pour Github : `pandoc -s sample.md --filter ./filtre.py -V
-    colorlinks -t gfm -o sample_github.md`
+    colorlinks -t markdown -o sample_github.md`
 
   - Pour afficher la structure AST générée à partir du document lu par
     pandoc : `pandoc -s -t native sample.md` , voir
