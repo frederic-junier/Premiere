@@ -88,28 +88,29 @@
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#commandes-pour-compiler"><span class="toc-section-number">1</span> Commandes pour compiler</a></li>
-<li><a href="#section-1"><span class="toc-section-number">2</span> Section 1</a>
+<li><a href="#préambule-non-numéroté-commandes-pour-compiler">Préambule non numéroté : Commandes pour compiler</a></li>
+<li><a href="#section-1"><span class="toc-section-number">1</span> Section 1</a>
 <ul>
-<li><a href="#sous-section"><span class="toc-section-number">2.1</span> Sous-Section</a>
+<li><a href="#sous-section"><span class="toc-section-number">1.1</span> Sous-Section</a>
 <ul>
-<li><a href="#exercice-1"><span class="toc-section-number">2.1.1</span> Exercice 1</a></li>
-<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">2.1.2</span> Un exemple de tableau</a></li>
+<li><a href="#exercice-1"><span class="toc-section-number">1.1.1</span> Exercice 1</a></li>
+<li><a href="#un-exemple-de-tableau"><span class="toc-section-number">1.1.2</span> Un exemple de tableau</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
-<h1 data-number="1" id="commandes-pour-compiler" data-number="1"><span class="header-section-number">1</span> Commandes pour compiler</h1>
+<h1 class="unnumbered" data-number="" id="préambule-non-numéroté-commandes-pour-compiler" class="unnumbered" data-number="">Préambule non numéroté : Commandes pour compiler</h1>
 <ul>
 <li><p>pour HTML : <code>pandoc -s sample.md  -c style_nsi.css  --toc   -o  sample.html</code></p></li>
 <li><p>pour PDF : <code>pandoc -s sample.md --listings --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks -o sample.pdf</code></p></li>
 <li><p>pour Beamer : <code>pandoc -s sample.md --listings --template=template-pandoc-beamerV1.tex --filter ./filtre.py -V colorlinks -t beamer -V theme=Warsaw -V navigation=vertical -o sample-beamer.pdf</code></p></li>
 <li><p>Pour Diaporama HTML : <code>pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html</code></p></li>
+<li><p>Pour afficher la structure AST générée à partir du document lu par pandoc : <code>pandoc -s -t native   sample.md</code> , voir <a href="https://pandoc.org/filters.html">https://pandoc.org/filters.html</a></p></li>
 </ul>
-<h1 data-number="2" id="section-1" data-number="2"><span class="header-section-number">2</span> Section 1</h1>
-<h2 data-number="2.1" id="sous-section" data-number="2.1"><span class="header-section-number">2.1</span> Sous-Section</h2>
+<h1 data-number="1" id="section-1" data-number="1"><span class="header-section-number">1</span> Section 1</h1>
+<h2 data-number="1.1" id="sous-section" data-number="1.1"><span class="header-section-number">1.1</span> Sous-Section</h2>
 <hr />
-<h3 data-number="2.1.1" id="exercice-1" data-number="2.1.1"><span class="header-section-number">2.1.1</span> Exercice 1</h3>
+<h3 data-number="1.1.1" id="exercice-1" data-number="1.1.1"><span class="header-section-number">1.1.1</span> Exercice 1</h3>
 <ol type="1">
 <li>question 1</li>
 <li>question2</li>
@@ -118,21 +119,17 @@
 <ul>
 <li>Here is a paragraph.</li>
 <li>And another.</li>
-<li>Un lien <a href="https://frederic-junier.org/">mon site</a></li>
+<li>Un lien vers <a href="https://frederic-junier.org/">mon site</a></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">print</span>(k)</span></code></pre></div>
 </div>
-<figure>
-<img src="image.png" alt="" /><figcaption>une image</figcaption>
-</figure>
+<p><strong>Exemple d’environnements minipage juxtaposés</strong></p>
 <div class="minipage" data-center="true">
-<p><img src="image.png" style="width:50.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
-</p>
-</div>
-<div class="minipage">
-<p><img src="image.png" style="width:50.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
-</p>
+<p>Image1 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; Image2 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; Image3 <img src="image.png" style="width:80.0%" alt="On rajoute un backslash après l’image pour qu’elle ne soit pas une figure" /><br />
+&amp; texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte</p>
 </div>
 <div class="theoreme">
 <p>Here is a paragraph.</p>
@@ -142,8 +139,43 @@
 <p>Here is a paragraph.</p>
 <p>And another.</p>
 </div>
-<h3 data-number="2.1.2" id="un-exemple-de-tableau" data-number="2.1.2"><span class="header-section-number">2.1.2</span> Un exemple de tableau</h3>
+<figure>
+<img src="image.png" style="width:80.0%" alt="" /><figcaption>une image flottante</figcaption>
+</figure>
+<h3 data-number="1.1.2" id="un-exemple-de-tableau" data-number="1.1.2"><span class="header-section-number">1.1.2</span> Un exemple de tableau</h3>
 <p><a href="http://www.tablesgenerator.com/markdown_tables#">http://www.tablesgenerator.com/markdown_tables#</a></p>
+<p>Comment juxtaposer des tableaux ? Mon filtre ne fonctionne pas, il place les contenus des minipage dans des éléments de type {‘t’ : ‘Para’} alors que dans un tableau on a des types {‘t’: ‘AlignCenter’} par exemple.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">a</th>
+<th style="text-align: center;">b</th>
+<th style="text-align: center;">a and b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr class="header">
