@@ -18,9 +18,12 @@ fontsize: 11pt
 
 * Pour Diaporama HTML : `pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c style_nsi.css -o sample-slidy.html`
 
-* Pour Github : `pandoc -s sample.md  --filter ./filtre.py -V colorlinks -t markdown -o sample_github.md`
+* Pour Github : `pandoc -s sample.md  --filter ./filtre.py -V colorlinks -t gfm -o sample_github.md`
 
 * Pour afficher la structure AST générée à partir du document lu par pandoc : ` pandoc -s -t native   sample.md` , voir  [https://pandoc.org/filters.html](https://pandoc.org/filters.html)
+
+
+* Pour afficher la structure du document en JSON : `pandoc  -t json sample.md`
 
 # Section 1
 
@@ -52,6 +55,20 @@ for k in range(3):
 
 
 __Exemple d'environnements minipage juxtaposés__
+
+* Une seule image , centrée
+
+:::{.minipage  center="true" width="0.2\linewidth"}
+Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+:::
+
+* Une seule image , non centrée
+
+:::{.minipage   width="0.2\linewidth"}
+Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+:::
+
+* Trois images et un texte, centrés
 
 :::{.minipage  center="true" width="0.2\linewidth"}
 Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
