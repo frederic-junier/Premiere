@@ -36,8 +36,9 @@ def latexdivs(key, value, format, meta):
                         options = val
                         break                
                 decoupage = []
+                token = {'t': 'Str', 'c': '&'}
                 for k in range(len(contents[0]['c'])):
-                    if (contents[0]['c'][k] == {'t': 'LineBreak'} and k > 0) or (k < len(contents[0]) and contents[0]['c'][k] == {'t': 'LineBreak'} and contents[0]['c'][k-1] != {'t': 'LineBreak'}):
+                    if (contents[0]['c'][k] == token and k > 0) or (k < len(contents[0]) and contents[0]['c'][k] == token and contents[0]['c'][k-1] != token):
                         decoupage.append(k)
                 i = 0
                 body = [latex('\\begin{tabular}{' + 'c' * (len(decoupage) + 1) + '}')] 

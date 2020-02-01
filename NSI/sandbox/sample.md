@@ -50,9 +50,14 @@ for k in range(3):
 __Exemple d'environnements minipage juxtaposés__
 
 :::{.minipage  center="true" width="0.2\linewidth"}
+Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+&
+Image2
 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+&
+Image3
 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
-![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
+&
 texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte texte 
 :::
 
@@ -78,10 +83,24 @@ And another.
 
 [http://www.tablesgenerator.com/markdown_tables#](http://www.tablesgenerator.com/markdown_tables#)
 
+Comment juxtaposer des tableaux ? Mon filtre ne fonctionne pas, il place les contenus des minipage dans des  éléments de type {'t' : 'Para'} 
+alors que dans un tableau on a des types {'t': 'AlignCenter'} par exemple.
+
+
 | a | b | a and b |
 |:-:|:-:|:-------:|
 | 0 | 0 |    0    |
 | 0 | 1 |    0    |
 | 1 | 0 |    0    |
 | 1 | 1 |    1    |
+
+| a | b | a and b |
+|:-:|:-:|:-------:|
+| 0 | 0 |    0    |
+| 0 | 1 |    0    |
+| 1 | 0 |    0    |
+| 1 | 1 |    1    |
+
+
+
 
