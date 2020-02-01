@@ -3,7 +3,7 @@
   - pour HTML : `pandoc -s sample.md -c style_nsi.css --toc -o
     sample.html`
 
-  - pour PDF : `pandoc -s sample.md --listings
+  - pour PDF : `pandoc -s sample.md --listings 
     --template=template-pandocV1.tex --filter ./filtre.py -V colorlinks
     -o sample.pdf`
 
