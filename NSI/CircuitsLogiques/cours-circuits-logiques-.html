@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Première NSI Lycée du Parc" />
+  <title>Circuits logiques</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/home/fjunier/Pandoc/style_nsi.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Circuits logiques</h1>
+<p class="author">Première NSI Lycée du Parc</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table des matières</h2>
+<ul>
+<li><a href="#crédits">Crédits</a></li>
+<li><a href="#préambule">Préambule</a></li>
+<li><a href="#portes-logiques">Portes logiques</a>
+<ul>
+<li><a href="#le-transistor-porte-logique-de-base">Le transistor porte logique de base</a></li>
+<li><a href="#dautres-portes-logiques">D’autres portes logiques</a>
+<ul>
+<li><a href="#transistors-en-série-ou-en-parallèle">Transistors en série ou en parallèle</a></li>
+<li><a href="#portes-logiques-et-fonctions-logiques-élémentaires">Portes logiques et fonctions logiques élémentaires</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#fonctions-booléennes">Fonctions booléennes</a>
+<ul>
+<li><a href="#fonctions-booléennes-1">Fonctions booléennes</a></li>
+<li><a href="#dresser-la-table-de-vérité-dune-fonction-booléenne">Dresser la table de vérité d’une fonction booléenne</a></li>
+<li><a href="#expression-dune-fonction-booléenne-à-partir-de-sa-table-de-vérité">Expression d’une fonction booléenne à partir de sa table de vérité</a></li>
+<li><a href="#simplification-dexpressions-booléennes">Simplification d’expressions booléennes</a></li>
+</ul></li>
+<li><a href="#circuits-combinatoires">Circuits combinatoires</a>
+<ul>
+<li><a href="#demi-additionneur-et-additionneur-1-bit">Demi-additionneur et additionneur 1 bit</a></li>
+<li><a href="#décodeur-avec-2-bits-dentrées">Décodeur avec 2 bits d’entrées</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="unnumbered" id="crédits" class="unnumbered">Crédits</h1>
+<p><em>Ce cours est largement inspiré du chapitre 22 du manuel NSI de la collection Tortue chez Ellipsen auteurs : Ballabonski, Conchon, Filliatre, N’Guyen.</em></p>
+<h1 class="unnumbered" id="préambule" class="unnumbered">Préambule</h1>
+<p>Les circuits d’une ordinateur manipulent uniquement des 0 ou des 1 représentés en interne par des tensions hautes ou basses. Les premiers ordinateurs construits dans la période 1945-1950 sont basés sur une technologie de tube à vide ou tube électrique. En 1947, aux laboratoires Bell, <a href="https://fr.wikipedia.org/wiki/Transistor">Shockley, Bardeen et Brattain</a> inventent le <strong>transistor</strong> au <em>germanium</em> un petit composant électronique qui se comporte comme un interrupteur. Les transistors, plus petits et dissipant moins de chaleur, vont supplanter les tubes électriques : en 1954 le <em>germanium</em> est remplacé par le <em>silicium</em>, en 1955 apparaissent les premiers ordinteurs entièrement transistorisés, en 1960 le transistor à effet de champ permet l’intégration de dizaines composants dans un centimètre carré. Les transistors sont ensuite directement gravés dans une plaque de <em>silicium</em> constitutant un <strong>cicrcuit intégré</strong>. En 1965 Gordon Moore futur directeur d’Intel énonce la <a href="https://fr.wikipedia.org/wiki/Loi_de_Moore">loi empirique</a> portant son nom qui fixe une feuille de route à l’industrie des mircroprocesseurs : le doublement de la densité d’intégration des transistors tous les deux ans. Cette loi s’est vérifiée jusqu’à présent avec une finesse de gravure d’environ 5 nanomètres en 2020. Le <a href="https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore&#39;s_Law_Transistor_Count_1971-2018.png">graphique</a> ci-dessous représente le nombre de transistors par circuit intégré.</p>
+<div class="center">
+<p><img src="images/640px-Moore&#39;s_Law_Transistor_Count_1971-2018.png" style="width:90.0%" alt="Loi de Moore Source : Wikipedia" /><br />
+</p>
+</div>
+<h1 id="portes-logiques">Portes logiques</h1>
+<h2 id="le-transistor-porte-logique-de-base">Le transistor porte logique de base</h2>
+<div class="definition">
+<p>Un <strong>transitor</strong> possède trois broches : la grille, la sortie (ou drain) et la source soumis à des états de tension haute ou basse qu’on peut assimiler aux valeurs binaires 1 et 0 d’un <strong>bit</strong>. Si la tension appliquée sur la grille est haute (bit à 1) alors le transitor laisse passer le courant entre la source d’énergie et la sortie et ce dernier passe à l’état de tension basse (bit à 0), sinon la sortie reste en tension haute (bit 1).</p>
+<p>Une <strong>fonction logique</strong> prend un ou plusieurs bits en entrée et retourne un ou plusieurs bits en sortie. Une <strong>table logique</strong> représente toutes les sorties produites par une fonction logique pour toutes les entrées possibles.</p>
+<p>Un transistor représente une fonction logique dont le bit d’entrée est l’état de tension de la grille et le bit de sortie, l’état de tension de la sortie. La <strong>table logique</strong> (table 1) associée est celle du <strong>NON logique</strong> ou <strong>Inverseur</strong>.</p>
+<p>Fichier de test <a href="http://www.cburch.com/logisim/">Logisim</a> : <a href="circuits_logisim/transistor.circ">transistor.circ</a>.</p>
+</div>
+<div class="center">
+<p><img src="images/transistor.png" style="width:50.0%" alt="Transistor" /><br />
+</p>
+</div>
+<table>
+<caption><strong>Table logique d’une porte NON</strong></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B = NON(A)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Il existe deux conventions de représentation symbolique des portes logiques, une européenne et une américaine.</strong></p>
+<div class="minipage" data-centre="true">
+<p><img src="images/porte_not_european.png" alt="porte NOT européeenne" /><br />
+&amp; <img src="images/porte_not_american.png" alt="porte NOT américaine" /><br />
+</p>
+</div>
+<h2 id="dautres-portes-logiques">D’autres portes logiques</h2>
+<h3 id="transistors-en-série-ou-en-parallèle">Transistors en série ou en parallèle</h3>
+<div class="exercice">
+<p>On donne ci-dessous les représentations de deux portes logiques :</p>
+<ul>
+<li>La <strong>porte NAND</strong> constituée de deux transistors en série</li>
+<li>La <strong>porte NOR</strong> constituée de deux transistors en parallèle</li>
+</ul>
+<p>Chacune de ces portes logiques comportent deux bits d’entrée : A pour la grille du transistor 1 et B pourla grille du transistor 2 et un bit de sortie.</p>
+<p>Compléter leurs tables logiques.</p>
+<p>Vérifier avec <a href="http://www.cburch.com/logisim/">Logisim</a> et les fichiers <a href="ircuits_logisim/porte_NAND.circ">porte_NAND.circ</a> et <a href="circuits_logisim/porte_NOR.circ">porte_NOR.circ</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B</th>
+<th>NAND(A, B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B</th>
+<th>NOR(A, B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Voici les représentations symboliques des portes logiques NAND et NOR :</strong></p>
+<div class="minipage" data-center="true">
+<p><img src="images/porte_nand_european.png" alt="Porte NAND européenne" /><br />
+&amp; <img src="images/porte_nand_american.png" alt="Porte NAND américaine" /><br />
+</p>
+</div>
+<div class="minipage" data-center="true">
+<p><img src="images/porte_nor_european.png" alt="Porte NOR européenne" /><br />
+&amp; <img src="images/porte_nor_american.png" alt="Porte NOR américaine" /><br />
+</p>
+</div>
+<h3 id="portes-logiques-et-fonctions-logiques-élémentaires">Portes logiques et fonctions logiques élémentaires</h3>
+<div class="exercice">
+<p>Fichier de test <a href="http://www.cburch.com/logisim/">Logisim</a> : <a href="circuits_logisim/exercice2.circ">exercice2.circ</a>.</p>
+<ol type="1">
+<li>Compléter la table logique de la porte logique représentée par le circuit ci-dessous. Quelle porte logique peut-on ainsi représenter ?</li>
+</ol>
+<p><img src="images/porte_not_with_nor.png" alt="Porte NOT" /><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B = f(A)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>Compléter la table logique de la porte logique représentée par le circuit ci-dessous. Quelle fonction logique correspond à cette porte logique ?</li>
+</ol>
+<p><img src="images/porte_and_with_nor.png" style="width:60.0%" alt="Porte AND" /><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B</th>
+<th>C = g(A, B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="exercice">
+<p>Fichier de test <a href="http://www.cburch.com/logisim/">Logisim</a> : <a href="circuits_logisim/exercice3.circ">exercice3.circ</a>.</p>
+<ol type="1">
+<li>Compléter la table logique de la porte logique représentée par le circuit ci-dessous. Quelle porte logique peut-on ainsi représenter ?</li>
+</ol>
+<p><img src="images/porte_not_with_nand.png" alt="Porte NOT" /><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B = f(A)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>Compléter la table logique de la porte logique représentée par le circuit ci-dessous. Quelle fonction logique correspond à cette porte logique ?</li>
+</ol>
+<p><img src="images/porte_or_with_nand.png" style="width:60.0%" alt="Porte OR" /><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">A</th>
+<th>B</th>
+<th>C = g(A, B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Voici les représentations symboliques des portes logiques <code>AND</code> et <code>OR</code> :</strong></p>
+<div class="minipage" data-center="true">
+<p><img src="images/porte_and_european.png" alt="Porte AND européenne" /><br />
+&amp; <img src="images/porte_and_american.png" alt="Porte AND américaine" /><br />
+</p>
+</div>
+<div class="minipage" data-center="true">
+<p><img src="images/porte_or_european.png" alt="Porte OR européenne" /><br />
+&amp; <img src="images/porte_or_american.png" alt="Porte OR américaine" /><br />
+</p>
+</div>
+<div class="exercice">
+<ol type="1">
+<li>Construire un circuit représentant une porte <code>OR</code> uniquement avec des portes <code>NOR</code>.</li>
+<li>Construire un circuit représentant une porte <code>AND</code> uniquement avec des portes <code>NAND</code>.</li>
+</ol>
+<p>Ainsi chacune des portes, <code>NAND</code> ou <code>OR</code> permet de construire les portes <code>NOT</code>, <code>OR</code>, <code>AND</code>. Toute porte logique pouvant logique pouvant s’exprimer à l’aide de ces trois portes, les portes <code>NAND</code> et <code>OR</code> sont dites <em>universelles</em>.</p>
+</div>
+<h1 id="fonctions-booléennes">Fonctions booléennes</h1>
+<h2 id="fonctions-booléennes-1">Fonctions booléennes</h2>
+<div class="definition">
+<ul>
+<li>Un <strong>booléen</strong> est un type de données pouvant prendre deux valeurs <code>True</code> (Vrai) ou <code>False</code> (Faux) qu’on représente numériquement par un <strong>bit</strong> de valeur <span class="math inline">1</span> pour <code>True</code> ou <span class="math inline">0</span> pour <code>False</code>. Electroniquement, les valeurs 1 et 0 se traduisent respectivement par des tensions haute ou basse.</li>
+<li>Une <strong>fonction booléenne</strong> <span class="math inline"><em>f</em></span> associe un booléen à un ou plusieurs booléens.</li>
+<li>Une <strong>fonction booléenne</strong> avec <span class="math inline"><em>n</em></span> arguments est définie sur un ensemble <span class="math inline">{0; 1}<sup><em>n</em></sup></span> à <span class="math inline">2<sup><em>n</em></sup></span> valeurs et prend ses valeurs dans <span class="math inline">{0; 1}</span> qui a <span class="math inline">2</span> éléments. On peut recenser les <span class="math inline">2<sup><em>n</em></sup></span> évaluations d’une fonction booléenne à <span class="math inline"><em>n</em></span> arguments dans une <strong>table de vérité</strong> qui la définit entièrement. Il existe <span class="math inline">2<sup>2<sup><em>n</em></sup></sup></span> fonctions booléennes à <span class="math inline"><em>n</em></span> arguments.</li>
+<li>Une <strong>porte logique</strong> est la représentation sous forme de circuit d’une fonction booléenne et sa <strong>table logique</strong> est la <strong>table de vérité</strong> de cette fonction.</li>
+</ul>
+</div>
+<div class="exercice">
+<ol type="1">
+<li>Compléter la fonction <code>Python</code> ci-dessous pour qu’elle affiche la table de vérité d’une fonction booléenne à deux entrées. Expliquer le rôle de la fonction <code>int</code>.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> table_verite_2bits(fonction):</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">print</span>(<span class="st">&#39;|</span><span class="sc">{:^10}</span><span class="st">|</span><span class="sc">{:^10}</span><span class="st">|</span><span class="sc">{:^15}</span><span class="st">|&#39;</span>.<span class="bu">format</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,fonction.<span class="va">__name__</span><span class="op">+</span><span class="st">&#39;(a,b)&#39;</span>))</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">for</span> a <span class="kw">in</span> .............:</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="cf">for</span> b <span class="kw">in</span> .............:</span>
+<span id="cb1-5"><a href="#cb1-5"></a>            <span class="bu">print</span>(<span class="st">&#39;|</span><span class="sc">{:^10}</span><span class="st">|</span><span class="sc">{:^10}</span><span class="st">|</span><span class="sc">{:^15}</span><span class="st">|&#39;</span>.<span class="bu">format</span>(......, ......, </span>
+<span id="cb1-6"><a href="#cb1-6"></a>            <span class="bu">int</span>(fonctionbool(a,b))))</span></code></pre></div>
+<ol type="1">
+<li>Vérifier que les tables de vérité affichées pour les fonctions <code>bool.__or__</code>, <code>bool.__and__</code> et <code>bool.__not__</code> sont correctes.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>In [<span class="dv">4</span>]: table_verite_2bits(<span class="bu">bool</span>.<span class="fu">__or__</span>)                                                                                                                                           </span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="op">|</span>    a     <span class="op">|</span>    b     <span class="op">|</span>  <span class="fu">__or__</span>(a,b)  <span class="op">|</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>       <span class="dv">1</span>       <span class="op">|</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>       <span class="dv">1</span>       <span class="op">|</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>    <span class="dv">1</span>     <span class="op">|</span>       <span class="dv">1</span>       <span class="op">|</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>    <span class="dv">0</span>     <span class="op">|</span>       <span class="dv">0</span>       <span class="op">|</span></span></code></pre></div>
+</div>
+<div class="propriete">
+<p>On peut exprimer toute fonction booléenne à l’aide de trois fonctions booléennes élémentaires :</p>
+<ul>
+<li>La <em>négation</em> de <span class="math inline"><em>x</em></span> est une fonction à 1 bit d’entrée (unaire) notée <span class="math inline">¬<em>x</em></span> ou <span class="math inline">$\overline{x}$</span>.<br />
+Si <code>x</code> est un booléen, sa <em>négation</em> est <code>not x</code> en <code>Python</code>.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline"><em>x</em></span></th>
+<th><span class="math inline">¬<em>x</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La <em>conjonction</em> de <span class="math inline"><em>x</em></span> et <span class="math inline"><em>y</em></span> est une fonction à 2 bits d’entrée (binaire) notée <span class="math inline"><em>x</em> ∧ <em>y</em></span> ou <span class="math inline"><em>x</em>.<em>y</em></span>.<br />
+Si <code>x</code> et <code>y</code> sont des booléens, leur <em>conjonction</em> est <code>x and y</code> en <code>Python</code>.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline"><em>x</em></span></th>
+<th><span class="math inline"><em>y</em></span></th>
+<th><span class="math inline"><em>x</em> ∧ <em>y</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La <em>disconjonction</em> de <span class="math inline"><em>x</em></span> et <span class="math inline"><em>y</em></span> est une fonction à 2 bits d’entrée (binaire) notée <span class="math inline"><em>x</em> ∨ <em>y</em></span> ou <span class="math inline"><em>x</em> + <em>y</em></span>.<br />
+Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em> est <code>x or y</code> en <code>Python</code></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline"><em>x</em></span></th>
+<th><span class="math inline"><em>y</em></span></th>
+<th><span class="math inline"><em>x</em> ∨ <em>y</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="propriete">
+<ol type="1">
+<li>Les fonctions booléennes élémentaires respectent un certain nombre de règles qui permettent de simplifier les expressions booléennes complexes :</li>
+</ol>
+<ul>
+<li><em>opérateur involutif</em> : <span class="math inline">¬(¬<em>x</em>) = <em>x</em></span> et <span class="math inline">$\overline{\overline{x}}=x$</span></li>
+<li><em>élément neutre</em> : <span class="math inline">1 ∧ <em>x</em> = <em>x</em></span> et <span class="math inline">1.<em>x</em> = <em>x</em></span> ou <span class="math inline">0 ∨ <em>x</em> = <em>x</em></span> et <span class="math inline">0 + <em>x</em> = <em>x</em></span></li>
+<li><em>élément absorbant</em> : <span class="math inline">0 ∧ <em>x</em> = 0</span> et <span class="math inline">0.<em>x</em> = 0</span> ou <span class="math inline">1 ∨ <em>x</em> = <em>x</em></span> et <span class="math inline">1 + <em>x</em> = 1</span></li>
+<li><em>idempotence</em> : <span class="math inline"><em>x</em> ∧ <em>x</em> = <em>x</em></span> et <span class="math inline"><em>x</em>.<em>x</em> = <em>x</em></span> ou <span class="math inline"><em>x</em> ∨ <em>x</em> = <em>x</em></span> et <span class="math inline"><em>x</em> + <em>x</em> = <em>x</em></span></li>
+<li><em>complément</em> : <span class="math inline"><em>x</em> ∧ (¬<em>x</em>) = 0</span> et <span class="math inline">$x . (\overline{x}) =0$</span> ou <span class="math inline"><em>x</em> ∨ (¬<em>x</em>) = 1</span> et <span class="math inline">$x + \overline{x} =1$</span></li>
+<li><em>commutativité</em> : <span class="math inline"><em>x</em> ∧ <em>y</em> = <em>y</em> ∧ <em>x</em></span> et <span class="math inline"><em>x</em>.<em>y</em> = <em>y</em>.<em>x</em></span> ou <span class="math inline"><em>x</em> ∨ <em>y</em> = <em>y</em> ∨ <em>x</em></span> et <span class="math inline"><em>x</em> + <em>y</em> = <em>y</em> + <em>x</em></span></li>
+<li><em>associativité</em> : <span class="math inline"><em>x</em> ∧ (<em>y</em> ∧ <em>z</em>) = (<em>x</em> ∧ <em>y</em>) ∧ <em>z</em></span> et <span class="math inline"><em>x</em>.(<em>y</em>.<em>z</em>) = (<em>x</em>.<em>y</em>).<em>z</em></span> ou <span class="math inline"><em>x</em> ∨ (<em>y</em> ∨ <em>z</em>) = (<em>x</em> ∨ <em>y</em>) ∨ <em>z</em></span> et <span class="math inline"><em>x</em> + (<em>y</em> + <em>z</em>) = (<em>x</em> + <em>y</em>) + <em>z</em></span></li>
+<li><em>distributivité</em> : <span class="math inline"><em>x</em> ∧ (<em>y</em> ∨ <em>z</em>) = (<em>x</em> ∧ <em>y</em>) ∨ (<em>x</em> ∧ <em>z</em>)</span> et <span class="math inline"><em>x</em>.(<em>y</em> + <em>z</em>) = <em>x</em>.<em>y</em> + <em>x</em><em>z</em></span> ou <span class="math inline"><em>x</em> ∨ (<em>y</em> ∧ <em>z</em>) = (<em>x</em> ∨ <em>y</em>) ∧ (<em>x</em> ∨ <em>z</em>)</span> et <span class="math inline"><em>x</em> + (<em>y</em>.<em>z</em>) = (<em>x</em> + <em>y</em>).(<em>x</em> + <em>z</em>)</span></li>
+<li><em>loi de Morgan</em> : <span class="math inline">¬(<em>x</em> ∧ <em>y</em>) = ¬<em>x</em> ∨ ¬<em>y</em></span> et <span class="math inline">$\overline{x . y} = \overline{x} + \overline{y}$</span> ou <span class="math inline">¬(<em>x</em> ∨ <em>y</em>) = ¬<em>x</em> ∧ ¬<em>y</em></span> et <span class="math inline">$\overline{x + y} = \overline{x} . \overline{y}$</span></li>
+</ul>
+<ol start="2" type="1">
+<li>Les fonctions booléennes élémentaire respectent des règles de priorité : la <em>négation</em> est prioritaire sur la <em>conjonction</em> qui est proritaire sur la <em>disjonction</em>.<br />
+<strong>Il est recommandé de mettre des parenthèses plutôt que d’appliquer les règles de priorité dans l’écriture des expressions booléennes.</strong></li>
+</ol>
+</div>
+<div class="exercice">
+<p>Démontrer dans chaque cas l’égalité des expressions booléennes en utilisant les deux méthodes suivantes :</p>
+<ul>
+<li><p><strong>Méthode 1</strong> : en comparant les tables de vérité des deux expressions booléennes ;</p></li>
+<li><p><strong>Méthode 2</strong> : en utilisant les règles de simplification de la propriété 2.</p></li>
+</ul>
+<ol type="1">
+<li><span class="math inline"><em>x</em> + <em>x</em>.<em>y</em> = <em>x</em></span></li>
+<li><span class="math inline">$x + \overline{x} . y= x + y$</span></li>
+<li><span class="math inline">$x . z + \overline{x} . y + y . z = x . z + \overline{x} . y$</span></li>
+<li><span class="math inline">$\overline{y . (x + \overline{y})} = \overline{x} + \overline{y}$</span></li>
+<li><span class="math inline">$x . ( \overline{x} + \overline{y}) . (x + y) = x . \overline{y}$</span></li>
+</ol>
+</div>
+<div class="exercice">
+<p>On considère la fonction booléenne dont la table de vérité est :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline"><em>x</em></span></th>
+<th><span class="math inline"><em>y</em></span></th>
+<th><span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Exprimer chacune des lignes où la fonction prend la valeur <span class="math inline">1</span> comme la <em>conjonction</em> des entrées en remplaçant chaque <span class="math inline">1</span> par la variable qu’il représente et chaque <span class="math inline">0</span> par la négation de la variable. Par exemple le <span class="math inline">1</span> de la deuxième ligne s’écrira <span class="math inline">$\overline{x} . y$</span>.</li>
+<li>On peut alors écrire <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> comme la <em>disjonction</em> des <em>formes conjonctives</em> obtenues à la question précédente. En déduire une expression booléenne de <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>.</li>
+<li>Ouvrir le logiciel <a href="http://www.cburch.com/logisim/">Logisim</a> et construire une porte logique représentant cette fonction booléenne.</li>
+<li>Cette fonction s’appelle <code>OU EXCLUSIF</code> ou <code>XOR</code>. Ce nom vous paraît-il bien choisi ?</li>
+</ol>
+</div>
+<h2 id="dresser-la-table-de-vérité-dune-fonction-booléenne">Dresser la table de vérité d’une fonction booléenne</h2>
+<h2 id="expression-dune-fonction-booléenne-à-partir-de-sa-table-de-vérité">Expression d’une fonction booléenne à partir de sa table de vérité</h2>
+<h2 id="simplification-dexpressions-booléennes">Simplification d’expressions booléennes</h2>
+<h1 id="circuits-combinatoires">Circuits combinatoires</h1>
+<h2 id="demi-additionneur-et-additionneur-1-bit">Demi-additionneur et additionneur 1 bit</h2>
+<h2 id="décodeur-avec-2-bits-dentrées">Décodeur avec 2 bits d’entrées</h2>
+</body>
+</html>

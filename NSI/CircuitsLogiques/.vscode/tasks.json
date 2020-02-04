@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Markdown vers PDF et HTML",
+            "type": "shell",
+            "command": "pandoc -s sample.md --listings --template=~/Pandoc/template-pandocV1.tex --filter ~/Pandoc/filtre.py -V colorlinks -o sample.pdf && pandoc -s sample.md  --filter ~/Pandoc/filtre.py -V colorlinks -t gfm -o sample_github.md && pandoc -s  -V geometry:margin=1.5cm --mathjax -t slidy sample.md  -c ~/Pandoc/style_nsi.css -o sample-slidy.html && pandoc -s sample.md  -c ~/Pandoc/style_nsi.css  --toc   -o  sample.html",
+            "args": [
+                "/property:GenerateFullPaths=true",
+                "/t:build",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
