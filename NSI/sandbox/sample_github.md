@@ -16,11 +16,14 @@
     -t slidy sample.md -c style_nsi.css -o sample-slidy.html`
 
   - Pour Github : `pandoc -s sample.md --filter ./filtre.py -V
-    colorlinks -t markdown -o sample_github.md`
+    colorlinks -t gfm -o sample_github.md`
 
   - Pour afficher la structure AST générée à partir du document lu par
     pandoc : `pandoc -s -t native sample.md` , voir
     <https://pandoc.org/filters.html>
+
+  - Pour afficher la structure du document en JSON : `pandoc -t json
+    sample.md`
 
 # Section 1
 
@@ -49,6 +52,13 @@ for k in range(3):
 ```
 
 **Exemple d’environnements minipage juxtaposés**
+
+<div class="minipage" data-center="true" width="0.2\linewidth">
+
+Image1 ![On rajoute un backslash après l’image pour qu’elle ne soit pas
+une figure](image.png)  
+
+</div>
 
 <div class="minipage" data-center="true" width="0.2\linewidth">
 
