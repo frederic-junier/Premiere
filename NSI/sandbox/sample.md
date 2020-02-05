@@ -56,19 +56,10 @@ for k in range(3):
 
 __Exemple d'environnements minipage juxtaposés__
 
-* Une seule image , centrée
-
 :::{.minipage  center="true" width="0.2\linewidth"}
 Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
 :::
 
-* Une seule image , non centrée
-
-:::{.minipage   width="0.2\linewidth"}
-Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\
-:::
-
-* Trois images et un texte, centrés
 
 :::{.minipage  center="true" width="0.2\linewidth"}
 Image1 ![On rajoute un backslash après l'image pour qu'elle ne soit pas une figure](image.png){ width=80% }\

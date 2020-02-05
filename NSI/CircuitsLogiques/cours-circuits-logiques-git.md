@@ -256,17 +256,29 @@ sont dites *universelles*.
 
   - Un **booléen** est un type de données pouvant prendre deux valeurs
     `True` (Vrai) ou `False` (Faux) qu’on représente numériquement par
-    un **bit** de valeur \(1\) pour `True` ou \(0\) pour `False`.
-    Electroniquement, les valeurs 1 et 0 se traduisent respectivement
-    par des tensions haute ou basse.
-  - Une **fonction booléenne** \(f\) associe un booléen à un ou
-    plusieurs booléens.
-  - Une **fonction booléenne** avec \(n\) arguments est définie sur un
-    ensemble \(\{0;1\}^n\) à \(2^n\) valeurs et prend ses valeurs dans
-    \(\{0;1\}\) qui a \(2\) éléments. On peut recenser les \(2^n\)
-    évaluations d’une fonction booléenne à \(n\) arguments dans une
+    un **bit** de valeur ![1](https://latex.codecogs.com/png.latex?1
+    "1") pour `True` ou ![0](https://latex.codecogs.com/png.latex?0 "0")
+    pour `False`. Electroniquement, les valeurs 1 et 0 se traduisent
+    respectivement par des tensions haute ou basse.
+  - Une **fonction booléenne**
+    ![f](https://latex.codecogs.com/png.latex?f "f") associe un booléen
+    à un ou plusieurs booléens.
+  - Une **fonction booléenne** avec
+    ![n](https://latex.codecogs.com/png.latex?n "n") arguments est
+    définie sur un ensemble
+    ![\\{0;1\\}^n](https://latex.codecogs.com/png.latex?%5C%7B0%3B1%5C%7D%5En
+    "\\{0;1\\}^n") à ![2^n](https://latex.codecogs.com/png.latex?2%5En
+    "2^n") valeurs et prend ses valeurs dans
+    ![\\{0;1\\}](https://latex.codecogs.com/png.latex?%5C%7B0%3B1%5C%7D
+    "\\{0;1\\}") qui a ![2](https://latex.codecogs.com/png.latex?2 "2")
+    éléments. On peut recenser les
+    ![2^n](https://latex.codecogs.com/png.latex?2%5En "2^n") évaluations
+    d’une fonction booléenne à
+    ![n](https://latex.codecogs.com/png.latex?n "n") arguments dans une
     **table de vérité** qui la définit entièrement. Il existe
-    \(2^{2^n}\) fonctions booléennes à \(n\) arguments.
+    ![2^{2^n}](https://latex.codecogs.com/png.latex?2%5E%7B2%5En%7D
+    "2^{2^n}") fonctions booléennes à
+    ![n](https://latex.codecogs.com/png.latex?n "n") arguments.
   - Une **porte logique** est la représentation sous forme de circuit
     d’une fonction booléenne et sa **table logique** est la **table de
     vérité** de cette fonction.
@@ -307,38 +319,49 @@ In [4]: table_verite_2bits(bool.__or__)
 On peut exprimer toute fonction booléenne à l’aide de trois fonctions
 booléennes élémentaires :
 
-  - La *négation* de \(x\) est une fonction à 1 bit d’entrée (unaire)
-    notée \(\neg x\) ou \(\overline{x}\).  
+  - La *négation* de ![x](https://latex.codecogs.com/png.latex?x "x")
+    est une fonction à 1 bit d’entrée (unaire) notée ![\\neg
+    x](https://latex.codecogs.com/png.latex?%5Cneg%20x "\\neg x") ou
+    ![\\overline{x}](https://latex.codecogs.com/png.latex?%5Coverline%7Bx%7D
+    "\\overline{x}").  
     Si `x` est un booléen, sa *négation* est `not x` en `Python`.
 
-| \(x\) | \(\neg x\) |
-| :---: | ---------- |
-|   0   |            |
-|   1   |            |
+| ![x](https://latex.codecogs.com/png.latex?x "x") | ![\\neg x](https://latex.codecogs.com/png.latex?%5Cneg%20x "\\neg x") |
+| :----------------------------------------------: | --------------------------------------------------------------------- |
+|                        0                         |                                                                       |
+|                        1                         |                                                                       |
 
-  - La *conjonction* de \(x\) et \(y\) est une fonction à 2 bits
-    d’entrée (binaire) notée \(x \wedge y\) ou \(x . y\).  
+  - La *conjonction* de ![x](https://latex.codecogs.com/png.latex?x "x")
+    et ![y](https://latex.codecogs.com/png.latex?y "y") est une fonction
+    à 2 bits d’entrée (binaire) notée ![x \\wedge
+    y](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20y
+    "x \\wedge y") ou ![x .
+    y](https://latex.codecogs.com/png.latex?x%20.%20y "x . y").  
     Si `x` et `y` sont des booléens, leur *conjonction* est `x and y` en
     `Python`.
 
-| \(x\) | \(y\) | \(x \wedge y\) |
-| :---: | ----- | -------------- |
-|   0   | 0     |                |
-|   0   | 1     |                |
-|   1   | 0     |                |
-|   1   | 1     |                |
+| ![x](https://latex.codecogs.com/png.latex?x "x") | ![y](https://latex.codecogs.com/png.latex?y "y") | ![x \\wedge y](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20y "x \\wedge y") |
+| :----------------------------------------------: | ------------------------------------------------ | ----------------------------------------------------------------------------------- |
+|                        0                         | 0                                                |                                                                                     |
+|                        0                         | 1                                                |                                                                                     |
+|                        1                         | 0                                                |                                                                                     |
+|                        1                         | 1                                                |                                                                                     |
 
-  - La *disconjonction* de \(x\) et \(y\) est une fonction à 2 bits
-    d’entrée (binaire) notée \(x \vee y\) ou \(x + y\).  
+  - La *disconjonction* de ![x](https://latex.codecogs.com/png.latex?x
+    "x") et ![y](https://latex.codecogs.com/png.latex?y "y") est une
+    fonction à 2 bits d’entrée (binaire) notée ![x \\vee
+    y](https://latex.codecogs.com/png.latex?x%20%5Cvee%20y "x \\vee y")
+    ou ![x + y](https://latex.codecogs.com/png.latex?x%20%2B%20y
+    "x + y").  
     Si `x` et `y` sont des booléens, leur *disjonction* est `x or y` en
     `Python`
 
-| \(x\) | \(y\) | \(x \vee y\) |
-| :---: | ----- | ------------ |
-|   0   | 0     |              |
-|   0   | 1     |              |
-|   1   | 0     |              |
-|   1   | 1     |              |
+| ![x](https://latex.codecogs.com/png.latex?x "x") | ![y](https://latex.codecogs.com/png.latex?y "y") | ![x \\vee y](https://latex.codecogs.com/png.latex?x%20%5Cvee%20y "x \\vee y") |
+| :----------------------------------------------: | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+|                        0                         | 0                                                |                                                                               |
+|                        0                         | 1                                                |                                                                               |
+|                        1                         | 0                                                |                                                                               |
+|                        1                         | 1                                                |                                                                               |
 
 **Propriété 2**
 
@@ -348,32 +371,93 @@ booléennes élémentaires :
 
 <!-- end list -->
 
-  - *opérateur involutif* : \(\neg(\neg x) = x\) et
-    \(\overline{\overline{x}}=x\)
-  - *élément neutre* : \(1 \wedge x = x\) et \(1 . x =x\) ou
-    \(0 \vee x = x\) et \(0 + x =x\)
-  - *élément absorbant* : \(0 \wedge x = 0\) et \(0 . x =0\) ou
-    \(1 \vee x = x\) et \(1 + x =1\)
-  - *idempotence* : \(x \wedge x = x\) et \(x . x =x\) ou
-    \(x \vee x = x\) et \(x + x =x\)
-  - *complément* : \(x \wedge (\neg x) = 0\) et
-    \(x . (\overline{x}) =0\) ou \(x \vee (\neg x) = 1\) et
-    \(x + \overline{x} =1\)
-  - *commutativité* : \(x \wedge y = y \wedge x\) et \(x . y = y . x\)
-    ou \(x \vee y = y \vee x\) et \(x + y = y + x\)
-  - *associativité* : \(x \wedge ( y \wedge z) = (x \wedge y) \wedge z\)
-    et \(x . (y . z) = (x . y) . z\) ou
-    \(x \vee ( y \vee z) = (x \vee y) \vee z\) et
-    \(x + (y + z) = (x + y) + z\)
-  - *distributivité* :
-    \(x \wedge ( y \vee z) = (x \wedge y) \vee (x \wedge z)\) et
-    \(x . (y + z) = x . y + x z\) ou
-    \(x \vee ( y \wedge z) = (x \vee y) \wedge (x \vee z)\) et
-    \(x + (y . z) = (x + y) . (x + z)\)
-  - *loi de Morgan* : \(\neg(x \wedge y) = \neg x \vee \neg y\) et
-    \(\overline{x . y} = \overline{x} + \overline{y}\) ou
-    \(\neg(x \vee y) = \neg x \wedge \neg y\) et
-    \(\overline{x + y} = \overline{x} . \overline{y}\)
+  - *opérateur involutif* : ![\\neg(\\neg x) =
+    x](https://latex.codecogs.com/png.latex?%5Cneg%28%5Cneg%20x%29%20%3D%20x
+    "\\neg(\\neg x) = x") et
+    ![\\overline{\\overline{x}}=x](https://latex.codecogs.com/png.latex?%5Coverline%7B%5Coverline%7Bx%7D%7D%3Dx
+    "\\overline{\\overline{x}}=x")
+  - *élément neutre* : ![1 \\wedge x =
+    x](https://latex.codecogs.com/png.latex?1%20%5Cwedge%20x%20%3D%20x
+    "1 \\wedge x = x") et ![1 . x
+    =x](https://latex.codecogs.com/png.latex?1%20.%20x%20%3Dx
+    "1 . x =x") ou ![0 \\vee x =
+    x](https://latex.codecogs.com/png.latex?0%20%5Cvee%20x%20%3D%20x
+    "0 \\vee x = x") et ![0 + x
+    =x](https://latex.codecogs.com/png.latex?0%20%2B%20x%20%3Dx
+    "0 + x =x")
+  - *élément absorbant* : ![0 \\wedge x
+    = 0](https://latex.codecogs.com/png.latex?0%20%5Cwedge%20x%20%3D%200
+    "0 \\wedge x = 0") et ![0 . x
+    =0](https://latex.codecogs.com/png.latex?0%20.%20x%20%3D0
+    "0 . x =0") ou ![1 \\vee x =
+    x](https://latex.codecogs.com/png.latex?1%20%5Cvee%20x%20%3D%20x
+    "1 \\vee x = x") et ![1 + x
+    =1](https://latex.codecogs.com/png.latex?1%20%2B%20x%20%3D1
+    "1 + x =1")
+  - *idempotence* : ![x \\wedge x =
+    x](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20x%20%3D%20x
+    "x \\wedge x = x") et ![x . x
+    =x](https://latex.codecogs.com/png.latex?x%20.%20x%20%3Dx
+    "x . x =x") ou ![x \\vee x =
+    x](https://latex.codecogs.com/png.latex?x%20%5Cvee%20x%20%3D%20x
+    "x \\vee x = x") et ![x + x
+    =x](https://latex.codecogs.com/png.latex?x%20%2B%20x%20%3Dx
+    "x + x =x")
+  - *complément* : ![x \\wedge (\\neg x)
+    = 0](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20%28%5Cneg%20x%29%20%3D%200
+    "x \\wedge (\\neg x) = 0") et ![x . (\\overline{x})
+    =0](https://latex.codecogs.com/png.latex?x%20.%20%28%5Coverline%7Bx%7D%29%20%3D0
+    "x . (\\overline{x}) =0") ou ![x \\vee (\\neg x)
+    = 1](https://latex.codecogs.com/png.latex?x%20%5Cvee%20%28%5Cneg%20x%29%20%3D%201
+    "x \\vee (\\neg x) = 1") et ![x + \\overline{x}
+    =1](https://latex.codecogs.com/png.latex?x%20%2B%20%5Coverline%7Bx%7D%20%3D1
+    "x + \\overline{x} =1")
+  - *commutativité* : ![x \\wedge y = y \\wedge
+    x](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20y%20%3D%20y%20%5Cwedge%20x
+    "x \\wedge y = y \\wedge x") et ![x . y = y .
+    x](https://latex.codecogs.com/png.latex?x%20.%20y%20%3D%20y%20.%20x
+    "x . y = y . x") ou ![x \\vee y = y \\vee
+    x](https://latex.codecogs.com/png.latex?x%20%5Cvee%20y%20%3D%20y%20%5Cvee%20x
+    "x \\vee y = y \\vee x") et ![x + y = y +
+    x](https://latex.codecogs.com/png.latex?x%20%2B%20y%20%3D%20y%20%2B%20x
+    "x + y = y + x")
+  - *associativité* : ![x \\wedge ( y \\wedge z) = (x \\wedge y) \\wedge
+    z](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20%28%20y%20%5Cwedge%20z%29%20%3D%20%28x%20%5Cwedge%20y%29%20%5Cwedge%20z
+    "x \\wedge ( y \\wedge z) = (x \\wedge y) \\wedge z") et ![x . (y .
+    z) = (x . y) .
+    z](https://latex.codecogs.com/png.latex?x%20.%20%28y%20.%20z%29%20%3D%20%28x%20.%20y%29%20.%20z
+    "x . (y . z) = (x . y) . z") ou ![x \\vee ( y \\vee z) = (x \\vee y)
+    \\vee
+    z](https://latex.codecogs.com/png.latex?x%20%5Cvee%20%28%20y%20%5Cvee%20z%29%20%3D%20%28x%20%5Cvee%20y%29%20%5Cvee%20z
+    "x \\vee ( y \\vee z) = (x \\vee y) \\vee z") et ![x + (y + z) = (x
+    + y) +
+    z](https://latex.codecogs.com/png.latex?x%20%2B%20%28y%20%2B%20z%29%20%3D%20%28x%20%2B%20y%29%20%2B%20z
+    "x + (y + z) = (x + y) + z")
+  - *distributivité* : ![x \\wedge ( y \\vee z) = (x \\wedge y) \\vee (x
+    \\wedge
+    z)](https://latex.codecogs.com/png.latex?x%20%5Cwedge%20%28%20y%20%5Cvee%20z%29%20%3D%20%28x%20%5Cwedge%20y%29%20%5Cvee%20%28x%20%5Cwedge%20z%29
+    "x \\wedge ( y \\vee z) = (x \\wedge y) \\vee (x \\wedge z)") et ![x
+    . (y + z) = x . y + x
+    z](https://latex.codecogs.com/png.latex?x%20.%20%28y%20%2B%20z%29%20%3D%20x%20.%20y%20%2B%20x%20z
+    "x . (y + z) = x . y + x z") ou ![x \\vee ( y \\wedge z) = (x \\vee
+    y) \\wedge (x \\vee
+    z)](https://latex.codecogs.com/png.latex?x%20%5Cvee%20%28%20y%20%5Cwedge%20z%29%20%3D%20%28x%20%5Cvee%20y%29%20%5Cwedge%20%28x%20%5Cvee%20z%29
+    "x \\vee ( y \\wedge z) = (x \\vee y) \\wedge (x \\vee z)") et ![x +
+    (y . z) = (x + y) . (x +
+    z)](https://latex.codecogs.com/png.latex?x%20%2B%20%28y%20.%20z%29%20%3D%20%28x%20%2B%20y%29%20.%20%28x%20%2B%20z%29
+    "x + (y . z) = (x + y) . (x + z)")
+  - *loi de Morgan* : ![\\neg(x \\wedge y) = \\neg x \\vee \\neg
+    y](https://latex.codecogs.com/png.latex?%5Cneg%28x%20%5Cwedge%20y%29%20%3D%20%5Cneg%20x%20%5Cvee%20%5Cneg%20y
+    "\\neg(x \\wedge y) = \\neg x \\vee \\neg y") et ![\\overline{x . y}
+    = \\overline{x} +
+    \\overline{y}](https://latex.codecogs.com/png.latex?%5Coverline%7Bx%20.%20y%7D%20%3D%20%5Coverline%7Bx%7D%20%2B%20%5Coverline%7By%7D
+    "\\overline{x . y} = \\overline{x} + \\overline{y}") ou ![\\neg(x
+    \\vee y) = \\neg x \\wedge \\neg
+    y](https://latex.codecogs.com/png.latex?%5Cneg%28x%20%5Cvee%20y%29%20%3D%20%5Cneg%20x%20%5Cwedge%20%5Cneg%20y
+    "\\neg(x \\vee y) = \\neg x \\wedge \\neg y") et ![\\overline{x + y}
+    = \\overline{x} .
+    \\overline{y}](https://latex.codecogs.com/png.latex?%5Coverline%7Bx%20%2B%20y%7D%20%3D%20%5Coverline%7Bx%7D%20.%20%5Coverline%7By%7D
+    "\\overline{x + y} = \\overline{x} . \\overline{y}")
 
 <!-- end list -->
 
@@ -396,31 +480,50 @@ utilisant les deux méthodes suivantes :
 
 <!-- end list -->
 
-1.  \(x + x . y = x\)
-2.  \(x + \overline{x} . y= x + y\)
-3.  \(x . z + \overline{x} . y + y . z = x . z + \overline{x} . y\)
-4.  \(\overline{y . (x + \overline{y})} = \overline{x} + \overline{y}\)
-5.  \(x . ( \overline{x} + \overline{y}) . (x + y) = x . \overline{y}\)
+1.  ![x + x . y =
+    x](https://latex.codecogs.com/png.latex?x%20%2B%20x%20.%20y%20%3D%20x
+    "x + x . y = x")
+2.  ![x + \\overline{x} . y= x +
+    y](https://latex.codecogs.com/png.latex?x%20%2B%20%5Coverline%7Bx%7D%20.%20y%3D%20x%20%2B%20y
+    "x + \\overline{x} . y= x + y")
+3.  ![x . z + \\overline{x} . y + y . z = x . z + \\overline{x} .
+    y](https://latex.codecogs.com/png.latex?x%20.%20z%20%2B%20%5Coverline%7Bx%7D%20.%20y%20%2B%20y%20.%20z%20%3D%20x%20.%20z%20%2B%20%5Coverline%7Bx%7D%20.%20y
+    "x . z + \\overline{x} . y + y . z = x . z + \\overline{x} . y")
+4.  ![\\overline{y . (x + \\overline{y})} = \\overline{x} +
+    \\overline{y}](https://latex.codecogs.com/png.latex?%5Coverline%7By%20.%20%28x%20%2B%20%5Coverline%7By%7D%29%7D%20%3D%20%5Coverline%7Bx%7D%20%2B%20%5Coverline%7By%7D
+    "\\overline{y . (x + \\overline{y})} = \\overline{x} + \\overline{y}")
+5.  ![x . ( \\overline{x} + \\overline{y}) . (x + y) = x .
+    \\overline{y}](https://latex.codecogs.com/png.latex?x%20.%20%28%20%5Coverline%7Bx%7D%20%2B%20%5Coverline%7By%7D%29%20.%20%28x%20%2B%20y%29%20%3D%20x%20.%20%5Coverline%7By%7D
+    "x . ( \\overline{x} + \\overline{y}) . (x + y) = x . \\overline{y}")
 
 **Exercice 7**
 
 On considère la fonction booléenne dont la table de vérité est :
 
-| \(x\) | \(y\) | \(f(x, y)\) |
-| :---: | ----- | ----------- |
-|   0   | 0     | 0           |
-|   0   | 1     | 1           |
-|   1   | 0     | 1           |
-|   1   | 1     | 0           |
+| ![x](https://latex.codecogs.com/png.latex?x "x") | ![y](https://latex.codecogs.com/png.latex?y "y") | ![f(x, y)](https://latex.codecogs.com/png.latex?f%28x%2C%20y%29 "f(x, y)") |
+| :----------------------------------------------: | ------------------------------------------------ | -------------------------------------------------------------------------- |
+|                        0                         | 0                                                | 0                                                                          |
+|                        0                         | 1                                                | 1                                                                          |
+|                        1                         | 0                                                | 1                                                                          |
+|                        1                         | 1                                                | 0                                                                          |
 
-1.  Exprimer chacune des lignes où la fonction prend la valeur \(1\)
-    comme la *conjonction* des entrées en remplaçant chaque \(1\) par la
-    variable qu’il représente et chaque \(0\) par la négation de la
-    variable. Par exemple le \(1\) de la deuxième ligne s’écrira
-    \(\overline{x} . y\).
-2.  On peut alors écrire \(f(x,y)\) comme la *disjonction* des *formes
-    conjonctives* obtenues à la question précédente. En déduire une
-    expression booléenne de \(f(x, y)\).
+1.  Exprimer chacune des lignes où la fonction prend la valeur
+    ![1](https://latex.codecogs.com/png.latex?1 "1") comme la
+    *conjonction* des entrées en remplaçant chaque
+    ![1](https://latex.codecogs.com/png.latex?1 "1") par la variable
+    qu’il représente et chaque
+    ![0](https://latex.codecogs.com/png.latex?0 "0") par la négation de
+    la variable. Par exemple le
+    ![1](https://latex.codecogs.com/png.latex?1 "1") de la deuxième
+    ligne s’écrira ![\\overline{x} .
+    y](https://latex.codecogs.com/png.latex?%5Coverline%7Bx%7D%20.%20y
+    "\\overline{x} . y").
+2.  On peut alors écrire
+    ![f(x,y)](https://latex.codecogs.com/png.latex?f%28x%2Cy%29
+    "f(x,y)") comme la *disjonction* des *formes conjonctives* obtenues
+    à la question précédente. En déduire une expression booléenne de
+    ![f(x, y)](https://latex.codecogs.com/png.latex?f%28x%2C%20y%29
+    "f(x, y)").
 3.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et
     construire une porte logique représentant cette fonction booléenne.
 4.  Cette fonction s’appelle `OU EXCLUSIF` ou `XOR`. Ce nom vous

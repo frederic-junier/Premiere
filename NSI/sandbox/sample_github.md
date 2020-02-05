@@ -22,9 +22,6 @@
     pandoc : `pandoc -s -t native sample.md` , voir
     <https://pandoc.org/filters.html>
 
-  - Pour afficher la structure du document en JSON : `pandoc -t json
-    sample.md`
-
 # Section 1
 
 ## Sous-Section
@@ -52,13 +49,6 @@ for k in range(3):
 ```
 
 **Exemple d’environnements minipage juxtaposés**
-
-<div class="minipage" data-center="true" width="0.2\linewidth">
-
-Image1 ![On rajoute un backslash après l’image pour qu’elle ne soit pas
-une figure](image.png)  
-
-</div>
 
 <div class="minipage" data-center="true" width="0.2\linewidth">
 

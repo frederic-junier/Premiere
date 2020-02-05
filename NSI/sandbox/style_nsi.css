@@ -6,6 +6,7 @@ body{
 	counter-reset: num_exo;							/* mise à zéro du compteur num_exo */
     counter-reset: num_definition;							
     counter-reset: num_theoreme;	
+    counter-reset: num_propriete;	
     background-color: #f8f9fa ;
 }
 	
@@ -61,7 +62,7 @@ div.sourceCode::before{
     
 
 /* ------------------------------------------------------------------------- */
-/*                     Définition                                            */
+/*                     Théorème                                              */
 /* ------------------------------------------------------------------------- */
 
 .theoreme{
@@ -87,6 +88,31 @@ div.sourceCode::before{
     
 
 
+/* ------------------------------------------------------------------------- */
+/*                     Prorpiété                                             */
+/* ------------------------------------------------------------------------- */
+
+.propriete{
+	counter-increment : num_propriete;						/* mise à jour du compteur de définition */
+    border-color : #DC3545;
+    border-style : solid ;
+    border-radius: 5px;
+    margin : 10px;
+	}
+
+
+.propriete::before{
+    color: #DC3545;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	content : 'Propriété n°'counter(num_propriete)' - ';		/* mise en forme du compteur num_definition */
+	margin-left: 20px;   
+    font-size:1.5em; 
+	}
+    
+.propriete p {
+    margin-left: 40px;
+}
+    
 
 /* ------------------------------------------------------------------------- */
 /*                     Exercices                                             */

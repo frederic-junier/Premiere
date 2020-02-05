@@ -7,7 +7,7 @@ geometry:
 - top=20mm
 - left=20mm
 - right=20mm
-- heightrounded
+- heightrounded    
 --- 
 
 # Crédits {-} 
@@ -248,10 +248,10 @@ Si `x` et `y` sont des booléens, leur  _disjonction_ est `x or y` en `Python`
 | $x$ | $y$ | $x \vee y$ |
 |:---:|-----|--------------|
 | 0   | 0   |              |
-| 0   | 1   |              |   
+| 0   | 1   |              |    
 | 1   | 0   |              |   
 | 1   | 1   |              |
-:::
+:::   
   
 :::propriete
 1. Les fonctions booléennes élémentaires respectent un certain nombre de règles qui permettent de simplifier les expressions booléennes complexes :
@@ -263,7 +263,7 @@ Si `x` et `y` sont des booléens, leur  _disjonction_ est `x or y` en `Python`
 * _complément_ : $x \wedge (\neg x) = 0$ et $x . (\overline{x}) =0$  ou  $x \vee (\neg x) = 1$ et $x + \overline{x} =1$
 * _commutativité_ :  $x \wedge y = y \wedge x$ et $x . y = y . x$  ou  $x \vee y = y \vee x$ et $x + y = y + x$ 
 * _associativité_ :  $x \wedge ( y \wedge z) = (x \wedge  y) \wedge z$ et $x . (y . z) = (x . y) . z$  ou  $x \vee ( y \vee z) = (x \vee y) \vee z$ et $x + (y + z) = (x + y) + z$
-*  _distributivité_ :  $x \wedge ( y \vee z)  = (x \wedge  y) \vee (x \wedge z)$ et $x . (y + z) = x . y + x   z$  ou  $x \vee ( y \wedge z)  = (x \vee  y) \wedge (x \vee z)$ et $x + (y . z) = (x + y) . (x + z)$ 
+* _distributivité_ :  $x \wedge ( y \vee z)  = (x \wedge  y) \vee (x \wedge z)$ et $x . (y + z) = x . y + x   z$  ou  $x \vee ( y \wedge z)  = (x \vee  y) \wedge (x \vee z)$ et $x + (y . z) = (x + y) . (x + z)$ 
 * _loi de Morgan_ : $\neg(x \wedge y) = \neg x \vee \neg y$ et   $\overline{x . y} = \overline{x} + \overline{y}$ ou  $\neg(x \vee y) = \neg x \wedge \neg y$ et   $\overline{x + y} = \overline{x} . \overline{y}$
 
 2. Les fonctions booléennes élémentaire respectent des règles de priorité :  la _négation_ est prioritaire sur la _conjonction_ qui est proritaire sur la _disjonction_.  
