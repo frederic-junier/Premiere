@@ -474,7 +474,7 @@ Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par diode
     * construire le circuit  avec le bouton `Build circuit`  et le  nommer `de6faces`
     * compléter le circuit avec des `Random Generator` (outils `Memory`) en entrée et des `LED` (outils `Input - Output`) en sortie comme dans la figure ci-dessous.
 
-![Circuit dé 6 faces](images/de_6_faces.png){width="50%"}\
+![Circuit dé 6 faces](images/de_6_faces.png){width="45%"}\
 :::
 
 
@@ -540,7 +540,7 @@ Dans un réseau `IP` l'adresse `IP` d'une machine est constitué d'un préfixe c
 
 Le préfixe réseau s'obtient à partir de l'adresse `IP` de la  machine en faisant un `ET` bit à bit avec le masque de sous-réseau.
 
-Par exemple si l'adresse est  `192.168.11.12`  de représentation binaire `11000000.10101000.00000111.00001011` et le masque de sous-réseau est `255.255.252.0` de représentation binaire 
+Par exemple si l'adresse est  `192.168.11.12`  de représentation binaire `11000000.10101000.00001011.00001011` et le masque de sous-réseau est `255.255.252.0` de représentation binaire 
 
 `11111111.11111111.11111100.00000000` alors le préfixe réseau est `11000000.10101000.00001000.00000000`  soit `192.168.8.0`.
 

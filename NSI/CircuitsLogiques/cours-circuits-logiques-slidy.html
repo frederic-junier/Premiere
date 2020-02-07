@@ -1017,7 +1017,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <li>compléter le circuit avec des <code>Random Generator</code> (outils <code>Memory</code>) en entrée et des <code>LED</code> (outils <code>Input - Output</code>) en sortie comme dans la figure ci-dessous.</li>
 </ul></li>
 </ol>
-<p><img src="images/de_6_faces.png" style="width:50.0%" alt="Circuit dé 6 faces" /><br />
+<p><img src="images/de_6_faces.png" style="width:45.0%" alt="Circuit dé 6 faces" /><br />
 </p>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ Si <code>x</code> et <code>y</code> sont des booléens, leur <em>disjonction</em
 <div class="exercice">
 <p>Dans un réseau <code>IP</code> l’adresse <code>IP</code> d’une machine est constitué d’un préfixe correspondant à l’adresse du réseau (commune à toutes les machines du réseau) et à un suffixe machine, identifiant la machine sur le réseau.</p>
 <p>Le préfixe réseau s’obtient à partir de l’adresse <code>IP</code> de la machine en faisant un <code>ET</code> bit à bit avec le masque de sous-réseau.</p>
-<p>Par exemple si l’adresse est <code>192.168.11.12</code> de représentation binaire <code>11000000.10101000.00000111.00001011</code> et le masque de sous-réseau est <code>255.255.252.0</code> de représentation binaire</p>
+<p>Par exemple si l’adresse est <code>192.168.11.12</code> de représentation binaire <code>11000000.10101000.00001011.00001011</code> et le masque de sous-réseau est <code>255.255.252.0</code> de représentation binaire</p>
 <p><code>11111111.11111111.11111100.00000000</code> alors le préfixe réseau est <code>11000000.10101000.00001000.00000000</code> soit <code>192.168.8.0</code>.</p>
 <p>On donne ci-dessous deux fonctions outils :</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> ip2liste(ip):</span>

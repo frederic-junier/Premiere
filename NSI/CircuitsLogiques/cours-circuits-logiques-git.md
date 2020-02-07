@@ -920,7 +920,7 @@ Le préfixe réseau s’obtient à partir de l’adresse `IP` de la machine en
 faisant un `ET` bit à bit avec le masque de sous-réseau.
 
 Par exemple si l’adresse est `192.168.11.12` de représentation binaire
-`11000000.10101000.00000111.00001011` et le masque de sous-réseau est
+`11000000.10101000.00001011.00001011` et le masque de sous-réseau est
 `255.255.252.0` de représentation binaire
 
 `11111111.11111111.11111100.00000000` alors le préfixe réseau est
