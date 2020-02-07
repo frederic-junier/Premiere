@@ -12,14 +12,15 @@
       - [Fonctions booléennes](#fonctions-booléennes-1)
       - [Dresser la table de vérité d’une fonction
         booléenne](#dresser-la-table-de-vérité-dune-fonction-booléenne)
-      - [Expression d’une fonction booléenne à partir de sa table de
-        vérité](#expression-dune-fonction-booléenne-à-partir-de-sa-table-de-vérité)
-      - [Simplification d’expressions
-        booléennes](#simplification-dexpressions-booléennes)
+      - [Exprimer une fonction booléenne à partir de sa table de
+        vérité](#exprimer-une-fonction-booléenne-à-partir-de-sa-table-de-vérité)
   - [Circuits combinatoires](#circuits-combinatoires)
+      - [Définition](#définition)
+      - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
       - [Demi-additionneur et additionneur 1
         bit](#demi-additionneur-et-additionneur-1-bit)
-      - [Décodeur avec 2 bits d’entrées](#décodeur-avec-2-bits-dentrées)
+      - [Simuler le hasard](#simuler-le-hasard)
+  - [Opérations bit à bit en `Python`](#opérations-bit-à-bit-en-python)
 
 # Crédits
 
@@ -50,7 +51,8 @@ doublement de la densité d’intégration des transistors tous les deux
 ans. Cette loi s’est vérifiée jusqu’à présent avec une finesse de
 gravure d’environ 5 nanomètres en 2020. Le
 [graphique](https://en.wikipedia.org/wiki/Moore%27s_law#/media/File:Moore's_Law_Transistor_Count_1971-2018.png)
-ci-dessous représente le nombre de transistors par circuit intégré.
+ci-dessous représente l’évolution du nombre de transistors par circuit
+intégré.
 
 <div class="center">
 
@@ -467,6 +469,8 @@ booléennes élémentaires :
     **Il est recommandé de mettre des parenthèses plutôt que d’appliquer
     les règles de priorité dans l’écriture des expressions booléennes.**
 
+## Dresser la table de vérité d’une fonction booléenne
+
 **Exercice 6**
 
 Démontrer dans chaque cas l’égalité des expressions booléennes en
@@ -495,6 +499,8 @@ utilisant les deux méthodes suivantes :
 5.  ![x . ( \\overline{x} + \\overline{y}) . (x + y) = x .
     \\overline{y}](https://latex.codecogs.com/png.latex?x%20.%20%28%20%5Coverline%7Bx%7D%20%2B%20%5Coverline%7By%7D%29%20.%20%28x%20%2B%20y%29%20%3D%20x%20.%20%5Coverline%7By%7D
     "x . ( \\overline{x} + \\overline{y}) . (x + y) = x . \\overline{y}")
+
+## Exprimer une fonction booléenne à partir de sa table de vérité
 
 **Exercice 7**
 
@@ -529,14 +535,476 @@ On considère la fonction booléenne dont la table de vérité est :
 4.  Cette fonction s’appelle `OU EXCLUSIF` ou `XOR`. Ce nom vous
     paraît-il bien choisi ?
 
-## Dresser la table de vérité d’une fonction booléenne
+**Voici les représentations symboliques de la porte logique `XOR` :**
 
-## Expression d’une fonction booléenne à partir de sa table de vérité
+<div class="minipage" width="0.5\linewidth" data-center="true">
 
-## Simplification d’expressions booléennes
+![Porte XOR européenne](images/porte_xor_european.png)  
+& ![Porte XOR américaine](images/porte_xor_american.png)  
+
+</div>
 
 # Circuits combinatoires
 
-## Demi-additionneur et additionneur 1 bit
+## Définition
+
+**Définition 3**
+
+Un **circuit logique combinatoire** permet de réaliser une ou plusieurs
+fonctions booléennes : ses sorties ne dépendent que de l’état actuel de
+ses entrées. Les portes logiques `NOT`, `NOR`, `NAND`, `AND`, `OR` et
+`XOR` sont des circuits combinatoires.
+
+Il existe d’autres circuits, dits séquentiels, dont les sorties se
+calculent non seulement à partir de leurs valeurs d’entrée actuelles
+mais aussi à partir de leurs états précédents : le facteur temps
+intervient. Ils utilisent des circuits de mémoire pour mémoriser leurs
+états antérieurs.
+
+**Exercice 8**
+
+On considère la fonction booléeenne
+![f](https://latex.codecogs.com/png.latex?f "f") dont la table de vérité
+est donnée ci-dessous :
+
+| ![x](https://latex.codecogs.com/png.latex?x "x") | ![y](https://latex.codecogs.com/png.latex?y "y") | ![f(x, y)](https://latex.codecogs.com/png.latex?f%28x%2C%20y%29 "f(x, y)") |
+| :----------------------------------------------: | ------------------------------------------------ | -------------------------------------------------------------------------- |
+|                        0                         | 0                                                | 1                                                                          |
+|                        0                         | 1                                                | 0                                                                          |
+|                        1                         | 0                                                | 0                                                                          |
+|                        1                         | 1                                                | 1                                                                          |
+
+1.  En utilisant la méthode exposée dans l’exercice , déterminer une
+    expression booléenne de la fonction
+    ![f](https://latex.codecogs.com/png.latex?f "f").
+
+2.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et
+    construire un circuit combinatoire représentant cette fonction
+    booléenne :
+    
+      - En utilisant les portes logiques `NOT`, `NOR`, `NAND`, `AND`,
+        `OR` ou `XOR`.
+      - En n’utilisant que des portes logiques `NOT`, `AND` ou `OR`.
+      - En n’utilisant que des portes logiques `NOR`.
 
 ## Décodeur avec 2 bits d’entrées
+
+**Exercice 9**
+
+On considère un circuit combinatoire qui possède deux entrées
+![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et
+![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") et
+quatre sorties ![s\_{0}](https://latex.codecogs.com/png.latex?s_%7B0%7D
+"s_{0}"), ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D
+"s_{1}"), ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D
+"s_{2}") et ![s\_{3}](https://latex.codecogs.com/png.latex?s_%7B3%7D
+"s_{3}").
+
+La sortie indexée par le nombre dont le bit de poids faible est
+![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et le
+bit de poids fort
+![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") est
+postionnée à ![1](https://latex.codecogs.com/png.latex?1 "1") et les
+autres sorties à ![0](https://latex.codecogs.com/png.latex?0 "0"). Ce
+circuit est ainsi appelé **décodeur
+![2](https://latex.codecogs.com/png.latex?2 "2") bits**.
+
+1.  Compléter la table de vérité de ce circuit combinatoire.
+
+| ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") | ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") | ![s\_{0}](https://latex.codecogs.com/png.latex?s_%7B0%7D "s_{0}") | ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D "s_{1}") | ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D "s_{2}") | ![s\_{3}](https://latex.codecogs.com/png.latex?s_%7B3%7D "s_{3}") |
+| :---------------------------------------------------------------: | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+|                                 0                                 | 0                                                                 |                                                                   |                                                                   |                                                                   |                                                                   |
+|                                 0                                 | 1                                                                 |                                                                   |                                                                   |                                                                   |                                                                   |
+|                                 1                                 | 0                                                                 |                                                                   |                                                                   |                                                                   |                                                                   |
+|                                 1                                 | 1                                                                 |                                                                   |                                                                   |                                                                   |                                                                   |
+
+2.  En utilisant la méthode exposée dans l’exercice 7, déterminer une
+    expression booléenne de chacune des sorties
+    ![s\_{0}](https://latex.codecogs.com/png.latex?s_%7B0%7D "s_{0}"),
+    ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D "s_{1}"),
+    ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D "s_{2}") et
+    ![s\_{3}](https://latex.codecogs.com/png.latex?s_%7B3%7D "s_{3}"),
+    en fonction des entrées
+    ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et
+    ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}").
+
+3.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et
+    construire un circuit combinatoire représentant un **décodeur
+    ![2](https://latex.codecogs.com/png.latex?2 "2") bits**.
+
+## Demi-additionneur et additionneur 1 bit
+
+**Exercice 10**
+
+1.  Effectuer les additions binaires :
+    ![0+0](https://latex.codecogs.com/png.latex?0%2B0 "0+0"),
+    ![0+1](https://latex.codecogs.com/png.latex?0%2B1 "0+1"),
+    ![1+0](https://latex.codecogs.com/png.latex?1%2B0 "1+0") et
+    ![1+1](https://latex.codecogs.com/png.latex?1%2B1 "1+1").
+
+2.  Un **demi-additionneur binaire 1 bit** est un circuit combinatoire
+    qui possède :
+    
+      - deux entrées : deux bits d’opérande
+        ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D
+        "e_{0}") et
+        ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D
+        "e_{1}") ;
+      - deux sorties : un bit de résultat
+        ![s](https://latex.codecogs.com/png.latex?s "s") et un bit de
+        retenue sortante ![r](https://latex.codecogs.com/png.latex?r
+        "r").
+
+La sortie ![s](https://latex.codecogs.com/png.latex?s "s") prend pour
+valeur le bit des unités et la sortie
+![r](https://latex.codecogs.com/png.latex?r "r") le bit de retenue
+sortante, lorsqu’on additionne les deux bits d’entrée
+![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et
+![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}").
+
+1.  Compléter la table de vérité de ce circuit combinatoire :
+
+| ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") | ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") | ![s](https://latex.codecogs.com/png.latex?s "s") | ![r](https://latex.codecogs.com/png.latex?r "r") |
+| :---------------------------------------------------------------: | ----------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------ |
+|                                 0                                 | 0                                                                 |                                                  |                                                  |
+|                                 0                                 | 1                                                                 |                                                  |                                                  |
+|                                 1                                 | 0                                                                 |                                                  |                                                  |
+|                                 1                                 | 1                                                                 |                                                  |                                                  |
+
+4.  Justifier qu’un **demi-additionneur binaire 1 bit** peut être
+    représenté par le circuit ci-dessous.
+
+![Demi-additionneur binaire](images/demi_additionneur.png)  
+
+5.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/) et
+    construire un circuit combinatoire représentant un
+    **demi-additionneur binaire 1 bit**.
+
+**Exercice 11**
+
+Un **additionneur binaire 1 bit** est un circuit combinatoire qui
+possède :
+
+  - trois entrées : deux bits d’opérande
+    ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") et
+    ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") et
+    un bit de retenue entrante
+    ![r\_{0}](https://latex.codecogs.com/png.latex?r_%7B0%7D "r_{0}")
+  - deux bits de sortie : un bit de résultat
+    ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D "s_{2}") et
+    un bit de retenue sortante
+    ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D "r_{3}").
+
+<!-- end list -->
+
+1.  Compléter les colonnes de la table de vérité d’un **additionneur
+    binaire 1 bit** pour le bit de résultat
+    ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D "s_{2}") et
+    le bit retenue sortante
+    ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D "r_{3}").
+
+| ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D "e_{0}") | ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D "e_{1}") | ![r\_{0}](https://latex.codecogs.com/png.latex?r_%7B0%7D "r_{0}") | ![s\_{1}=\\ldots \\ldots](https://latex.codecogs.com/png.latex?s_%7B1%7D%3D%5Cldots%20%5Cldots "s_{1}=\\ldots \\ldots") | ![r\_{1}=\\ldots \\ldots](https://latex.codecogs.com/png.latex?r_%7B1%7D%3D%5Cldots%20%5Cldots "r_{1}=\\ldots \\ldots") | ![s\_{2}=\\ldots \\ldots](https://latex.codecogs.com/png.latex?s_%7B2%7D%3D%5Cldots%20%5Cldots "s_{2}=\\ldots \\ldots") | ![r\_{2}=\\ldots \\ldots](https://latex.codecogs.com/png.latex?r_%7B2%7D%3D%5Cldots%20%5Cldots "r_{2}=\\ldots \\ldots") | ![r\_{3}=\\ldots \\ldots](https://latex.codecogs.com/png.latex?r_%7B3%7D%3D%5Cldots%20%5Cldots "r_{3}=\\ldots \\ldots") |
+| :---------------------------------------------------------------: | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+|                                 0                                 | 0                                                                 | 0                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 0                                 | 1                                                                 | 0                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 1                                 | 0                                                                 | 0                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 1                                 | 1                                                                 | 0                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 0                                 | 0                                                                 | 1                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 0                                 | 1                                                                 | 1                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 1                                 | 0                                                                 | 1                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+|                                 1                                 | 1                                                                 | 1                                                                 |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |                                                                                                                         |
+
+2.  Un **additionneur binaire 1 bit** peut être réalisé à l’aide de deux
+    **demi-additionneurs binaires 1 bit** :
+    
+      - Le premier **demi-additionneur binaire 1 bit** prend en entrée
+        les bits d’opérande
+        ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D
+        "e_{0}") et
+        ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D
+        "e_{1}") et retourne en sortie un bit de résultat intermédiaire
+        ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D
+        "s_{1}") et un bit de retenue sortante intermédiaire
+        ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D
+        "r_{1}"). Donner une expression booléenne de
+        ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D
+        "s_{1}") et
+        ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D
+        "r_{1}") en fonction de
+        ![e\_{0}](https://latex.codecogs.com/png.latex?e_%7B0%7D
+        "e_{0}") et
+        ![e\_{1}](https://latex.codecogs.com/png.latex?e_%7B1%7D
+        "e_{1}").
+      - Le second **demi-additionneur binaire 1 bit** prend en entrée le
+        bit de résultat
+        ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D
+        "s_{1}") et le bit de retenue entrante
+        ![r\_{0}](https://latex.codecogs.com/png.latex?r_%7B0%7D
+        "r_{0}") et retourne en sortie le bit de résultat final
+        ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D
+        "s_{2}") et un bit de retenue sortante intermédiaire
+        ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D
+        "r_{2}"). Donner une expression booléenne de
+        ![s\_{2}](https://latex.codecogs.com/png.latex?s_%7B2%7D
+        "s_{2}") et
+        ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D
+        "r_{2}") en fonction de
+        ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D
+        "s_{1}") et
+        ![r\_{0}](https://latex.codecogs.com/png.latex?r_%7B0%7D
+        "r_{0}").
+      - Enfin, la retenue sortante
+        ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D
+        "r_{3}") s’obtient à partir de la retenue sortante
+        ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D
+        "r_{1}") du premier demi-additionneur et de la rentenue sortante
+        ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D
+        "r_{2}") du second. Donner une expression booléenne de
+        ![r\_{3}](https://latex.codecogs.com/png.latex?r_%7B3%7D
+        "r_{3}") en fonction de
+        ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D
+        "r_{1}") et
+        ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D
+        "r_{2}").
+    
+    Compléter les colonnes
+    ![s\_{1}](https://latex.codecogs.com/png.latex?s_%7B1%7D "s_{1}"),
+    ![r\_{1}](https://latex.codecogs.com/png.latex?r_%7B1%7D "r_{1}") et
+    ![r\_{2}](https://latex.codecogs.com/png.latex?r_%7B2%7D "r_{2}") de
+    la table de vérité de **additionneur binaire à 1 bit**.
+
+3.  Avec le logiciel [Logisim](http://www.cburch.com/logisim/) ouvrir le
+    fichier contenant le demi-additionneur de l’exercice précédent.
+    
+      - Ajouter un nouveau circuit avec `Add a circuit` , le nommer
+        `additionneur1bit` puis copier/coller dedans le circuit du
+        **demi-additionneur binaire 1 bit**. Compléter le circuit pour
+        obtenir un **additionneur binaire 1 bit**.
+      - Ajouter un nouveau circuit avec `Add a circuit` , le nommer
+        `additionneur2bits` puis copier/coller dedans le circuit de l’
+        **additionneur binaire 1 bit**. Compléter le circuit pour
+        obtenir un **additionneur binaire 2 bits**.
+
+## Simuler le hasard
+
+**Exercice 12**
+
+Dans cet exercice, on veut réaliser un circuit logique qui simule un dé
+électronique à diodes (LED).
+
+Les différentes combinaisons d’affichage du dé électronique sont
+représentées dans la figure ci-dessous :
+
+![Faces du dé (LED)](images/faces_de.png)  
+
+Par exemple, si on veut afficher 3, il faut allumer les diodes a, d et
+g. Pour les combinaisons d’entrée (x,y,z)= (0,0,0,) et (X,Y,Z)=(1,1,1)
+aucune diode ne doit être allumée.
+
+Il s’agit d’une forme de **transcodeur 3 bits vers 8 bits**. Les
+![3](https://latex.codecogs.com/png.latex?3 "3") bits d’entrée
+représentent le codage d’un nombre sur
+![3](https://latex.codecogs.com/png.latex?3 "3") bits en notation
+positionnelle et les ![8](https://latex.codecogs.com/png.latex?8 "8")
+bits de sortie représentent le codage de ce même nombre en notation
+additive. Par exemple si (x,y,z) = (1,0,1) en entrée, le nombre est ![1
+\\times 2^{2} + 0 \\times 2^{1} + 1
+\\times 2^{0}=5](https://latex.codecogs.com/png.latex?1%20%5Ctimes%202%5E%7B2%7D%20%2B%200%20%5Ctimes%202%5E%7B1%7D%20%2B%201%20%5Ctimes%202%5E%7B0%7D%3D5
+"1 \\times 2^{2} + 0 \\times 2^{1} + 1 \\times 2^{0}=5") et il est
+représenté par cinq bits de sortie positionnés à
+![1](https://latex.codecogs.com/png.latex?1 "1"). Pour simuler un dé à 6
+faces, deux entrées, (x,y,z) = (0,0,0) et (x,y,z) = (1,1,1),
+correspondent à la même sortie (tous les bits de sortie à 0), c’est
+pourquoi on peut réduire le nombre de sorties de
+![8](https://latex.codecogs.com/png.latex?8 "8") à
+![7](https://latex.codecogs.com/png.latex?7 "7").
+
+Le circuit à réaliser doit donc comporter 7 sorties, soit une sortie par
+diode (a, b, c, d, e, f, g) et 3 entrées x, y, z.
+
+![Circuit dé 6 faces](images/circuit-de.png)  
+
+1.  Compléter la table de vérité de ce circuit :
+
+| x | y | z | a | b | c | d | e | f | g |
+| :-: | - | - | - | - | - | - | - | - | - |
+| 0 | 0 | 0 |   |   |   |   |   |   |   |
+| 0 | 0 | 1 |   |   |   |   |   |   |   |
+| 0 | 1 | 0 |   |   |   |   |   |   |   |
+| 0 | 1 | 1 |   |   |   |   |   |   |   |
+| 1 | 0 | 0 |   |   |   |   |   |   |   |
+| 1 | 0 | 1 |   |   |   |   |   |   |   |
+| 1 | 1 | 0 |   |   |   |   |   |   |   |
+| 1 | 1 | 1 |   |   |   |   |   |   |   |
+
+2.  Ouvrir le logiciel [Logisim](http://www.cburch.com/logisim/). Aller
+    dans `Windows - Combinational - Analysis` :
+      - dans l’onglet `Input` , indiquer les variables d’entrée du
+        transcodeur ( x , x , z ) ;
+      - dans l’onglet `Output`, indiquer les variables de sortie ( a ,….
+        , g ) ;
+      - dans `Table` , saisir la table de vérité de chaque sortie ;
+      - dans `Expression` , on peut obtenir une expression booléenne
+        pour chaque de sortie, et dans `Minimized` une expression
+        simplifiée.
+      - construire le circuit avec le bouton `Build circuit` et le
+        nommer `de6faces`
+      - compléter le circuit avec des `Random Generator` (outils
+        `Memory`) en entrée et des `LED` (outils `Input - Output`) en
+        sortie comme dans la figure ci-dessous.
+
+![Circuit dé 6 faces](images/de_6_faces.png)  
+
+# Opérations bit à bit en `Python`
+
+**Propriété 3**
+
+Les fonctions booléennes élémentaires (`OR`, `AND`, `NOT`, `XOR`)
+existent en `Python` sous la forme d’opérateurs booléens mais sont
+également implémentés sous la forme d’opérateurs bit à bit sur les
+nombres. Un *opérateur bit à bit* (*bitwise* en anglais) s’applique sur
+les bits de même poids des représentations binaires de ses opérandes.
+
+| Opérateur booléen   | Opérateur bit à bit | Exemple                         |
+| :------------------ | ------------------- | :------------------------------ |
+| `and` , ET          | `&`                 | `>>> bin(0b101001 & 0b101010)`  |
+|                     |                     | `'0b101000'`                    |
+| `or` , OU           | `\|`                | `>>> bin(0b101001 \| 0b101010)` |
+|                     |                     | `'0b101011'`                    |
+| `xor` , OU EXCLUSIF | `^`                 | `>>> bin(0b101001 ^ 0b101010)`  |
+|                     |                     | `'0b000011'`                    |
+| `not` , NEGATION    | `~`                 | `>>> ~5 #~x retourne -x - 1`    |
+|                     |                     | `-6`                            |
+
+Exemples d’utilisation d’opérateurs bit à bit :
+
+  - On peut utiliser le `ET` bit à bit pour sélectionner uniquement
+    certains bits, par exemple les bits de rang pairs :
+
+<!-- end list -->
+
+``` python
+>>> bits_pairs = sum(2 ** k for k in range(0, 8, 2))
+>>> bin(bits_pairs)
+'0b1010101'
+>>> bin(183)
+'0b10110111'
+>>> bin(183 & bits_pairs)
+'0b10100010'
+```
+
+  - Le `OU EXCLUSIF` peut servir à masquer / démasquer une partie de la
+    représentation binaire d’un nombre (on peut l’employer avec tout
+    objet codé numériquement comme une image ou un caractère).
+
+<!-- end list -->
+
+``` python
+>>> diego = 69
+>>> masque = 42
+>>> zorro = diego ^ masque
+>>> zorro
+111
+>>> zorro ^ masque
+69
+```
+
+**Exercice 13**
+
+Dans un réseau `IP` l’adresse `IP` d’une machine est constitué d’un
+préfixe correspondant à l’adresse du réseau (commune à toutes les
+machines du réseau) et à un suffixe machine, identifiant la machine sur
+le réseau.
+
+Le préfixe réseau s’obtient à partir de l’adresse `IP` de la machine en
+faisant un `ET` bit à bit avec le masque de sous-réseau.
+
+Par exemple si l’adresse est `192.168.11.12` de représentation binaire
+`11000000.10101000.00000111.00001011` et le masque de sous-réseau est
+`255.255.252.0` de représentation binaire
+
+`11111111.11111111.11111100.00000000` alors le préfixe réseau est
+`11000000.10101000.00001000.00000000` soit `192.168.8.0`.
+
+On donne ci-dessous deux fonctions outils :
+
+``` python
+def ip2liste(ip):
+    "Transforme une  adresse IP V4 (type str) en liste d'entiers"
+    return [int(champ) for champ in ip.split('.')]
+
+def liste2ip(ipliste):
+    "Transforme une  liste d'entiers en adresse IP V4 (type str)"
+    return '.'.join(str(n) for n in ipliste)
+```
+
+1.  Écrire une fonction de signature `prefixe_reseau(ip, masque)` qui
+    retourne le préfixe réseau sous forme d’adresse IP V4 (type `str`) à
+    partir d’une adresse IP V4 et d’un masque de sous-réseau.
+
+2.  Écrire une fonction de signature `suffixe_machine(ip, masque)` qui
+    retourne le suffixe machine sous forme d’adresse IP V4 (type `str`)
+    à partir d’une adresse IP V4 et d’un masque de sous-réseau.
+
+Voici un exemple de résultat attendu :
+
+``` python
+>>> prefixe_reseau('145.245.11.254','255.255.252.0')
+'145.245.8.0'
+>>> suffixe_machine('145.245.11.254','255.255.252.0')
+'0.0.3.254'
+```
+
+**Propriété 4**
+
+`Python` définit également des opérateurs sur les bits d’un nombre, plus
+efficaces que les opérations mathématiques équivalentes :
+
+  - Le décalage de `nombre` de `n` bits vers la gauche multiplie
+    `nombre` par
+    ![2^{n}](https://latex.codecogs.com/png.latex?2%5E%7Bn%7D "2^{n}")
+    et s’écrit `nombre << n`.
+
+  - Le décalage de `nombre` de `n` bits vers la droite divise `nombre`
+    par ![2^{n}](https://latex.codecogs.com/png.latex?2%5E%7Bn%7D
+    "2^{n}") et s’écrit `nombre >> n`.
+
+**Exercice 14**
+
+Dans l’algorithme de recherche dichotomique, après division en deux de
+la zone de recherche, l’algorithme s’appelle lui-même sur l’une des deux
+moitiés. C’est un algorithme de type  qui peut se programmer
+récursivement comme nous le verrons dans le chapitre sur la
+récursivité.
+
+Si on note  la taille de la liste, une autre implémentation, non
+récursive, est la suivante :
+
+  - on commence la recherche au début de la liste et on avance avec un
+    pas `pas = n // 2` ou `pas = n >> 1` jusqu’au premier élément
+    supérieur à l’élément cherché ;
+
+  - on repart de l’élément précédent le point d’arrêt et on avance
+    désormais avec un pas
+    
+    `pas = pas >> 1` ;
+
+  - on répète en boucle ces instructions jusqu’à ce que le pas atteigne
+    ![1](https://latex.codecogs.com/png.latex?1 "1").
+
+A la fin de de la boucle, on détermine si l’élément sur lequel on s’est
+arrêté est l’élément recherché.
+
+Compléter le code de la fonction `recherche_dicho2` qui implémente cet
+algorithme.
+
+``` python
+def recherche_dicho2(L, e):
+    x, n  = 0, len(L)
+    pas = n >> 1
+    while pas >= 1:
+        while x + pas < n and .................:
+            x = ..............
+        pas = ................
+    return ............
+```
