@@ -17,3 +17,7 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   - Notebook avec les corrigés du chapitre : [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/frederic-junier/Premiere/master/?filepath=SuitesPartie1/Premiere_Cours_Suite_Partie1.ipynb)
   - [Corrigé au format pdf](SuitesPartie1/Premiere_Cours_Suite_Partie1.pdf)  
   - [Corrigé au format html](SuitesPartie1/Premiere_Cours_Suite_Partie1.html)
+  
+* Chapitre Probabilités conditionnelles :
+  
+  - Notebook avec les programmes du chapitre: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/frederic-junier/Premiere/master/?filepath=Probabilites/Premiere_Cours_ProbaConditionnelle.ipynb)
