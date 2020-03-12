@@ -26,3 +26,4 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
 * Chapitre Exponentielle:
 
   - [Corrigés d'exercices](Exponentielle/Exos/CorrigeExos2019/Corrige-Exos-Barbazo-2019.pdf)
+  - [Notebook](https://mybinder.org/v2/gh/frederic-junier/Premiere/master/?filepath=Exponentielle/Methode_Euler_2019.ipynb) sur l'approximation de la courbe de la fonction exponentielle par la méthode d'Euler
