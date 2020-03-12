@@ -21,3 +21,8 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
 * Chapitre Probabilités conditionnelles :
   
   - Notebook avec les programmes du chapitre: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/frederic-junier/Premiere/master/?filepath=Probabilites/Premiere_Cours_ProbaConditionnelle.ipynb)
+
+
+* Chapitre Exponentielle:
+
+  - [Corrigés d'exercices](Exponentielle/Exos/CorrigeExos2019/Corrige-Exos-Barbazo-2019.pdf)
