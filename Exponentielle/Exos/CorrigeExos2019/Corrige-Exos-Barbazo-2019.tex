@@ -1,4 +1,6 @@
-\documentclass[11pt]{beamer}  
+\documentclass[11pt, hyperref={urlcolor=red,% Liens vers une page web
+            linkcolor=blue, %Liens internes au document
+            colorlinks=true}]{beamer}  
 
 \usetheme{Warsaw} 
 
@@ -494,7 +496,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 %%%%Mise en page%%%%%
 \usepackage{fancybox}
 \usepackage{lastpage}
-\usepackage{hyperref}
+
 %À mettre dans le préambule pour faire apparaitre le plan à chaque section 
 
 \AtBeginSection[ ]
@@ -537,7 +539,20 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 \label{barbazo}
 
+
 \begin{frame}
+\frametitle{Table des matières}
+\begin{itemize}
+	\item \hyperlink{exo6}{Exercice 6 p. 192}
+    \item \hyperlink{exo8}{Exercice 8 p. 192}
+    \item \hyperlink{exo10}{Exercice 10 p. 192}
+    \item \hyperlink{exo11}{Exercice 11 p. 192}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\label{exo6}
 \frametitle{Barbazo, exercice 6 p. 192, Partie 1}
 
 On donne les ordres de grandeur : $\exp(4)=50$ et $\exp(6)=400$.
@@ -592,5 +607,64 @@ A l'unité près, avec la calculatrice, on trouve $\exp(8) \approx 2981$.
 A l'unité près, avec la calculatrice, on trouve $\exp(12) \approx 162755$.
 \end{itemize}
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Barbazo, exercice 8 p. 192}
+\label{exo8}
+
+Soit $x$ un réel, simplifier les expressions en appliquant les propriétés algébriques de l'exponentielle.
+
+\begin{itemize}
+	\item $A=\text{e}^{3x}\text{e}^{-4x}=\text{e}^{3x-4x}=\text{e}^{-x}$. 
+	\item $B=\frac{1}{\text{e}^{2x}}=\text{e}^{-2x}$
+	\item $C=\frac{1}{\left(\text{e}^{-x}\right)^{6}}=\text{e}^{-(-6x)}=\text{e}^{6x}$
+	\item $C=D$ Coquille dans l'énoncé ?
+	\item $E=\frac{\text{e}^{3-2x} \left(\text{e}^{x}\right)^{5}}{\text{e}^{x-2}}=\frac{\text{e}^{3-2x} \text{e}^{5x}}{\text{e}^{x-2}}=\frac{\text{e}^{3-2x+5x}}{\text{e}^{x-2}}=\text{e}^{3x+3-(x-2)}=\text{e}^{2x+5}$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Barbazo, exercice 10 p. 192}
+\label{exo10}
+
+Pour démontrer l'égalité, on peut par exemple partir d'un membre pour obtenir l'autre membre par transformation algébrique. Pour tout réel $x$, on a :
+
+\begin{align*}
+	\frac{1}{1+\text{e}^{-x}} &=\frac{\text{e}^{x}}{\text{e}^{x}(1+\text{e}^{-x})} \\
+	\intertext{L'égalité $\text{e}^{x}\text{e}^{-x}=\text{e}^{0}=1$ est utilisée très fréquemment $\Rightarrow$ à Retenir}
+	\frac{1}{1+\text{e}^{-x}} &=\frac{\text{e}^{x}}{\text{e}^{x} +\text{e}^{x-x}} \\
+	\frac{1}{1+\text{e}^{-x}} &=\frac{\text{e}^{x}}{\text{e}^{x} +\text{e}^{0}} \\
+		\frac{1}{1+\text{e}^{-x}} &=\frac{\text{e}^{x}}{\text{e}^{x} +1}
+\end{align*}
+L'égalité est démontrée.
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Barbazo, exercice 11 p. 192}
+\label{exo11}
+Pour démontrer l'égalité, on peut par exemple partir d'un membre pour obtenir l'autre membre par transformation algébrique. Pour tout réel $x$, on a :
+
+\begin{align*}
+	\text{e}^{-x}-\text{e}^{-2x} &=\frac{1}{\text{e}^{x}} - \frac{1}{\text{e}^{2x}} \\
+	\intertext{On met sur le même dénominateur}
+\text{e}^{-x}-\text{e}^{-2x} &=\frac{\text{e}^{x}}{\text{e}^{x}\text{e}^{x}} - \frac{1}{\text{e}^{2x}}\\
+		\text{e}^{-x}-\text{e}^{-2x} &=\frac{\text{e}^{x}}{\text{e}^{2x}} - \frac{1}{\text{e}^{2x}}\\
+			\text{e}^{-x}-\text{e}^{-2x}&=\frac{\text{e}^{x}-1}{\text{e}^{2x}}
+\end{align*}
+L'égalité est démontrée.
+
+\end{frame}
+
+
+
 
 \end{document}
