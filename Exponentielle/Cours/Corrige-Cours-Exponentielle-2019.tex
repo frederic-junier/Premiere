@@ -1,5 +1,7 @@
-\documentclass[11pt]{beamer}  
-
+\documentclass[11pt, hyperref={urlcolor=red,% Liens vers une page web
+            linkcolor=blue, %Liens internes au document
+            colorlinks=true}]{beamer}  
+            
 \usetheme{Warsaw} 
 
 %thèmes prédéfinis de Beamer 
@@ -175,7 +177,6 @@ xleftmargin=1cm,xrightmargin=1cm,
 
 \lstdefinestyle{rond}{
   numbers=none,
-  backgroundcolor=\color{gristclair},
   frameround =tttt
 }
 
@@ -533,39 +534,271 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 \frame{\titlepage}
 
-\section{Définition et propriétés algébriques}
 
 
 
 \begin{frame}
-\frametitle{Capacité 2}
+\frametitle{Table des matières}
+\begin{itemize}
+	\item \hyperlink{capacite2}{Capacité 2}
+    \item \hyperlink{capacite3}{Capacité 3}
+    \item \hyperlink{algo1}{Algorithmique 1}
+    \item \hyperlink{capacite4}{Capacité 4}
+    %\item \hyperlink{capacite5}{Capacité 5}
+\end{itemize}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Capacité 2 : Questions 1 et 2}
+\label{capacite2}
+\begin{enumerate}
+    \item \textbf{Question 1} : \textit{Démontrer que pour tout réel $x$ et  tout entier naturel $n$, on a $\exp(x)^{-n}=\exp(-nx)$}.
+    
+ Pour tout réel $x$  et  tout entier naturel $n$, on a $\exp(x)^{-n}=\frac{1}{\left(\exp(x)\right)^{n}}= \frac{1}{\exp(nx)}=\exp(-nx)$
+ 
+ 
+	\item \textbf{Question 2} : {\itshape Soit $a$ un réel, calculer les expressions $A=\exp(a) \times \exp(2-a)$, $B=\left(\exp(a)+\exp(-a)\right)^{2}$ }
+	
+	\begin{itemize}
+\item $A=\exp(a) \times \exp(2-a)=\exp(a+2-a)=\exp(2)$
+\item $B=\left(\exp(a)+\exp(-a)\right)^{2}=\exp(2a)+2\exp(a)\exp(-a)+\exp(-2a)=\exp(a)+2\exp(0)+\exp(-a)=\exp(a)+\exp(-a)+2$
+		
+	\end{itemize}
+	
+	
+
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 2 : Question 3 Partie 1}
+
+ \textbf{Question 3} : {\itshape Démontrer chacune des égalités suivantes :
+\begin{enumerate}
+	\item[1] Pour tout réel $x$, \: $\frac{\exp(2x)-1}{\exp(2x)+1}=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}$.
+\end{enumerate} 
+}
+
+
+Pour tout réel $x$, \: 
+\begin{align*}
+\frac{\exp(2x)-1}{\exp(2x)+1}&=\frac{\exp(-x)\left( \exp(2x)-1\right)}{\exp(-x)\left( \exp(2x)+1\right)} \\
+\intertext{On utilise la relation $\exp(x)\exp(-x)=1$ en multipliant par $\exp(-x)$ numérateur et dénominateur, cela permet de changer les $1$ en $\exp(-x)$ et les $\exp(2x)$ en $\exp(x)$}
+ \frac{\exp(2x)-1}{\exp(2x)+1}&=\frac{\exp(-x+2x)-\exp(-x)}{\exp(-x+2x)+\exp(-x)}\\
+  \frac{\exp(2x)-1}{\exp(2x)+1}&=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}
+\end{align*}
+L'égalité est démontrée.
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 2 : Question 3 Partie 2}
+
+ \textbf{Question 3} : {\itshape Démontrer chacune des égalités suivantes :
+\begin{enumerate}
+	\item[2] Pour tout réel $x$, \:  $4-\frac{4}{1+\exp(x)}= \frac{4}{1+\exp(-x)}$.
+
+\end{enumerate} 
+}
+
+On utilise la même technique que dans la question précédente. Pour tout réel $x$, \: 
+\begin{align*}
+4-\frac{4}{1+\exp(x)}&=4 - \frac{4\exp(-x)}{(1+\exp(x))\exp(-x)} \\
+4-\frac{4}{1+\exp(x)}&=4 - \frac{4\exp(-x)}{\exp(-x)+ 1} \\
+\intertext{on met sur le même dénominateur}
+4-\frac{4}{1+\exp(x)}&= \frac{4(\exp(-x)+ 1  ) - 4\exp(-x)}{\exp(-x)+ 1} = \frac{4}{\exp(-x)+ 1}\\
+\end{align*}
+L'égalité est démontrée.
+\end{frame}
+
+\begin{frame}
+\frametitle{Capacité 2 : Question 3 Partie 2}
+
+ \textbf{Question 3} : {\itshape Démontrer chacune des égalités suivantes :
+\begin{enumerate}
+	\item[3] Pour tout réel $x$, \:  $\left(\exp(x)+ \exp(-x)\right)^2-\left(\exp(x) - \exp(-x)\right)^2=4$.
+\end{enumerate} 
+}
+
+Il suffit de développer. Pour tout réel $x$, \: 
+\begin{multline*}
+\left(\exp(x)+ \exp(-x)\right)^2-\left(\exp(x) - \exp(-x)\right)^2 =  \\
+               \exp(2x) + 2 \exp(x)\exp(-x)+\exp(-2x) \\
+               -\left(\exp(2x)-2\exp(x)\exp(-x)+\exp(-2x)\right)
+\end{multline*}
+
+\begin{multline*}
+\left(\exp(x)+ \exp(-x)\right)^2-\left(\exp(x) - \exp(-x)\right)^2 = \\
+\exp(2x) + 2 \exp(0)+\exp(-2x)-\left(\exp(2x)-2\exp(0)+\exp(-2x)\right)
+\end{multline*}
+Les termes en $\exp(2x)$ et $\exp(-2x)$ se simplifient :
+\begin{equation*}
+\left(\exp(x)+ \exp(-x)\right)^2-\left(\exp(x) - \exp(-x)\right)^2 = 4
+\end{equation*}
+L'égalité est démontrée.
+\end{frame}
+
+ 
+ 
+ 
+\begin{frame}[fragile]
+\label{algo1}
+\frametitle{Algorithmique 1 Partie 1}
+
+la suite $\left(u_{n}\right)$ définie pour tout entier $n \geqslant 1$ par :
+\begin{equation*}
+u_{n}=1+\frac{1}{1} + \frac{1}{1 \times 2} + \frac{1}{1 \times 2 \times 3} + \ldots + \frac{1}{1 \times 2 \times 3 \times 4 \times \ldots \times n}
+\end{equation*}
+Euler a démontré qu'elle converge vers $\text{e}$.
+
+Complétons la fonction algorithmique \texttt{u(n)} ci-dessous et son implémentation en $\texttt{Python}$ pour qu'elle retourne $u_{n}$.
+	
+	
+\begin{center}
+{\ttfamily 
+\begin{tabular}{|l|}\hline 
+Fonction u(n):\\
+\hspace{0.5cm}s $\longleftarrow$ 1\\
+\hspace{0.5cm}d $\longleftarrow$ 1\\
+\hspace{0.5cm}Pour k allant de 1 à n \\
+\hspace{1 cm}d $\longleftarrow$ d $\times$ k \\
+\hspace{1 cm}s  $\longleftarrow$ s + 1 / d\\
+\hspace{0.5cm}Retourne s \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\end{frame}
+
+
+ 
+\begin{frame}[fragile]
+\frametitle{Algorithmique 1 Partie 2}
+Voici  l'implémentation en $\texttt{Python}$ pour qu'elle retourne $u_{n}$.
+	
+
+\begin{center}
+\begin{lstlisting}[style=rond]
+def u(n):
+	s = 1
+	d = 1
+	for k in range(1, n + 1):
+		d = d * k
+		s = s + 1 / d
+	return s		
+\end{lstlisting}
+\end{center}
 
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Algorithmique 1}
+\frametitle{Algorithmique 1 Partie 3}
+$2,718281$ est une valeur approchée avec 6 décimales exactes du nombre d'Euler  $\text{e}$. Modifions la fonction \texttt{Python} pour qu'elle retourne le plus petit entier $n$ tel que $\valabs{u_{n}-2,718281} < 10^{-6}$.
+Il s'agit d'un algorithme de seuil.
+	
+
+\begin{center}
+\begin{lstlisting}[style=rond]
+def seuilU():
+	s = 1
+	d = 1
+	n = 0
+	while abs(s - 2.718281) >= 10 ** (-6):
+		n = n + 1 
+		d = d * n
+		s = s + 1 / d
+	return n		
+\end{lstlisting}
+\end{center}
 
 \end{frame}
-
-
 
 
 \begin{frame}
 \frametitle{Capacité 3}
+\label{capacite3}
 
+La fonction exponentielle est strictement croissante sur $\R$. 
+
+
+\begin{enumerate}
+	\item $6<7$ donc par croissance de la fonction exponentielle, on a $\e^{7} > \e^{6} \Longleftrightarrow \e^{7} > \left(\e^{2}\right)^{3}$
+	\item  $-4>-6$, donc par croissance de la fonction exponentielle, on a $\e^{-4} > \e^{-6} \Longleftrightarrow  \e^{-4} > \left(\e^{-3}\right)^{2}$
+	\item $\forall x<0$, on a $-x>0>x$, donc par croissance de la fonction exponentielle $\e^{-x} > 1 > \e^{x}$
+\end{enumerate}
+
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Capacité 4 Partie 1}
+
+Soit la fonction $f$ définie sur l'intervalle $\Interff{-1}{2}$ par $f(x)=(-x+2)\text{e}^{x}$.
+
+\begin{enumerate}
+	\item $f$ est dérivable sur $\Interff{-1}{2}$ comme produit de deux fonctions dérivables définies par  $u(x)=-x+2$  et $v(x)=\text{e}^{x}$.
+	
+	On a $u'(x)=-1$ et $v'(x)=\text{e}^{x}$ et d'après une formule du cours, on a $f'=u'v+uv'$.
+	
+	On en déduit que $f'(x)=-\text{e}^{x} + (-x+2)\text{e}^{x}=\text{e}^{x}(-1-x+2)=\text{e}^{x}(1-x)$
+	
+\item D'abord, on résout une équation :
+$$f'(x)=0 \Longleftrightarrow \text{e}^{x}(1-x) = 0 \Longleftrightarrow 1 - x = 0 \Longleftrightarrow 1 = x$$
+
+Ensuite, on résout une inéquation :
+$$f'(x)>0 \Longleftrightarrow \text{e}^{x}(1-x)> 0 \Longleftrightarrow 1 - x > 0 \Longleftrightarrow 1 > x$$
+
+On a utilisé par deux fois la propriété : $\forall x, \, \text{e}^{x}>0$.
+
+\end{enumerate}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Capacité 4}
+\frametitle{Capacité 4 Partie 2}
 
+Soit la fonction $f$ définie sur l'intervalle $\Interff{-1}{2}$ par $f(x)=(-x+2)\text{e}^{x}$.
+
+\begin{enumerate}
+
+	
+\item[2] D'abord, on résout une équation :
+$$f'(x)=0 \Longleftrightarrow \text{e}^{x}(1-x) = 0 \Longleftrightarrow 1 - x = 0 \Longleftrightarrow 1 = x$$
+
+Ensuite, on résout une inéquation :
+$$f'(x)>0 \Longleftrightarrow \text{e}^{x}(1-x)> 0 \Longleftrightarrow 1 - x > 0 \Longleftrightarrow 1 > x$$
+
+On a utilisé par deux fois la propriété : $\forall x, \, \text{e}^{x}>0$.
+
+On en déduit que $f'(x)<0$ sur l'intervalle $\Interff{-1}{2}$, $f'(x)=0$ en $x=1$ et $f'(x)>0$ sur l'intervalle $\Interff{-1}{2}$.
+
+Ainsi la fonction $f$ est strictement croissante sur $\Interff{-1}{1}$, atteint un maximum en $1$ et strictement décroissante sur $\Interff{1}{2}$.
+\end{enumerate}
 \end{frame}
+
 
 \begin{frame}
-\frametitle{Capacité 5}
+\frametitle{Capacité 4 Partie 3}
 
+\begin{center}
+\includegraphics[scale=0.3]{capacite4.png}
+\end{center}
+
+\begin{enumerate}
+
+	
+\item[3] D'après la graphique, la largeur de la plaque est le maximum de la fonction $f$ sur l'intervalle $\Interff{-1}{2}$, soit  $f(1)=\text{e}^{1}=\text{e}$.
+
+Ainsi l'aire de la plaque est égale à $L \times l = (2 - (-1))\times \text{e}=3\text{e}$.
+\end{enumerate}
 \end{frame}
+
 
 
 
