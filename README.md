@@ -31,6 +31,12 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   
 -->
 
+* Une question ? 
+  * Vous m'envoyez un mail et on convient d'un rendez-vous sur ma classe virtuelle
+* J'exposerai quelques points de cours lors de sessions de ma  classe virtuelle :
+  * le mercredi 18/03 de 8 h 30 à 9 h 30
+  * le jeudi 19/03 de 9 h à 10 h
+
 * Continuité pédagogique :
 
   - [Séance du 16/03/2020](ContinuitePedagogique/seance-16-03-2020.md)
