@@ -1,5 +1,5 @@
 # Première-2019-2020
-
+<!--
 Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/frederic-junier/Premiere/master)
 
 
@@ -29,7 +29,13 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   - [Corrigés des exemples du cours](Exponentielle/Cours/Corrige-Cours-Exponentielle-2019.pdf)
   - [Notebook](https://mybinder.org/v2/gh/frederic-junier/Premiere/master/?filepath=Exponentielle/Methode_Euler_2019.ipynb) sur l'approximation de la courbe de la fonction exponentielle par la méthode d'Euler
   
-  
+-->
+
+* Une question ? 
+  * Vous m'envoyez un mail et on convient d'un rendez-vous sur ma classe virtuelle
+* J'exposerai quelques points de cours lors de sessions de ma  classe virtuelle :
+  * le jeudi 19/03 de 14 h à 15 h
+
 * Continuité pédagogique :
 
   - [Séance du 16/03/2020](ContinuitePedagogique/seance-16-03-2020.md)
