@@ -34,8 +34,7 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
 * Une question ? 
   * Vous m'envoyez un mail et on convient d'un rendez-vous sur ma classe virtuelle
 * J'exposerai quelques points de cours lors de sessions de ma  classe virtuelle :
-  * le mercredi 18/03 de 8 h 30 à 9 h 30
-  * le jeudi 19/03 de 9 h à 10 h
+  * le jeudi 19/03 de 14 h à 15 h
 
 * Continuité pédagogique :
 
