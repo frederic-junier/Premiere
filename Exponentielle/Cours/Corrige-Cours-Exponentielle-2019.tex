@@ -544,7 +544,9 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
     \item \hyperlink{capacite3}{Capacité 3}
     \item \hyperlink{algo1}{Algorithmique 1}
     \item \hyperlink{capacite4}{Capacité 4}
-    %\item \hyperlink{capacite5}{Capacité 5}
+    \item \hyperlink{capacite5}{Capacité 5}
+    \item \hyperlink{capacite6}{Capacité 6}
+    \item \hyperlink{capacite7}{Capacité 7}
 \end{itemize}
 
 \end{frame}
@@ -799,7 +801,127 @@ Ainsi l'aire de la plaque est égale à $L \times l = (2 - (-1))\times \text{e}=
 \end{enumerate}
 \end{frame}
 
+\begin{frame}
+\frametitle{Capacité 5 Equations}
+\label{capacite5}
 
+Résolution d'équations avec l'exponentielle : on utilise la propriété $\text{e}^{a}=\text{e}^{b} \Leftrightarrow a = b$.
+
+\begin{enumerate}
+
+	\item $\text{e}^{3x-1}=1 \Leftrightarrow \text{e}^{3x-1}=\text{e}^{0} \Leftrightarrow x = \frac{1}{3} $
+		\item $\text{e}^{x^{2}+x}=\text{e} \Leftrightarrow x^{2}+x = 1 \Leftrightarrow  x^2+x-1=0$
+		On résout cette équation du second degré (discriminant$\Delta= 5$) et on trouve que :
+		$\text{e}^{x^{2}+x}=\text{e} \Leftrightarrow \boxed{x = \frac{-1-\sqrt{5}}{2} \text{ ou }  \frac{-1+\sqrt{5}}{2}}   $
+		\item  Notons (E) l'équation  $\frac{\left(\text{e}^{x}\right)^{2}\times \text{e}^{x^2}}{\left(\text{e}^{x}\right)^{4}}=\text{e}^{3}$
+$(E) \Leftrightarrow \text{e}^{2x+x^{2}-4x}=\text{e}^{3} \Leftrightarrow x^{2}-2x-3=0$
+On résout cette équation du second degré (discriminant $\Delta= 16$) et on trouve que :
+$(E) \Leftrightarrow \boxed{x = -1 \text{ ou } x = 3  }$
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 5 Inéquations}
+\label{capacite5}
+
+Résolution d'inéquations avec l'exponentielle : on utilise la propriété $\text{e}^{a} \leqslant \text{e}^{b} \Leftrightarrow a \leqslant b$.
+
+\begin{enumerate}
+
+\item $\text{e}^{-x} \geqslant 1 \Leftrightarrow \text{e}^{-x} \geqslant \text{e}^{0}  \Leftrightarrow -x \geqslant 0   \Leftrightarrow x \leqslant 0 $.
+L'ensemble des solutions est $\boxed{\mathcal{S} = \Interof{-\infty}{0}}$.
+		\item $\text{e}^{-2x} > \text{e}^{x+3} \Leftrightarrow -2x > x + 3 \Leftrightarrow -1>x$
+L'ensemble des solutions est $\boxed{\mathcal{S} = \Interoo{-\infty}{-1}}$.
+		\item  $(I) \Leftrightarrow\text{e}^{x^2} -\left(\text{e}^{x}\right)^{2} \leqslant 0 \Leftrightarrow \text{e}^{x^2} \leqslant \text{e}^{2x}$
+		 $(I) \Leftrightarrow \text{e}^{x^2} \leqslant \text{e}^{2x} \Leftrightarrow x^2 \leqslant 2x \Leftrightarrow x(x-2) \leqslant 0$
+D'après la règle du signe d'un trinôme, l'ensemble des solutions est 	$\boxed{\mathcal{S} = \Interff{0}{2}}$. 
+		\item $(I) \Leftrightarrow \text{e}^{2x} -\text{e}^{x} > 0 > 0 \Leftrightarrow  \text{e}^{x} \left(\text{e}^{x} - 1 \right)>0$
+Pour tout réel $x$, on a $\text{e}^{x}>0$, donc $(I)\Leftrightarrow  \text{e}^{x} - 1 	\Leftrightarrow \text{e}^{x} > \text{e}^{0} \Leftrightarrow  x > 0$.  L'ensemble des solutions est $\boxed{\mathcal{S} = \Interoo{0}{+\infty}}$.
+		\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 6 Question 1 a)}
+\label{capacite6}
+
+Soit la fonction $f$ définie sur $\R$ par $f(t)=\text{e}^{-1,5t}$ et $\courbe{f}$ sa courbe représentative.
+
+\begin{itemize}
+\item $f$ est dérivable sur $\R$  et pour tout réel $t$, on a $f'(t)=-1,5\text{e}^{-1,5t}$.
+\item Pour tout réel $t$, on a $\text{e}^{-1,5t}>0$ et $-1,5<0$ donc $f'(t)<0$ donc $f$ est strictement décroissante sur $\R$.
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.3]{capacite6.png}
+\end{center}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 6 Question 1 b)}
+
+
+Soit la fonction $g$ définie sur $\R$ par $g(t)=\text{e}^{0,5t}$ et $\courbe{f}$ sa courbe représentative.
+
+\begin{itemize}
+\item $g$ est dérivable sur $\R$  et pour tout réel $t$, on a $g'(t)=0,5\text{e}^{0,5t}$.
+\item Pour tout réel $t$, on a $\text{e}^{0,5t}>0$ et $0,5>0$ donc $g'(t)>0$ donc $g$ est strictement croissante sur $\R$.
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.3]{capacite6bis.png}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 6 Question 2)}
+
+
+	\begin{itemize}
+		\item $f:x \mapsto \text{e}^{2x}$ a pour courbe  $\mathcal{C}_{3}$
+		\item $g:x \mapsto \text{e}^{-\frac{x}{3}}$ a pour courbe $\mathcal{C}_{2}$
+		\item $h:x \mapsto \text{e}^{\frac{x}{3}}$ a pour courbe $\mathcal{C}_{4}$
+		\item $k:x \mapsto \text{e}^{-2x}$ a pour courbe $\mathcal{C}_{1}$
+	\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.3]{capacite6bisbis.png}
+\end{center}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Capacité 7 Question 1)}
+\label{capacite7}
+
+	\begin{itemize}
+		\item $f:x \mapsto \text{e}^{2x}$ a pour courbe  $\mathcal{C}_{3}$
+		\item $g:x \mapsto \text{e}^{-\frac{x}{3}}$ a pour courbe $\mathcal{C}_{2}$
+		\item $h:x \mapsto \text{e}^{\frac{x}{3}}$ a pour courbe $\mathcal{C}_{4}$
+		\item $k:x \mapsto \text{e}^{-2x}$ a pour courbe $\mathcal{C}_{1}$
+	\end{itemize}
+
+
+
+\end{frame}
+
+
+
+	
+	
 
 
 \end{document}
