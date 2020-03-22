@@ -900,13 +900,54 @@ Soit la fonction $g$ définie sur $\R$ par $g(t)=\text{e}^{0,5t}$ et $\courbe{f}
 
 \end{frame}
 
+\begin{frame}
+\label{capacite7}
+\frametitle{Capacité 7 Question 1)}
 
 
+Un capital de $1000$ euros est placé le $1^{\text{er}}$ Janvier $2019$ au taux fixe de $1,4 \%$.
 
+On note $c_{n}$ le capital au premier Janvier $2019+n$. 
 
-
-
+\begin{itemize}
+	\item Pour tout entier naturel $n$, on a $c_{n+1}=\left(1 + \frac{1,4}{100}\right)c_{n}=1,014 c_{n}$.
 	
+	On en déduit que la suite $\suite{c}$ est géométrique de raison $1,014$.
+	
+	\item Pour tout entier naturel $n$ on a : $c_{n+1}-c_{n}= = 1,014 c_{n} - c_{n}=0,014c_{n}$.
+	
+	On en déduit que l'augmentation du capital est proportionnelle au capital.
+	
+	\item Il s'agit d'une croissance exponentielle.
+	
+	
+	
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\label{capacite7}
+\frametitle{Capacité 7 Question 2)}
+
+
+On veut modéliser l'évolution du capital par une fonction $f$ dérivable  sur $\Interfo{0}{+\infty}$ telle que le taux d'évolution instantané du capital $f'(t)$ est proportionnel au capital $f(t)$ selon une relation analogue à celle vérifiée par la suite $\suite{c}$. On recherche donc une fonction $f$ vérifiant l'équation $f'=0,014f$.   
+
+\begin{itemize}
+	\item Soit la $f$ définie sur $\Interfo{0}{+\infty}$ par $f(t)=k \text{e}^{0,014t}$.
+
+Pour tout réel $t \geqslant 0$, $f'(t)=	0,014k \text{e}^{0,014t}=	0,014f(t)$.
+	\item $f(0)=1000 \Leftrightarrow k \text{e}^{0,014\times 0 }=1000  \Leftrightarrow k=1000$
+	
+	\item Le capital au $1^{\text{er}}$ Janvier $2030$ en utilisant la suite $\suite{c}$  est $c_{11}=1,014^{11}\times 1000 \approx 1165,24$ €.
+	
+		\item Le capital au $1^{\text{er}}$ Janvier $2030$ en utilisant  la fonction $f$ est $f(11)=1000 \text{e}^{0,014\times 11} \approx 1166,49 $ €. 
+	
+\end{itemize}
+\end{frame}
+
+		
 	
 
 

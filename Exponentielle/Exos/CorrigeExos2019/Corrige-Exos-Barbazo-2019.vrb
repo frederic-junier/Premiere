@@ -1,0 +1,16 @@
+\frametitle{Barbazo, exercice 18 p. 192 Algorithmique}
+
+\begin{lstlisting}
+from math import exp
+a = 0
+F = a - exp(-2*a)
+while F < 0:
+	a =a + 0.01
+	F = a - exp(-2 * a)
+print(a)
+\end{lstlisting}
+
+Ce programme affiche la première valeur de $a$ telle que $f(a)\geqslant 0$ avec $a=k \times 0,01$ pour $k$ entier naturel.
+
+D'après la question précédente, le programme affiche $0,43$.
+
