@@ -36,6 +36,7 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
 * J'exposerai quelques points de cours lors de sessions de ma  classe virtuelle :
   * le jeudi 19/03 de 14 h à 15 h
   * le lundi 23/03 de 9h à 10 h
+  * le jeudi 26/03 de 14 h à 15 h
   
 * Sites de ressources en lignes :
   * Plateforme [Maspemaths](maspemaths.cned.fr/)du CNED
