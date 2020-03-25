@@ -916,10 +916,98 @@ D'après la question précédente, le programme affiche $0,43$.
 \frametitle{Exercice de synthèse : énoncé}
 \label{exosynthese}
 
-On considère la fonction $f$ définie 
+On considère la fonction $f$ définie sur l'intervalle $\Interff{0}{10}$ par $f(x)=5\text{e}^{-0,4x}$.
+
+Dans un repère orthogonal du plan on considère sa courbe $\mathcal{C}_{f}$ et le rectangle $OABC$ où $O$ est l'origine du repère, $B$ un point de $\mathcal{C}_{f}$ d'abscisse $x$ avec $x \in \Interff{0}{10}$, $C$ le projeté orthogonal de $B$ sur l'axe des abscisses et $A$ le projeté orthogonal de $B$ sur l'axe des ordonnées.
+
+Voir la figure animée sur \href{https://www.geogebra.org/m/uqbmfhuj}{https://www.geogebra.org/m/uqbmfhuj}.
+
+\begin{enumerate}
+	\item Justifier que pour tout réel $x \in \Interff{0}{10}$, l'aire du rectangle $OABC$ est égale à $g(x)=xf(x)$.
+	\item Démontrer qu'une expression de la fonction dérivée de la fonction $g$ est $g'(x)=(5-2x)\text{e}^{-0,4x}$.
+	\item Étudier les variations de $g$ sur l'intervalle $\Interff{0}{10}$.
+	\item En déduire l'aire maximale du rectangle $OABC$.
+\end{enumerate}
+
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Exercice de synthèse : réponse}
+\label{exosynthese}
+
+\begin{enumerate}
+	\item L'aire du rectangle $OABC$ est égale à $OC \times OA = xf(x)$.
+	\item Soit la fonction $g$ définie pour tout réel $x \in \Interff{0}{10}$ par $g(x)=xf(x)=5x\text{e}^{-0,4x}$.
+	$g$ est dérivable sur $ \Interff{0}{10}$ et pour tout $x \in \Interff{0}{10}$, on a :
+	\begin{equation*}
+g'(x)=5\text{e}^{-0,4x}+5x  \times (-0,4)	\text{e}^{-0,4x} = \text{e}^{-0,4x}(5-2x)
+	\end{equation*}
+	\item %:-+-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/TableauxVariations/
+%:-+-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/TableauxVariations/
+\begin{center}
+\begin{tikzpicture}[scale=0.875]
+% Styles 
+\tikzstyle{cadre}=[thin]
+\tikzstyle{fleche}=[->,>=latex,thin]
+\tikzstyle{nondefini}=[lightgray]
+% Dimensions Modifiables
+\def\Lrg{1.5}
+\def\HtX{1}
+\def\HtY{0.5}
+% Dimensions Calculées
+\def\lignex{-0.5*\HtX}
+\def\lignef{-1.5*\HtX}
+\def\separateur{-0.5*\Lrg}
+% Largeur du tableau
+\def\gauche{-1.5*\Lrg}
+\def\droite{4.5*\Lrg}
+% Hauteur du tableau
+\def\haut{0.5*\HtX}
+\def\bas{-2.5*\HtX-2*\HtY}
+% Ligne de l'abscisse : x
+\node at (-1*\Lrg,0) {$x$};
+\node at (0*\Lrg,0) {$0$};
+\node at (2*\Lrg,0) {$\frac{5}{2}$};
+\node at (4*\Lrg,0) {$10$};
+% Ligne de la dérivée : f'(x)
+\node at (-1*\Lrg,-1*\HtX) {$f'(x)$};
+\node at (0*\Lrg,-1*\HtX) {$$};
+\node at (1*\Lrg,-1*\HtX) {$+$};
+\node at (2*\Lrg,-1*\HtX) {$$};
+\node at (3*\Lrg,-1*\HtX) {$-$};
+\node at (4*\Lrg,-1*\HtX) {$$};
+% Ligne de la fonction : f(x)
+\node  at (-1*\Lrg,{-2*\HtX+(-1)*\HtY}) {$f(x)$};
+\node (f1) at (0*\Lrg,{-2*\HtX+(-2)*\HtY}) {$0$};
+\node (f2) at (2*\Lrg,{-2*\HtX+(0)*\HtY}) {$12,5\text{e}^{-1}$};
+\node (f3) at (4*\Lrg,{-2*\HtX+(-2)*\HtY}) {$5\text{e}^{-4}$};
+% Flèches
+\draw[fleche] (f1) -- (f2);
+\draw[fleche] (f2) -- (f3);
+% Encadrement
+\draw[cadre] (\separateur,\haut) -- (\separateur,\bas);
+\draw[cadre] (\gauche,\haut) rectangle  (\droite,\bas);
+\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
+\draw[cadre] (\gauche,\lignef) -- (\droite,\lignef);
+\end{tikzpicture}
+\end{center}
+%:-+-+-+-+- Fin
+
+%:>>>>> code du tableau à ré-injecter
+%[
+%	["x", "f'(x)", "f(x)"],
+%	["0", "", "+", "0"],
+%	["\\frac{5}{2}", "", "-", "12,5\\text{e}^{-1}"],
+%	["10", "", "?", "5\\text{e}^{-4}"]
+%]
+
+
+	\item En déduire l'aire maximale du rectangle $OABC$ est donc égale à $\frac{25}{2}\text{e}^{-1}$.
+\end{enumerate}
+
+
+\end{frame}
 
 
 
