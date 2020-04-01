@@ -1,23 +1,18 @@
-\frametitle{Capacité 1 Partie 2}
+\frametitle{Capacité 6 Partie 2}
 
-
-Déterminer le sens de variation de $u_{n}=f(n)$ avec $f$ monotone.
 \begin{itemize}
-	\item \underline{\textbf{Question}} La fonction \texttt{Python} ci-dessous définit-elle une suite croissante ?
-
-\begin{lstlisting}[style=rond]
-def suite(n):
-	val = 0
-	for k in range(1, n + 1):
-		if val < 734:
-			val = val + 1
-		else:
-			val = 0
-	return val
-\end{lstlisting}
-
-
-\pause 	\item \underline{\textbf{Réponse}} \textbf{NON}, la suite $\suite{u}$ ainsi définie vérifie pour tout entier $n \geqslant 0$ par $u_{n}=n$ si $0 \leqslant n \leqslant 733$ et $u_{n}=0$ sinon donc cette suite n'est pas croissante puisque $u_{733}>u_{734}$.
+	\item Animation : \href{https://frederic-junier.github.io/Premiere/SuitesPartie2/Cours/images/sierpinski.gif}{https://frederic-junier.github.io/Premiere/SuitesPartie2/Cours/images/sierpinski.gif}
+    \item Graphiquement (voir l'animation) et avec la calculatrice, on peut conjecturer que la suite $\suite{b}$ converge vers $0$.
+    \item Fonction \texttt{Python} qui retourne le nombre d'étapes nécessaires pour que $99\%$ du carré initial soit colorié.
 \end{itemize}
 
 
+\begin{lstlisting}[style=rond]
+def seuil():
+	b = 1
+	n = 0
+	while b < 0.99:
+		b = b * 3 / 4
+		n = n + 1
+	return n
+\end{lstlisting}
