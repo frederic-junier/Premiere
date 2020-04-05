@@ -39,7 +39,7 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   * le jeudi 26/03 de 14 h à 15 h
   
 * Sites de ressources en lignes :
-  * Plateforme [Maspemaths](maspemaths.cned.fr/)du CNED
+  * Plateforme [Maspemaths](maspemaths.cned.fr/) du CNED
   * [Classes ouvertes Wims](https://wims.math.cnrs.fr/wims/wims.cgi?lang=fr&+module=adm%2Fclass%2Fclasses&+type=example)
 
 * Continuité pédagogique :
@@ -50,4 +50,5 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   - [Séance du 26/03/2020](ContinuitePedagogique/seance-26-03-2020.md)
   - [Séance du 30/03/2020](ContinuitePedagogique/seance-30-03-2020.md)
   - [Séance du 02/04/2020](ContinuitePedagogique/seance-02-04-2020.md)
+  - [Séance du 06/04/2020](ContinuitePedagogique/seance-06-04-2020.md)
   
