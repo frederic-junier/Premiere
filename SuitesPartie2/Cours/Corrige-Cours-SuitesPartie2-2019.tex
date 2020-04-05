@@ -1110,6 +1110,55 @@ def seuil():
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Capacité 7 Partie 1}
+\label{capacite7}
 
+
+Soit $u_0$ le nombre de bactéries exprimé en millions au début de la phase
+exponentielle et $u_n$ le nombre de bactéries après $n$ temps de génération, c'est-à-dire après $n$ fois 20 minutes. On a ainsi $u_0 = 50$. D'après le modèle le nombre de bactéries double à chaque génération, toutes les 20 minutes.
+
+\begin{itemize}
+	\item $u_{1}=u_{0} \times 2 = 100$ puis $u_{2}=2 \times u_{1}=200$ puis $u_{3}=2\times u_{2}=400$.
+    \item D'après le modèle, pour tout entier naturel $n$, on a $u_{n+1}=2u_{n}$ donc la suite $\left(u_{n}\right)$ est géométrique de raison $2$.  D'après une propriété du cours sur les suites géométriques, on a $u_{n}=u_{0} \times 2^{n}=50 \times 2^{n}$.
+    \item $2$ heures représentent $6 \times 20$ minutes, donc le nombre de bactéries au bout de deux heures sera égal à $u_{6}=2^{6}\times 50 = 6400$  millions.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 7 Partie 2}
+
+\begin{itemize}
+    \item $4$ heures représentent $4 \times 3 \times 20$ minutes, donc le nombre de bactéries au bout de deux heures sera égal à $u_{12}=2^{12}\times 50 = 204800$  millions donc supérieur à $200$ milliards.
+    
+   \item On peut conjecturer que $u_{n}$  peut dépasser n'importe quel nombre pour $n$ assez grand et que la suite $\suite{u}$ diverge vers $+\infty$. Il s'agit d'une croissance exponentielle. En pratique cette croissance s'interrompt nécessairement au bout d'un certain nombre de générations, notre monde n'étant pas infini.
+   
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Capacité 7 Partie 3}
+Fonction \texttt{seuil(s)}  en  \texttt{Python} qui retourne le plus petit entier $n$ tel que $u_{n} \geqslant s$ en supposant le modèle exponentiel toujours valable.  
+
+\begin{lstlisting}[style=rond]
+def seuil(s):
+	u = 50
+	n = 0
+	while u < s:
+		u = 2 * u
+		n = n + 1
+	return n
+\end{lstlisting}
+
+\end{frame}
 
 \end{document}

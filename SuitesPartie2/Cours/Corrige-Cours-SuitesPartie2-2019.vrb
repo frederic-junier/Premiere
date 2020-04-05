@@ -1,18 +1,13 @@
-\frametitle{Capacité 6 Partie 2}
-
-\begin{itemize}
-	\item Animation : \href{https://frederic-junier.github.io/Premiere/SuitesPartie2/Cours/images/sierpinski.gif}{https://frederic-junier.github.io/Premiere/SuitesPartie2/Cours/images/sierpinski.gif}
-    \item Graphiquement (voir l'animation) et avec la calculatrice, on peut conjecturer que la suite $\suite{b}$ converge vers $0$.
-    \item Fonction \texttt{Python} qui retourne le nombre d'étapes nécessaires pour que $99\%$ du carré initial soit colorié.
-\end{itemize}
-
+\frametitle{Capacité 7 Partie 3}
+Fonction \texttt{seuil(s)}  en  \texttt{Python} qui retourne le plus petit entier $n$ tel que $u_{n} \geqslant s$ en supposant le modèle exponentiel toujours valable.
 
 \begin{lstlisting}[style=rond]
-def seuil():
-	b = 1
+def seuil(s):
+	u = 50
 	n = 0
-	while b < 0.99:
-		b = b * 3 / 4
+	while u < s:
+		u = 2 * u
 		n = n + 1
 	return n
 \end{lstlisting}
+
