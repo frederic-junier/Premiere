@@ -52,4 +52,5 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
   - [Séance du 02/04/2020](ContinuitePedagogique/seance-02-04-2020.md)
   - [Séance du 06/04/2020](ContinuitePedagogique/seance-06-04-2020.md)
   - [Séance du 09/04/2020](ContinuitePedagogique/seance-09-04-2020.md)
+  - [Séance du 16/04/2020](ContinuitePedagogique/seance-09-04-2020.md)
   
