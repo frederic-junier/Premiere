@@ -548,6 +548,9 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
             \item \hyperlink{capacite4}{Capacité 4}
                 \item \hyperlink{capacite5}{Capacité 5}
                     \item \hyperlink{capacite6}{Capacité 6}
+                     \item \hyperlink{capacite7}{Capacité 7}
+                      \item \hyperlink{capacite8}{Capacité 8}
+                       \item \hyperlink{capacite9}{Capacité 9}
 \end{itemize}
 
 \end{frame}
@@ -1160,5 +1163,129 @@ def seuil(s):
 \end{lstlisting}
 
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 8 Question 1}
+\label{capacite8}
+
+\begin{center}
+\includegraphics[scale=0.2]{images/capacite8.png}
+\end{center}
+
+
+
+Pour tout entier $n\geqslant 0$, on note $a_{n}$ la longueur $OA_{n}$ et $b_{n}$ la longueur $A_{n}A_{n+1}$.
+
+
+\begin{itemize}
+	\pause \item Pour tout entier $n\geqslant 0$, le triangle $OA_{n}A_{n+1}$ est rectangle isocèle en $A_{n+1}$ donc $OA_{n+1}=AA_{n} \times \cos \left(\frac{\pi}{4}\right)$ donc $a_{n+1}=\frac{\sqrt{2}}{2}a_{n}$. De plus $OA_{n}A_{n+1}$ isocèle en $A_{n+1}$  donc $A_{n}A_{n+1}=OA_{n+1}$, donc $b_{n}=a_{n+1}$ et donc $b_{n}=\frac{\sqrt{2}}{2}b_{n-1}$ pour tout entier $n \geqslant 1$.
+	
+\pause \item Les suites $(a_{n})$ et $(b_{n})$ sont donc identiques et ce sont des suites géométriques de premiers termes $a_{0}=1$ et $b_{0}=a_{1}=\frac{\sqrt{2}}{2}$.
+
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Capacité 8 Question 2}
+
+
+\begin{center}
+\includegraphics[scale=0.2]{images/capacite8.png}
+\end{center}
+
+
+
+Pour tout entier $n\geqslant 0$, on note $a_{n}$ la longueur $OA_{n}$ et $b_{n}$ la longueur $A_{n}A_{n+1}$.
+
+
+\begin{itemize}
+	\pause \item  D'après une propriété du cours sur les suites géométriques, pour tout entier $n \geqslant 0$, on a :  
+\begin{align*}
+a_{n} &=\left(\frac{\sqrt{2}}{2}\right)^{n}a_{0}=\left(\frac{\sqrt{2}}{2}\right)^{n}\\
+b_{n} &=\left(\frac{\sqrt{2}}{2}\right)^{n}b_{0}=\left(\frac{\sqrt{2}}{2}\right)^{n+1}
+\end{align*}
+	
+
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Capacité 8 Question 3}
+
+
+\begin{center}
+\includegraphics[scale=0.2]{images/capacite8.png}
+\end{center}
+
+
+
+Pour tout entier $n\geqslant 0$, on note $a_{n}$ la longueur $OA_{n}$ et $b_{n}$ la longueur $A_{n}A_{n+1}$.
+
+
+\begin{itemize}
+
+	
+\pause \item Avec la calculatrice, on peut conjecturer que les suites $(a_{n})$  et $(b_{n})$ tendent vers $0$. On verra en terminale que cette propriété est liée à la valeur absolue de la raison qui est strictement inférieure à $1$. 
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 8 Question 4}
+
+
+\begin{center}
+\includegraphics[scale=0.15]{images/capacite8.png}
+\end{center}
+
+
+
+On considère la  spirale constituée des segments $[A_{0}A_{1}]$, $[A_{1}A_{2}]$, \ldots, $[A_{n-1}A_{n}]$. 
+
+\begin{itemize}
+	\pause \item La longueur de la spirale est égale  la somme des $n$ premiers termes termes de la suite $(b_{n})$ : $b_{0}+b_{1}+\ldots + b_{n}$.
+	
+	
+\pause \item D'après une propriété du cours sur les suites géométriques : 
+\begin{align*}
+b_{0}+b_{1}+\ldots+b_{n} &=b_{0} \times \frac{1- \left(\frac{\sqrt{2}}{2}\right)^{n}}{1 - \frac{\sqrt{2}}{2}} 
+\end{align*}
+En reprenant le raisonnement de la question précédente, on peut conjecturer que $b_{0}+b_{1}+\ldots+b_{n}$ tend vers  
+$\frac{\sqrt{2}}{2} \times \frac{1}{1 - \frac{\sqrt{2}}{2}}$ lorsque $n$ tend vers $+\infty$.
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Capacité 9}
+\label{capacite9}
+
+\begin{itemize}
+\item Un exemple de suite de limite $734$  :  $(u_{n})$ définie pour tout entier $n \geqslant 0$ par $u_{n}=734+0,5^{n}$ ;
+\item Un exemple de suite de limite $+\infty$ : $(u_{n})$ définie pour tout entier $n \geqslant 0$ par $u_{n}=n$ ;
+\item Un exemple de suite de limite $-\infty$ : $(u_{n})$ définie pour tout entier $n \geqslant 0$ par $u_{n}=-n$ ;
+\item Un exemple de suite bornée sans limite : $(u_{n})$ définie pour tout entier $n \geqslant 0$ par $u_{n}=\cos(n)$ ;
+\item Un exemple de suite non bornée sans limite : $(u_{n})$ définie pour tout entier $n \geqslant 0$ par $u_{n}=n\cos(n)$.
+\end{itemize}
+
+\end{frame}
+
+
 
 \end{document}
