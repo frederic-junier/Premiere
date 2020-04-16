@@ -1105,7 +1105,7 @@ Pour tout entier $n \geqslant 0$, soit $b_{n}$ la fraction du carré initial qui
 def seuil():
 	b = 1
 	n = 0
-	while b < 0.99:
+	while b >= 0.01:
 		b = b * 3 / 4
 		n = n + 1
 	return n
