@@ -17,4 +17,3 @@ all: $(TARGET)
 
 %git.md: %source.md
 	pandoc -s   --filter ~/Pandoc/filtre.py --webtex  -V colorlinks --toc  -V toc-title:"Table des matières" -f markdown+table_captions+link_attributes+multiline_tables -t gfm  $<  -o $@
-

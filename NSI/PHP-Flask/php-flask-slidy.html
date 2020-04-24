@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Première NSI, Lycée du Parc" />
+  <title>Web et Interaction Homme Machine, programmation côté serveur</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../Pandoc/style_nsi.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Web et Interaction Homme Machine, programmation côté serveur</h1>
+  <p class="author">
+Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
+  </p>
+</div>
+<div id="crédits" class="slide section level1 unnumbered">
+<h1 class="unnumbered">Crédits</h1>
+<p><em>Ce cours est largement inspiré du chapitre 29 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen. J’ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier, le cours de <a href="http://nsi.janviercommelemois.fr/">Romain Janvier</a>, le tutoriel PHP de <a href="https://www.w3schools.com/php/default.asp">https://www.w3schools.com/php/default.asp</a></em> et la documentation du module <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> de Python.</p>
+<!-- Définition des hyperliens  -->
+</div>
+<div id="développement-côté-serveur-en-php" class="slide section level1">
+<h1>Développement côté serveur en PHP</h1>
+<h2 id="site-web-dynamique">Site Web dynamique</h2>
+<div class="cours">
+<p><a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> est un langage interprété qui s’exécute sur un serveur Web. Lorsque le serveur reçoit les données d’un formulaire d’un client, il peut les transmettre à un script <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> qui pourra les utiliser pour modifier une base de données ou générer à la volée le contenu <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> qui sera retournée au client.</p>
+<p>Un <strong>site Web dynamique</strong> s’appuie sur trois composants : un langage interprété comme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, <a href="https://docs.python.org/3.7/library/cgi.html">Python</a> ou <a href="https://developer.mozilla.org/fr/docs/Glossaire/Node.js">Node.js</a>, un serveur Web comme <a href="https://doc.ubuntu-fr.org/apache2">Apache</a> ou <a href="https://doc.ubuntu-fr.org/nginx">Nginx</a> et un système de gestion de bases de données comme <a href="https://doc.ubuntu-fr.org/mysql">MySQL</a> ou <a href="https://doc.ubuntu-fr.org/mariadb">MariaDb</a>.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> est souvent associé avec <a href="https://doc.ubuntu-fr.org/apache2">Apache</a> et <a href="https://doc.ubuntu-fr.org/mysql">MysSQL</a> pour former la pile <a href="https://doc.ubuntu-fr.org/lamp">Lamp</a> nécessaire pour accueillir un <strong>site Web dynamique</strong> comme un <a href="https://developer.mozilla.org/fr/docs/Glossaire/CMS">CMS</a> de type Wordpress ou Drupal.</p>
+<p>Les fichiers <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> portent l’extension <code>.php</code> et la syntaxe du langage s’inspire de celles de <a href="https://doc.ubuntu-fr.org/bash">Bash</a> et <a href="https://developer.mozilla.org/fr/docs/Glossaire/Java">Java</a>, en particulier les blocs sont délimités par des accolades, chaque instruction doit se terminer par un symbole <code>;</code> et chaque nom de variable commence par le symbole <code>$</code>.</p>
+<p>On donne ci-dessous un exemple de code <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, exécutable à partir de l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="http://frederic-junier.org/NSI/sandbox/heure.php">http://frederic-junier.org/NSI/sandbox/heure.php</a>.</p>
+<p>Pour générer une page Web dynamiquement, le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> peut être inséré directement dans du code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTM</a>, à l’intérieur de balises <code>&lt;?php</code> et <code>?&gt;</code>. Les commentaires peuvent être placés entre deux symboles <code>/*</code> et <code>*/</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>&lt;head&gt;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  &lt;title&gt;Affichage de l<span class="st">&#39;heure avec PHP &lt;/title&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="st">  &lt;meta charset=&quot;utf-8&quot;&gt;    </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="st">&lt;/head&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="st">&lt;body&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">   &lt;h1&gt; Affichage de l&#39;</span>heure avec <span class="kw">PHP</span> &lt;/h1&gt;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>   </span>
+<span id="cb1-14"><a href="#cb1-14"></a>   &lt;p&gt; Il est : &lt;<span class="ot">?</span>php <span class="kw">echo</span> <span class="fu">date</span><span class="ot">(</span><span class="st">&quot;H:i:s&quot;</span><span class="ot">);</span> <span class="co">/* commentaire  */</span>  <span class="kw">?&gt;</span>  &lt;/p&gt;</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>&lt;/body&gt;</span>
+<span id="cb1-17"><a href="#cb1-17"></a>&lt;/html&gt; </span></code></pre></div>
+</div>
+<h2 id="un-premier-exemple">Un premier exemple</h2>
+<div class="exemple">
+<p>Ouvrir dans un navigateur Web la page <a href="https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Eleve" class="uri">https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Eleve</a>.</p>
+<p>La page s’ouvre sur un environnement de programmation en <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> sur la plateforme <a href="https://repl.it">https://repl.it</a>. Un serveur <a href="https://doc.ubuntu-fr.org/apache2">Apache</a> avec interpréteur <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> s’exécute dans un environnement isolé.</p>
+<p>Il n’est pas nécessaire de se créer un compte sur celle-ci pour travailler. Dès la première modification du fichier ouvert dans l’éditeur, on est redirigé vers une page anonyme en lecture/écriture.</p>
+<p>L’interface se divise en trois zones :</p>
+<ul>
+<li>à gauche l’explorateur de fichiers, il est possible de créer des nouveaux fichiers dans l’interface, de les téléverser de tout télécharger sous forme d’archive zip</li>
+<li>au centre se trouve l’éditeur de fichier pour saisir ou modifier du code<br />
+</li>
+<li>à droite se trouve deux fenêtres de sortie : en haut un affichage de page Web et en bas la console affichant les commandes exécutées par le serveur</li>
+</ul>
+<p><img src="images/interface-replit.png" title="Interface de repl.it" alt="“Interface de repl.it”" /> </p>
+<ol style="list-style-type: decimal">
+<li><p>Dans la page d’accueil, cliquer sur le lien <strong>Formulaire de connexion avec la méthode GET</strong>. Remplir le formulaire avec un nom quelconque pour l’identifiant et <code>secret</code> en minuscules pour le mot de passe. Réaliser un autre envoi avec un mot de passe incorrect. Le code source du formulaire est affiché dans la zone d’édition de l’image précédente. Les dpnnées du formulaire sont envoyées par la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a> au programme <code>login.php</code> qui va les traiter. Cliquer sur <code>login.php</code> dans l’explorateur de fichier pour afficher son code source comme ci-dessous :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1"></a>&lt;!<span class="kw">DOCTYPE</span> html&gt;</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>&lt;html lang=<span class="st">&quot;fr&quot;</span>&gt;</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>&lt;head&gt;</span>
+<span id="cb2-6"><a href="#cb2-6"></a>&lt;title&gt;Affichage de l<span class="st">&#39;âge avec PHP &lt;/title&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="st">&lt;meta charset=&quot;utf-8&quot;&gt;    </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">&lt;/head&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="st">&lt;body&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="st">&lt;div&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="st">&lt;?php</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="st">echo &quot;&lt;p&gt; Il est &quot; . date(&quot;H:i:s&quot;) . &quot;&lt;/p&gt;&quot;; </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="st">/* commentaire</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="st">multiligne </span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="st">*/</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="st">if ( isset($_GET[&#39;</span>ident<span class="st">&#39;]) &amp;&amp; isset($_GET[&#39;</span>pass<span class="st">&#39;]) </span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="st">      &amp;&amp; ( $_GET[&#39;</span>pass<span class="st">&#39;] ==   &#39;</span>secret<span class="st">&#39; ) )</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="st">{</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="st">   echo &quot;&lt;p&gt; Bienvenue &quot; . $_GET[&#39;</span>ident<span class="st">&#39;] . &quot;&lt;/p&gt;&quot;;</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="st">}</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="st">elseif ( !( empty($_POST[&#39;</span>ident<span class="st">&#39;]) || empty($_POST[&#39;</span>pass<span class="st">&#39;]) ) </span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="st">         &amp;&amp; ( $_POST[&#39;</span>pass<span class="st">&#39;] == &#39;</span>secret<span class="st">&#39; ) )</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="st">{</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="st">   echo &quot;&lt;p&gt;Bienvenue &quot; . $_POST[&#39;</span>ident<span class="st">&#39;] . &quot;&lt;/p&gt;&quot;;</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="st">}</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="st">else </span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="st">{</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="st">   echo &quot;&lt;p&gt; Échec de la connexion. &lt;/p&gt;&quot;; //commentaire isolé</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="st">}</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="st">?&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="st">&lt;/div&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="st">&lt;a href=&quot;index.php&quot;&gt;Retour à l&#39;</span>accueil&lt;/a&gt;</span>
+<span id="cb2-36"><a href="#cb2-36"></a></span>
+<span id="cb2-37"><a href="#cb2-37"></a>&lt;/body&gt;</span>
+<span id="cb2-38"><a href="#cb2-38"></a>&lt;/html&gt; </span></code></pre></div></li>
+<li><p>On peut relever dans cet exemple quelques traits du langage <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, que nous survolerons :</p>
+<ul>
+<li>On l’a déjà dit le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> peut s’insérer dans du code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>, entre une des balises <code>&lt;?php</code> et <code>?&gt;</code></li>
+<li>Chaque instruction se termine par un symbole <code>;</code></li>
+<li>On peut insérer des commentaires multilignes ou isolés.</li>
+<li>Les noms de variables doivent être préfixés par le symbole <code>$</code>.</li>
+<li><code>$_GET</code> est une variable spéciale qui va recevoir des données de formulaire transmises par la méthode <code>$_GET</code>. Il existe aussi une variable spéciale <code>$_POST</code>. Il s’agit de tableaux associatifs comme les dictionnaires en <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>.</li>
+<li>L’affichage sur la sortie standard du programme se fait avec <code>echo</code> comme en <a href="https://doc.ubuntu-fr.org/bash">Bash</a>, et les chaînes de caractères sont concaténés avec le symbole <code>.</code>.</li>
+<li>Les structures de contrôle (conditions et boucles) ont des structures et des mots clefs similaires à tous les autres langages procéduraux. Contrairement à <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>, l’indentation n’a qu’une valeur de présentation, les blocs d’instructions doivent donc être délimités par des symboles <code>{</code> et <code>}</code>.</li>
+<li>Pour tester si une variable est définie on peut utiliser la fonction <code>isset</code> ou son contraire <code>empty</code>.</li>
+<li>Les opérateurs logiques sont les mêmes qu’en <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>, <code>&amp;&amp;</code> pour <code>and</code>, <code>||</code> pour <code>or</code>, <code>!</code> pour <code>not</code> et il est conseillé d’utiliser des parenthèses pour clarifier l’ordre souhaité.</li>
+</ul></li>
+<li><p>Si on édite le code source de la page d’accueil <code>index.php</code>, on peut remarquer des instructions <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> comme <code>&lt;?php include('menu.php') ?&gt;</code> et si on édite le fichier <code>menu.php</code> on y trouve un menu sous forme de liste en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>. On peut donc utiliser <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> comme gestionnaire de templates <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> et centraliser du code.</p></li>
+</ol>
+</div>
+<h2 id="une-peu-dexercice">Une peu d’exercice</h2>
+<div class="exercice">
+<p>Ouvrir dans un navigateur Web la page <a href="https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Eleve" class="uri">https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Eleve</a> présentée dans l’exemple 1.</p>
+<ol style="list-style-type: decimal">
+<li><p>Éditer le fichier <code>formulaire-age.php</code> et compléter le formulaire ci-dessous avec un élément <code>&lt;input type="number" name="a"&gt;</code> de type <code>number</code> pour que l’utilisateur puisse saisir une date de naissance comprise entre 1900 et 2020 et que cette valeur soit associée au nom <code>a</code> et transmise pour traitement au script <code>age.php</code> avec la méthode <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a>   <span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;age.php&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>      <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;naissance&quot;</span><span class="kw">&gt;</span>Saisissez votre date de naissance <span class="kw">&lt;/label&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>      <span class="kw">&lt;br&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>      <span class="co">&lt;!-- compléter --&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>   <span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<p>Tester l’envoir du formulaire puis retourner à la page d’accueil.</p></li>
+<li><p>Dans la page d’accueil, cliquer sur le lien <strong>Formulaire de connexion avec la méthode POST</strong>, saisir dans le champ identifiant <code>&lt;script&gt;alert('Hack !')&lt;/script&gt;</code> et dans le champ mot de passe <code>secret</code> puis envoyer les données. Que se passe-t-il ?</p>
+<p>Faire un nouveau test en saisissant <code>&lt;script&gt;window.location.href='index.php'&lt;/script&gt;</code>. Que se passe-t-il ?</p>
+<p>Résumer la définition d’une faille Cross-site scripting (XSS) à partir de l’article <a href="https://developer.mozilla.org/fr/docs/Glossaire/Cross-site_scripting">https://developer.mozilla.org/fr/docs/Glossaire/Cross-site_scripting</a>.</p>
+<p>Modifier le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> du fichier <code>login.php</code> pour résoudre en partie cette faille à l’aide de la fonction <code>htmlspecialchars</code> présenté dans cet article <a href="https://www.w3schools.com/php/php_form_validation.asp">https://www.w3schools.com/php/php_form_validation.asp</a>.</p></li>
+<li><p>Dans la page d’accueil, cliquer sur le lien <strong>Formulaire d’affichage de couleur (R,G,B)</strong>. On arrive sur un formulaire constitué de trois champs <code>&lt;input&gt;</code> de type <code>number</code> où l’utilisateur peut saisir l’une des composantes (R,G,B) d’une couleur comprise entre 0 et 255. Les données sont envoyées au fichier <code>rgb.php</code>. Éditer ce fichier depuis l’explorateur et le compléter pour qu’il puisse traiter les données du formulaire et modifier la propriété <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> <code>background</code> de l’élément <code>&lt;div&gt;</code> identifié par <code>#couleur</code> afin d’afficher la couleur correspondante. Les parties de code à compléter sont marquées par des commentaires.</p>
+<p><img src="images/formulaire_rgb.png" title="Formulaire RGB" style="width:50.0%" alt="“Formulaire RGB”" /> </p>
+<p><img src="images/couleur_rgb.png" title="Couleur RGB" style="width:50.0%" alt="“Couleur RGB”" /> </p></li>
+<li><p>Dans la page d’accueil, cliquer sur le lien <strong>Formulaire de changement d’unité de température</strong>. On arrive sur un formulaire <code>temperature.php</code> constitué d’un champ <code>&lt;select&gt;</code> permettant de choisir une unité source et un champ <code>&lt;input&gt;</code> de type <code>number</code> pour saisir une mesure de température. Les données du formulaire sont envoyées à <code>temperature.php</code> qui supporte donc à la fois la saisie et le traitement des données. Éditer ce fichier depuis l’explorateur et le compléter pour qu’il puisse traiter les données du formulaire en convertissant la mesure de température de Celsius en Fahrenheit ou réciproquement.</p>
+<p><img src="images/conversion_unite.png" title="Conversion d&#39;unité" style="width:50.0%" alt="“Conversion d’unité”" /> </p></li>
+<li><p>Dans la page d’accueil, cliquer sur le lien <strong>Formulaire d’affichage de table de multiplication</strong>. On arrive sur un formulaire <code>multiplication.php</code> constitué d’un champ champ <code>&lt;input&gt;</code> de type <code>number</code> pour saisir un facteur. Les données du formulaire sont envoyées au même fichier <code>multiplication.php</code>. Éditer ce fichier depuis l’explorateur et le compléter pour qu’il puisse traiter les données du formulaire en affichant la table des 11 premiers multiples du nombre choisi.</p></li>
+</ol>
+<p><img src="images/multiplication.png" title="Table de multiplication" style="width:50.0%" alt="“Table de multiplication”" /> </p>
+</div>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<ol style="list-style-type: decimal">
+<li><p>Parmi les quatre propositions suivantes, laquelle est la seule à correspondre à un entête correct de formulaire d’une page HTML ?</p>
+<ul>
+<li>Réponse A : <code>&lt;form method="formulaire.php" action="submit"&gt;</code></li>
+<li>Réponse B : <code>&lt;form method="post" action=onclick()&gt;</code></li>
+<li>Réponse C : <code>&lt;form method="get" action="arret.php"&gt;</code></li>
+<li>Réponse D : <code>&lt;form method="post" action=arret.php&gt;</code></li>
+</ul></li>
+<li><p>Quel langage est interprété ou exécuté côté serveur ?</p>
+<ul>
+<li>Réponse A : JavaScript</li>
+<li>Réponse B : PHP</li>
+<li>Réponse C : HTML</li>
+<li>Réponse D : CSS</li>
+</ul></li>
+<li><p>Pour analyser les réponses saisies par l'utilisateur dans un formulaire d’une page Web personnelle, hébergée chez unfournisseur d'accès à internet, on dispose du code suivant :</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">&lt;?php</span> <span class="kw">if</span> <span class="ot">(</span><span class="kw">$_POST</span><span class="ot">[</span><span class="st">&#39;choix&#39;</span><span class="ot">]</span>==<span class="st">&#39;choix4&#39;</span><span class="ot">)</span>{<span class="kw">echo</span> <span class="st">&#39;Bravo,&#39;</span><span class="ot">;</span>}</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">else</span> {<span class="kw">echo</span> <span class="st">&quot;Non, vous vous trompez !&quot;</span><span class="ot">;</span>}</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">?&gt;</span></span></code></pre></div>
+<p>Où s’exécutera ce code ?</p>
+<ul>
+<li>Réponse A : dans le premier routeur permettant d’accéder au serveur</li>
+<li>Réponse B : dans le dernier routeur permettant d’accéder au serveur</li>
+<li>Réponse C : dans le serveur qui héberge la page personnelle</li>
+<li>Réponse D : dans la machine de l’utilisateur qui consulte la page personnelle</li>
+</ul></li>
+<li><p>Le site internet d’un quotidien d’information permet aux visiteurs de laisser des commentaires textuels. Ces commentaires doivent être visibles par les autres visiteurs. Laquelle des affirmations suivantes est correcte ?</p>
+<ul>
+<li>Réponse A : Il suffit que la page HTML contienne des champs de la forme <code>&lt;textarea&gt;</code></li>
+<li>Réponse B : Il suffit que la page HTML contienne des champs de la forme <code>&lt;textarea&gt;</code> et d’utiliser JavaScript pour enregistrer les commentaires</li>
+<li>Réponse C : Il faut un programme en PHP ou un script Python sur le serveur pour traiter les données</li>
+<li>Réponse D : Non, ce n’est pas possible avec la technologie actuelle</li>
+</ul></li>
+<li><p>Dans quels langages les balises <code>&lt;img&gt;</code> et <code>&lt;form&gt;</code> sont-elles utilisées ?</p>
+<ul>
+<li>Réponse A : Python</li>
+<li>Réponse B : HTML</li>
+<li>Réponse C : Javascript</li>
+<li>Réponse D : PHP</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="développement-côté-serveur-en-python" class="slide section level1">
+<h1>Développement côté serveur en Python</h1>
+<h2 id="un-premier-exemple-1">Un premier exemple</h2>
+<div class="exemple">
+<p><a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> est un micro <a href="https://fr.wikipedia.org/wiki/Framework">Framework</a> permettant de développer des applications Web en <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>. Il impose peu de choix prédéfinis au programmeur.</p>
+<ol style="list-style-type: decimal">
+<li><p>Ouvrir dans un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="https://repl.it/@fredericjunier/1NSI-Flask-Ex1-Eleve-1" class="uri">https://repl.it/@fredericjunier/1NSI-Flask-Ex1-Eleve-1</a>.</p></li>
+<li><p>On arrive sur un environnement de programmation Web intégrant une mini application écrite avec <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>.</p>
+<p><img src="images/flask-exemple1.png" title="Flask exemple1" alt="“Flask exemple1”" /><br />
+</p>
+<ul>
+<li><p>Tout le code <a href="https://docs.python.org/3.7/library/cgi.html">Python</a> de l’application est rassemblé dans le fichier <code>main.py</code> ouvert dans l’éditeur :</p>
+<ul>
+<li>On importe d’abord les modules nécessaires avec <code>import</code></li>
+<li>A la fin du programme, un serveur Web de développement est lancé avec le dégogueur activé.</li>
+<li>Entre les deux, on trouve une série de déclarations de fonctions précédées du décorateur <code>@app.route</code>. Le décorateur est le <em>routeur</em> : si l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> se termine par <code>/</code>, la fonction <code>accueil</code> est appelée et celle-ci affiche la page <code>accueil.html</code> par un appel à <code>render_template</code>. On parle de <em>route</em> pour la partie de l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> correspondant au chemin relatif dans l’application. La fonction <code>accueil</code> est un <em>contrôleur</em> et le template <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> est une <em>vue</em> si on refère au modèle d’architecture logicielle <a href="https://developer.mozilla.org/fr/docs/Glossaire/MVC">MVC</a> pour <em>Modèle Vue Contrôleur</em>.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#dispatcheur de route / URL</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="at">@app.route</span>(<span class="st">&#39;/&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">def</span> accueil():</span>
+<span id="cb5-4"><a href="#cb5-4"></a>   <span class="co">&quot;Controleur de la route &#39;/&#39; &quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>   <span class="co">#retourne la vue associée : la page accueil.html</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>   <span class="cf">return</span> render_template(<span class="st">&#39;accueil.html&#39;</span>)</span></code></pre></div>
+<p><img src="images/ModeleMVC.png" title="MVC" alt="“MVC”" /><br />
+</p>
+<ul>
+<li>Le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> de la page d’accueil est donné ci-dessous. Si on suit le lien hypertexte, d’après la règle de routage définie dans <code>main.py</code>, le contrôleur <code>formulaire</code> est appelé et il retourne la vue <code>formulaire-connexion.html</code> qui est le même formulaire de connexion avec deux champs <code>ident</code> pour l’identifiant et <code>pass</code> pour le mot de passe que dans l’exemple 1 traité avec <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>   <span class="kw">&lt;head&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>      <span class="kw">&lt;title&gt;</span> Accueil <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>      <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>   <span class="kw">&lt;/head&gt;</span>         </span>
+<span id="cb6-7"><a href="#cb6-7"></a>   <span class="kw">&lt;body&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8"></a>   <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/formulaire-connexion&quot;</span><span class="kw">&gt;</span> Formulaire de connexion <span class="kw">&lt;/a&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>   <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div>
+<ul>
+<li>Le formulaire commence par <code>&lt;form action="/connexion" method="POST"&gt;</code>, il est paramétré pour appeler la route <code>/connexion</code> qui est associée au contrôleur <code>connexion</code>. On peut noter que toute la logique de contrôle des paramètres est rassemblée ici alors qu’avec <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a>, elle était mélangée avec le code de la vue en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a> <span class="at">@app.route</span>(<span class="st">&#39;/connexion&#39;</span>, methods<span class="op">=</span>[<span class="st">&#39;GET&#39;</span>, <span class="st">&#39;POST&#39;</span>])</span>
+<span id="cb7-2"><a href="#cb7-2"></a> <span class="kw">def</span> connexion():</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="co">&quot;Controleur de la route &#39;/connexion&#39; &quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="co">#si la méthode est POST</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&#39;POST&#39;</span>:</span>
+<span id="cb7-6"><a href="#cb7-6"></a>       <span class="co">#les valeurs des paramètres sont dans le dictionnaire request.form </span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>       ident <span class="op">=</span> request.form[<span class="st">&#39;ident&#39;</span>]</span>
+<span id="cb7-8"><a href="#cb7-8"></a>       password <span class="op">=</span> request.form[<span class="st">&#39;pass&#39;</span>]    </span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="cf">else</span>: <span class="co">#sinon c&#39;est GET</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>       <span class="co">#la chaine de  paramètres est dans le dictionnaire request.args</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>       ident <span class="op">=</span> request.args.get(<span class="st">&#39;ident&#39;</span>, <span class="st">&#39;&#39;</span>) </span>
+<span id="cb7-12"><a href="#cb7-12"></a>       password <span class="op">=</span> request.args.get(<span class="st">&#39;pass&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    succes <span class="op">=</span> password <span class="op">==</span> <span class="st">&#39;secret&#39;</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="co">#retourne la vue associée en lui transmettant des paramètres</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>    <span class="cf">return</span> render_template(<span class="st">&#39;connexion.html&#39;</span>, ident <span class="op">=</span> ident, succes <span class="op">=</span> succes)</span></code></pre></div>
+<ul>
+<li>On peut se demander comment les paramètres sont intégrés au code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> de <code>connexion.html</code>. Si on édite ce fichier, on observe des balises particulières délimitées par des accolades pour insérer les paramètres et <code>ident</code> et <code>succes</code> et exécuter uen structure conditionnelle. <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> utiliser le moteur de template <a href="https://jinja.palletsprojects.com/en/2.11.x/">Jinja</a> pour personnaliser des templates <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1"></a> <span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">&lt;html&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="kw">&lt;title&gt;</span> Page de connexion <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>   </span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="kw">&lt;/head&gt;</span>  </span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="kw">&lt;body&gt;</span>   </span>
+<span id="cb8-8"><a href="#cb8-8"></a>    {% if succes %}</span>
+<span id="cb8-9"><a href="#cb8-9"></a>       <span class="kw">&lt;h1&gt;</span> Bonjour {{ ident }} <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    {% else %}</span>
+<span id="cb8-11"><a href="#cb8-11"></a>       <span class="kw">&lt;h1&gt;</span> Erreur de connexion <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a>    {% endif %}</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;/&quot;</span><span class="kw">&gt;</span>Retour à l&#39;accueil<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="kw">&lt;/html&gt;</span> </span></code></pre></div>
+<ul>
+<li>On peut effectuer quelques tests en changeant la méthode de passage des paramètres dans le formulaire de connexion pour s’assurer que le contrôleur fonctionne bien.</li>
+<li>Si on simule une attaque XSS en saisissant du code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> dans le champ d’identifiant : <code>&lt;script&gt;alert("Hack")&lt;/script&gt;</code>, on peut observer que le moteur de template échappe par défaut les caractères spéciaux <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a></li>
+</ul></li>
+</ul></li>
+<li><p>Pour résumer, <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> permet de développer une application côté serveur comme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> mais, en première approche, il offre une séparation plus lisible entre la logique de l’application dans un fichier <a href="https://docs.python.org/3.7/library/cgi.html">Python</a> et l’affichage dans des fichiers <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>.</p></li>
+</ol>
+</div>
+<h2 id="un-peu-dexercice">Un peu d’exercice</h2>
+<div class="exercice">
+<ol style="list-style-type: decimal">
+<li><p>Ouvrir dans un navigateur Web la page d’<a href="https://developer.mozilla.org/fr/docs/Glossaire/URL">URL</a> <a href="https://repl.it/@fredericjunier/1NSI-Flask-Ex2-Eleve" class="uri">https://repl.it/@fredericjunier/1NSI-Flask-Ex2-Eleve</a>.</p></li>
+<li><p>On arrive sur un environnement de programmation Web intégrant une mini application écrite avec <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>. Le fichier <code>main.py</code> contient le moteur de l’application.</p>
+<p><img src="images/flask-exemple2.png" title="Flask exemple2" alt="“Flask exemple2”" /><br />
+</p></li>
+<li><p>Éditer le code source de la page d’accueil <code>accueil.html</code> de l’application. Elle contient trois liens vers des formulaires :</p>
+<ul>
+<li>Calcul d’âge<br />
+</li>
+<li>Affichage d’une couleur en (R,G,B)</li>
+<li>Conversion de température <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+</ul></li>
+<li><p>Compléter le code de <code>main.py</code> aux emplacements marqués par un commentaire <code># à compléter</code> pour obtenir le même comportement que les formulaires éponymes contenus dans l’exercice 1 réalisé avec <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> : <a href="https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Correction" class="uri">https://repl.it/@fredericjunier/1NSI-PHP-Ex1-Correction</a>. Tester les formulaires en modifiant les méthodes de passage des paramètres pour que les trois formulaires fonctionnent avec <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/POST">POST</a> ou <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/M%C3%A9thode/GET">GET</a>.</p></li>
+</ol>
+</div>
+</div>
+<div class="footnotes slide">
+<hr />
+<ol>
+<li id="fn1"><p>Note : ce formulaire renvoie vers lui-même<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+</body>
+</html>
