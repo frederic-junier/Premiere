@@ -635,4 +635,4 @@ _QCM_ de type E3C2.
 
 :::
 
-!["XKCD 1537 : Types"](images/types.png "XKCD 1537 : Types"){width=25%}
+!["[XKCD 1537 : Types](https://xkcd.com/1537/)"](images/types.png "[XKCD 1537 : Types](https://xkcd.com/1537/)"){width=25%}

@@ -873,7 +873,8 @@ chapitre précédent. Ici l’interactivité sera assurée côté client par
       - Réponse D : elle recherche le bouton “BUTTON” et crée une copie
         appelée “btn”
 
-![“XKCD 1537 : Types”](images/types.png "XKCD 1537 : Types")
+![“[XKCD 1537 : Types](https://xkcd.com/1537/)”](images/types.png
+"[XKCD 1537 : Types](https://xkcd.com/1537/)")
 
 1.  Note : [API](https://developer.mozilla.org/fr/docs/Glossaire/API)
     est l’acronyme d’Application Programming Interface
