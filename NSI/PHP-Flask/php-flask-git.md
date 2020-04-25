@@ -36,6 +36,11 @@ la volée le contenu
 [HTML](https://developer.mozilla.org/fr/docs/Glossaire/HTML) qui sera
 retournée au client.
 
+Une page Web est dite **dynamique** si son contenu dépend du client qui
+la demande et de son contexte (temps, espace, plateforme). Par
+opposition, une page Web est **statique** si son contenu est le même
+quel que soit le client et le contexte.
+
 Un **site Web dynamique** s’appuie sur trois composants : un langage
 interprété comme
 [PHP](https://developer.mozilla.org/fr/docs/Glossaire/PHP),

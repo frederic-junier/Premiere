@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Première NSI, Lycée du Parc" />
+  <title>Web et Interaction Homme Machine, programmation côté client</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../Pandoc/style_nsi.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Web et Interaction Homme Machine, programmation côté client</h1>
+  <p class="author">
+Première NSI, <a href="https://frederic-junier.org/">Lycée du Parc</a>
+  </p>
+</div>
+<div id="crédits" class="slide section level1 unnumbered">
+<h1 class="unnumbered">Crédits</h1>
+<p><em>Ce cours est largement inspiré du chapitre 29 du manuel NSI de la collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon, Filliatre, N’Guyen. J’ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier, la documentation en ligne de la fondation Mozilla <a href="https://developer.mozilla.org/fr/docs/Apprendre/JavaScript">https://developer.mozilla.org/fr/docs/Apprendre/JavaScript</a> et le tutoriel de w3schools <a href="https://www.w3schools.com/js/default.asp">https://www.w3schools.com/js/default.asp</a>.</em></p>
+<!-- Définition des hyperliens  -->
+</div>
+<div id="javascriptjavascript-et-la-programmation-événementielle-côté-client" class="slide section level1">
+<h1><a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> et la programmation événementielle côté client</h1>
+<div class="cours">
+<p>Dans le chapitre précédent, on a présenté des exemples de pages Web <strong>dynamiques</strong> générées par des programmes en <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> ou <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>. Chaque mise à jour de la page nécessite donc un nouveau cycle requête/réponse entre le client et le serveur. C’est indispensable s’il s’agit de modifier l’état d’une ressource côté serveur (une base de données par exemple), mais les changements peuvent n’être que temporaires et n’affecter que des éléments de la page côté client. C’est le cas de l’exemple déjà traité en <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> de la conversion d’unité pour une mesure de température.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> est un langage interprété qui répond à ce besoin qui s’exécute dans le navigateur du client. <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> s’est imposé depuis son apparition en 1995 dans le navigateur <a href="https://fr.wikipedia.org/wiki/Netscape_Navigator">Netscape</a> comme le principal langage de développement Web en <em>frontend</em> (côté client) et depuis une dizaine d’années, sa variante <a href="https://developer.mozilla.org/fr/docs/Glossaire/Node.js">Node.js</a> concurence les langages de développement <em>backend</em> (côté serveur) comme <a href="https://developer.mozilla.org/fr/docs/Glossaire/PHP">PHP</a> ou <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>.</p>
+<p>Une page Web moderne, reçue par un client, comporte au moins trois composants logiciels :</p>
+<ul>
+<li><a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> pour la structure du document.</li>
+<li><a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> pour le paramétrage de l’apparence des éléments et de leur positionnement.</li>
+<li><a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> pour la définition de programmes qui vont réagir à des événements déclenchés par l’utilisateur de la page et modifier la structure de données de la page ( éléments <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> et styles <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a>) à travers l’<a href="https://developer.mozilla.org/fr/docs/Glossaire/API">API</a> <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> nommée <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Le <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> est une représentation de l’ensemble de la structure de la page Web sous la forme d’un arbre : les noeuds sont les éléments <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> et ils ont une liste de propriétés : contenu, style, événements associés … L’inspecteur des outils de développement, accessibles avec la touche <code>F12</code> dans un navigateur, permet de visualiser et modifier les propriétés des éléments du <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a>.</li>
+</ul>
+<p>L’environnement d’exécution d’un code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> est confiné à l’onglet de la page Web où il est chargé. Pour des raisons de sécurité il ne doit pas interagir avec d’autres pages ou des ressources du poste client. Par ailleurs, si on recharge la page auprès du serveur, l’environnement <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> est réinitialisé et les modifications de la page effectuées par un code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> ne sont pas répercutées sur la page source disponible sur le serveur.</p>
+<p>Le schéma ci-dessous illustre le fonctionnement du <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui correspond à un paradigme de <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle">programmation événementielle</a>.</p>
+</div>
+<div class="figure">
+<img src="images/schema-dom.png" title="Javascript et DOM" alt="" />
+<p class="caption">“Javascript et DOM”</p>
+</div>
+</div>
+<div id="premiers-pas-dans-la-console-javascriptjavascript" class="slide section level1">
+<h1>Premiers pas dans la console <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a></h1>
+<div class="cours">
+<p>Compléter ce tableau sur les opérateurs en <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> à partir de la page <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs" class="uri">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Opérateurs</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>=</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>*</code></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>/</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>**</code></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>==</code> ou <code>===</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>!=</code> ou <code>!===</code></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&amp;&amp;</code></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><code>||</code></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>!</code></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="exercice">
+<p>Ouvrir un nouvel onglet dans un navigateur Web.</p>
+<ol style="list-style-type: decimal">
+<li><p>Ouvrir la console <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> dans la fenêtre des outils de développement avec <code>F12</code> ou <code>CTRL + SHIFT + K</code> sous Firefox. On va exécuter de façon interactive, une séquence d’instructions <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> pour présenter quelques constructions élémentaires et propriétés du langage. Chaque instruction pourra modifier l’état du <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> et donc le rendu graphique de la page Web.</p></li>
+<li><p>On commence par quelques manipulations de variables et calculs :</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">undefined</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">&gt;&gt;&gt;</span> (a <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fl">2.2</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="op">&gt;&gt;&gt;</span> (a <span class="op">*</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span>) <span class="op">**</span> <span class="dv">2</span> <span class="co">// commentaire !</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="dv">16</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> b <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">undefined</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="op">&gt;&gt;&gt;</span> b <span class="op">+</span> <span class="st">&quot; World&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="st">&quot;Hello World&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">typeof</span>(a)</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">&quot;number&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">typeof</span>(b)</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="st">&quot;string&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> b <span class="op">+</span> a</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="st">&quot;Hello1&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="op">&gt;&gt;</span> <span class="kw">typeof</span>(a)</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="st">&quot;string&quot;</span></span></code></pre></div>
+<ul>
+<li>Barrer les propositions fausses : en <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> est à typage <em>(fort | faible)</em> et <em>(dynamique | statique)</em> et une variable égale à 5 se déclare avec <em>(let a = 5 | a = 5)</em>.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Examinons un exemple avec une fonction, une structure conditionnelle et une boucle. Dans la console, passer en mode éditeur multiligne avec <code>CTRL + B</code> et saisir le code ci-dessous :</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">function</span> <span class="at">valabs</span>(x)<span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span> <span class="dv">0</span>)<span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="cf">return</span> <span class="op">-</span>x<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">return</span> x<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">-4</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span>)<span class="op">{</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="cf">if</span> (<span class="at">valabs</span>(i) <span class="op">&gt;</span> <span class="dv">2</span>)<span class="op">{</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="at">alert</span>(i)<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="op">}</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="va">console</span>.<span class="at">log</span>(i)<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>  <span class="op">}</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li>Barrer les propositions fausses : en <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a>, les blocs d’instructions sont délimités par <em>(l’indentation | des accolades)</em>, les fonctions sont déclarées avec le mot clef <em>(def | function)</em> et une boucle inconditionnelle sur les entiers entre 1 et 10 commence par l’instruction <em>( for k in range(1, 11) | for (let k = 1; k &lt; 11; k = k + 1) )</em></li>
+<li>Barrer les propositions fausses : la fonction <code>alert</code> affiche son paramètre dans <em>(une fenêtre pop-up | la console)</em> tandis que la fonction <code>console.log</code> affiche son paramètre dans <em>(une fenêtre pop-up | la console)</em>.</li>
+</ul>
+</div>
+<div class="exercice">
+<p><a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> dispose de toutes les constructions permettant de progammer les mêmes algorithmes qu’en <a href="https://docs.python.org/3.7/library/cgi.html">Python</a>, mais s’il a été inventé par les développeurs de <a href="https://fr.wikipedia.org/wiki/Netscape_Navigator">Netscape</a> c’est pour manipuler les éléments <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>, à travers l’interface du <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a>. Il existe plusieurs façons de capturer un élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>, la plus simple s’il s’agit d’un élément particulier est <a href="https://www.w3schools.com/js/js_htmldom_methods.asp">l’accès par son identifiant unique <code>id</code></a> (à condition qu’il soit défini).<br />
+Ouvrir un navigateur Web et charger la page <a href="https://frederic-junier.org/NSI/sandbox/bac.html">https://frederic-junier.org/NSI/sandbox/bac.html</a>. Le code source <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> de la page est donné ci-dessous :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="kw">&lt;title&gt;</span> &quot;Bac à sable&quot;  <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>   <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;langages&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="kw">&lt;li&gt;</span> HTML <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">&lt;li&gt;</span> CSS <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Saisir successivement les instructions ci-dessous dans la console, observer ce qu’il se passe dans la page étape par étape. Caractériser le rôle de chaque instruction puis saisir des instructions qui permettent de modifier le contenu <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> et le style du second item de la liste.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> list <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;langages&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">undefined</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">list</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="st">&quot;red&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> item1 <span class="op">=</span> <span class="va">list</span>.<span class="at">children</span>[<span class="dv">0</span>]</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">undefined</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="op">&gt;&gt;&gt;</span> item1</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="op">&lt;</span>li<span class="op">&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">item1</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;HTML5&#39;</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="st">&quot;HTML5&quot;</span></span></code></pre></div>
+<p><img src="images/exo2-fig1.png" title="Figure 1 Exo 2" alt="“Figure 1 Exo 2”" /><br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Saisir successivement les instructions ci-dessous dans la console, observer ce qu’il se passe dans la page étape par étape. Caractériser le rôle de chaque instruction puis saisir des instructions qui permettent de rajouter un quatrième item à la liste dont le contenu est <a href="https://fr.wikipedia.org/wiki/Kotlin_(langage)">Kotlin</a>.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="kw">let</span> item3 <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;li&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">undefined</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">list</span>.<span class="at">appendChild</span>(item3)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">&lt;</span>li<span class="op">&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="op">&gt;&gt;&gt;</span> <span class="va">item3</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Javascript&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="st">&quot;Javascript&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Passer la console en mode mutliligne avec <code>CTRL + B</code> puis saisir et exécuter le code ci-dessous. Survoler la liste ou cliquer dessus avec la souris et observer ce qui se passe dans la page. Caractériser le rôle de chaque instruction en vous appuyant sur la lecture de l’article <a href="https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onclick">https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onclick</a>.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">function</span> <span class="at">apparition</span>()<span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="va">list</span>.<span class="va">style</span>.<span class="at">visibility</span> <span class="op">=</span> <span class="st">&quot;visible&quot;</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">}</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">function</span> <span class="at">disparition</span>()<span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="va">list</span>.<span class="va">style</span>.<span class="at">visibility</span> <span class="op">=</span> <span class="st">&quot;hidden&quot;</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="op">}</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="va">list</span>.<span class="at">onmouseover</span> <span class="op">=</span> disparition <span class="op">;</span>  </span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">//le symbole ; est le séparateur d&#39;instruction en Javascript</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="va">list</span>.<span class="at">onmouseleave</span> <span class="op">=</span> apparition <span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="va">list</span>.<span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span> <span class="at">alert</span>(<span class="st">&quot;Clic !&quot;</span>) <span class="op">;</span> <span class="op">}</span> <span class="op">;</span>  <span class="co">//définition d&#39;une fonction anonyme</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Recharger la page avec <code>F5</code>. L’environnement <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> a-t-il été conservé ?</li>
+</ol>
+</div>
+</div>
+<div id="approfondissement-rédaction-de-scripts-et-gestionnaires-dévénements" class="slide section level1">
+<h1>Approfondissement : rédaction de scripts et gestionnaires d’événements</h1>
+<div class="exemple">
+<p>Ouvrir un navigateur Web et accéder à la page <a href="https://frederic-junier.org/NSI/sandbox/compteur-clic.html" class="uri">https://frederic-junier.org/NSI/sandbox/compteur-clic.html</a>.</p>
+<p>On donne ci-dessous le code source de la page Web.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">&lt;head&gt;</span><span class="co">&lt;!-- Début en-tête --&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="kw">&lt;title&gt;</span>Compteur de clics <span class="kw">&lt;/title&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="co">&lt;!-- Début script JS --&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="kw">&lt;script&gt;</span>  </span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>      <span class="kw">let</span> compteur <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a>      <span class="kw">function</span> <span class="at">suivant</span>()<span class="op">{</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>          compteur <span class="op">=</span> compteur <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>          <span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;valeur&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>          <span class="cf">if</span> (compteur <span class="op">&lt;=</span> <span class="dv">1</span>) <span class="op">{</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>            <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clic&quot;</span><span class="op">;</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>          <span class="op">}</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>          <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>            <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clics&quot;</span><span class="op">;</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>          <span class="op">}</span>          </span>
+<span id="cb7-22"><a href="#cb7-22"></a>      <span class="op">}</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a></span>
+<span id="cb7-24"><a href="#cb7-24"></a>      <span class="kw">function</span> <span class="at">reinitialiser</span>()<span class="op">{</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>          compteur <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>          <span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;valeur&quot;</span>)<span class="op">;</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>          <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clic&quot;</span><span class="op">;</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>      <span class="op">}</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a></span>
+<span id="cb7-30"><a href="#cb7-30"></a>  <span class="kw">&lt;/script&gt;</span>  <span class="co">&lt;!-- Fin script JS --&gt;</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="kw">&lt;/head&gt;</span><span class="co">&lt;!-- Fin en-tête --&gt;</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a> </span>
+<span id="cb7-33"><a href="#cb7-33"></a><span class="kw">&lt;body&gt;</span><span class="co">&lt;!-- Début corps --&gt;</span>   </span>
+<span id="cb7-34"><a href="#cb7-34"></a>  <span class="kw">&lt;h1&gt;</span>Compteur de clics en Javascript <span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a>    <span class="kw">&lt;button</span><span class="ot"> onclick=</span><span class="st">&quot;suivant();&quot;</span><span class="kw">&gt;</span>Clic !<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb7-36"><a href="#cb7-36"></a>    <span class="kw">&lt;br&gt;</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>    <span class="kw">&lt;span</span><span class="ot"> id=</span><span class="st">&quot;valeur&quot;</span><span class="kw">&gt;</span>0<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb7-38"><a href="#cb7-38"></a>    <span class="kw">&lt;br&gt;</span></span>
+<span id="cb7-39"><a href="#cb7-39"></a>    <span class="kw">&lt;button</span><span class="ot"> onclick=</span><span class="st">&quot;reinitialiser();&quot;</span><span class="kw">&gt;</span>Réinitialiser !<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a><span class="kw">&lt;/body&gt;</span><span class="co">&lt;!-- Fin corps --&gt;</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a></span>
+<span id="cb7-42"><a href="#cb7-42"></a><span class="kw">&lt;/html&gt;</span> </span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>On peut interagir avec la page en cliquant sur le bouton <em>Clic !</em> puis réinitialiser le compteur en cliquant sur le bouton <em>Réinitialiser</em>.</p></li>
+<li><p>Ouvrir l’onglet inspecteur dans la fenêtre des outils de développement et afficher la structure de la page comme ci-dessous.</p>
+<ul>
+<li>Repérer l’étiquette <code>event</code> attachée au bouton de contenu <em>Clic !</em> et déplier son contenu.</li>
+</ul>
+<p><img src="images/exo3-fig1.png" title="Ecouteur d&#39;événement click" alt="“Ecouteur d’événement click”" /> </p>
+<ul>
+<li>Pour cet élément <code>button</code>, l’attribut <code>onclick="suivant()"</code> a défini une fonction <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> <code>function onclick(event) {suivant();}</code> qui prend en paramètre un <strong>événement utilisateur</strong> (ici un click) et réagit en appelant la fonction <code>suivant</code>. La fonction <code>suivant</code> est appelée <strong>gestionnaire d’événement</strong>.</li>
+<li>Le code de la fonction <code>suivant</code> se trouve dans la balise <code>&lt;script&gt;</code>. Placée dans l’en-tête, celle-ci rassemble tout le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> chargé dans la page.</li>
+<li>On a vu précédemment que la fonction est appelée dès qu’un événement <code>click</code> se produit sur le premier élément <code>&lt;button&gt;</code>. En examinant le code de <code>suivant</code>, on voit qu’un lien est d’abord créé entre l’élément <code>&lt;span&gt;</code> d’identifiant <code>"valeur"</code> et une variable <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> à l’aide d’une méthode <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> par l’instruction :</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;valeur&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Ensuite on peut manipuler l’élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> et modifier son contenu avec :</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1"></a><span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clic&quot;</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li><p>La variable <code>compteur</code> est définie en dehors de <code>suivant</code> car c’est une variable globale. Les variables globales sont essentielles en <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a>, c’est l’un des défauts du langage.</p></li>
+<li><p>Identifier et analyser de même <strong>le gestionnaire d’événement</strong> <code>click</code> qui est attaché au second élément <code>&lt;button&gt;</code>.</p></li>
+</ul></li>
+</ol>
+</div>
+<div class="exemple">
+<p>Ouvrir un navigateur Web et accéder à la page <a href="https://frederic-junier.org/NSI/sandbox/compteur-clic.html" class="uri">https://frederic-junier.org/NSI/sandbox/compteur-clic.html</a>.</p>
+<p>On arrive dans un environnement de développement Web en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>/<a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a>/<a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> sur la plateforme <a href="https://repl.it">https://repl.it</a>.</p>
+<p><img src="images/exo4-fig1.png" title="Développement Web sur repl.it" alt="“Développement Web sur repl.it”" /><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>L’interface se divise en trois zones :</p>
+<ul>
+<li><p>À droite la fenêtre d’affichage du site et en-dessous une console <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a>.</p></li>
+<li><p>Au centre l’éditeur avec le fichier courant.</p></li>
+<li><p>À gauche l’explorateur de fichiers avec une séparation des trois composants logiciels nécessaires à l’affichage dans la fenêtre en haut à droite :</p>
+<ul>
+<li>la structure du document en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> dans <code>index.html</code></li>
+<li>le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> dans <code>script.js</code></li>
+<li>la feuille de style <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> dans <code>style.css</code></li>
+</ul>
+<p>Par rapport à l’exemple précédent, le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> est donc clairement séparé du code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>. Le navigateur du client reçoit d’abord le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>. Pour charger le <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a>, on procède comme pour une feuille de style <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> en plaçant une balise de lien dans l’en-tête du fichier <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;script.js&quot;</span><span class="ot"> defer</span><span class="kw">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">&lt;/script&gt;</span></span></code></pre></div>
+<p>L’attribut <code>src</code> donne le chemin vers le fichier contenant le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> et l’attribut <code>defer</code> précise que le chargement du <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> doit se faire après que la page <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> soit totalement chargée. En effet, <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> peut modifier la page à travers l’interface <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a>, donc il faut ordonnancer le chargement des différentes ressources. Des anciennes pratiques recommandaient ainsi de placer les balises <code>&lt;script&gt;</code> à la fin du code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>. Des attributs comme <code>defer</code> permettent de gérer plus finement les priorités, surtout lorsque plusieurs scripts <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javacript</a> sont appelés.</p></li>
+</ul></li>
+<li><p>On donne ci-dessous le code du fichier <code>script.js</code> :</p></li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">let</span> compteur <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">function</span> <span class="at">suivant</span>()<span class="op">{</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    compteur <span class="op">=</span> compteur <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;valeur&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="cf">if</span> (compteur <span class="op">&lt;=</span> <span class="dv">1</span>) <span class="op">{</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>      <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clic&quot;</span><span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>      <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clics&quot;</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>    <span class="op">}</span>          </span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="op">}</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="kw">function</span> <span class="at">reinitialiser</span>()<span class="op">{</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>    compteur <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a>    <span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;valeur&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>    <span class="va">v</span>.<span class="at">innerHTML</span> <span class="op">=</span> compteur <span class="op">+</span> <span class="st">&quot; clic&quot;</span><span class="op">;</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="op">}</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a></span>
+<span id="cb11-20"><a href="#cb11-20"></a></span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="kw">let</span> bouton_clic <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;bouton_clic&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a><span class="va">bouton_clic</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> suivant)<span class="op">;</span></span>
+<span id="cb11-23"><a href="#cb11-23"></a><span class="kw">let</span> bouton_reset <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;bouton_reset&quot;</span>)<span class="op">;</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="va">bouton_reset</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> reinitialiser)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li><p>Les définitions de la variable <code>compteur</code> et des gestionnaires d’événements <code>suivant</code> et <code>reinitialiser</code> sont identiques à celles du code de l’exemple 1. Ce qui change est la façon dont les gestionnaires sont attachés aux boutons. Prenons le bouton de <em>Clic !</em>, dans l’exemple 1 la liaison se faisait dans la balise <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> avec l’ajout de l’attribut <code>onclick = "suivant()"</code> alors qu’ici la liaison est déportée dans le fichier <code>script.js</code> avec :</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">//récupération de l&#39;élément &lt;button&gt; ciblé par son identifiant et la méthode DOM</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">let</span> bouton_clic <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;bouton_clic&quot;</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co">//ajout sur cet élément du  gestionnaire d&#39;événement suivant pour l&#39;événement click</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="va">bouton_clic</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> suivant)<span class="op">;</span></span></code></pre></div></li>
+<li><p>L’architecture présentée dans l’exemple 2 est préférable car elle respecte un principe de <strong>séparation des composants logiciels</strong> selon leur fonctionnalité et facilite donc la <strong>lisibilité</strong>, la <strong>factorisation</strong> et la <strong>maintenance</strong> du code.</p></li>
+<li><p>Il faut noter deux autres différences entre les méthodes des exemples 1 et 2 :</p>
+<ul>
+<li>les parenthèses après <code>suivant</code> (qui est une fonction) sont présentes dans <code>&lt;button onclick = "suivant()"&gt;</code> mais absentes dans <code>bouton_clic.addEventListener("click", suivant);</code></li>
+<li>la liaison avec l’élément <code>&lt;button id="bouton_clic"&gt; Clic !&lt;/button&gt;</code> se fait dans <code>script.js</code> grâce à l’identifiant <code>id="bouton_clic"</code> qui n’était pas nécessaire dans l’exemple 1 lorsque le gestionnaire était attaché directement à la balise.</li>
+</ul></li>
+</ul>
+</div>
+<div class="cours">
+<ul>
+<li><p><a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> permet grâce à l’interface <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> d’attacher une fonction <strong>gestionnaire d’événement</strong> à un élément d’un document <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>.</p>
+<p>Ce gestionnaire est lié à un <strong>événement</strong>, qui est une action de l’utilisateur (déplacement de la souris, pression sur une touche du clavier) ou une modification d’un autre élément du document.</p>
+<p>Lorsque l’événement ciblé atteint l’élément surveillé par le gestionnaire, celui-ci le capture et délenche une action.</p></li>
+<li><p>Pour attacher un <strong>gestionnaire d’événement</strong> nommé <code>gestionnaire</code>, à un élément, nommé <code>element</code>, et le lier à un événement, par exemple <code>click</code>,on peut procéder de deux façons :</p>
+<ul>
+<li><em>Méthode 1 (voir exemple 1), directement dans le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> :</em></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">&lt;element</span><span class="ot"> id=</span><span class="st">&quot;id_element&quot;</span><span class="ot"> onclick=</span><span class="st">&quot;gestionnaire()&quot;</span><span class="kw">&gt;</span> ... <span class="kw">&lt;/element&gt;</span></span></code></pre></div>
+<ul>
+<li><em>Méthode 2 (voir exemple 2), dans un fichier externe <code>script.js</code> :</em></li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">//la balise element doit être repérée par un id </span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">let</span> v <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;id_element&quot;</span>)<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="va">v</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> gestionnaire)<span class="op">;</span></span></code></pre></div></li>
+<li><p>Il existe plusieurs métodes pour cibler un élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>, nous utiliserons principalement le ciblage par identifiant unique <code>id</code> :</p></li>
+</ul>
+<table>
+<caption>Différentes façons de cibler un élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Type de cible</th>
+<th align="center">Syntaxe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Identifiant unique <code>id</code></td>
+<td align="center"><code>document.getElementById('id') //retourne un élément</code></td>
+</tr>
+<tr class="even">
+<td align="center">Classe <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a></td>
+<td align="center"><code>document.getElementByClass('classname') //retourne une liste d'éléments</code></td>
+</tr>
+<tr class="odd">
+<td align="center">Sélecteur <a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a> (par exemple titre <code>h1</code>)</td>
+<td align="center"><code>document.querySelector('h1') //retourne une liste d'éléments</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Dans le tableau ci-dessous on présente une sélection d’ <strong>événements</strong> avec sa description et les deux façons de le lier à un gestionnaire <code>gest</code> : directement dans l’élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a> <code>tag</code> ou dans un fichier externe où la variable <code>v</code> désigne cet élément.</li>
+</ul>
+<table>
+<caption>Événements et gestionnaires associés</caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Événement</th>
+<th align="center">Signification</th>
+<th align="center">Gestionnaire interne</th>
+<th align="center">Gestionnaire externe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>click</code></td>
+<td align="center">dispositif de pointage pressé sur l’élément</td>
+<td align="center"><code>&lt;tag onclick="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('click', gest)</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>mouseover</code></td>
+<td align="center">dispositif de pointage déplacé sur l’élément</td>
+<td align="center"><code>&lt;tag onmouseover="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('mouseover', gest)</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>mouseout</code></td>
+<td align="center">dispositif de pointage déplacé hors de l’élément</td>
+<td align="center"><code>&lt;tag      onmouseout="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('mouseover', gest)</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>keydown</code></td>
+<td align="center">une touche du clavier est pressée</td>
+<td align="center"><code>&lt;tag   onkeydown="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('keydown', gest)</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>keydown</code></td>
+<td align="center">une touche du clavier est pressée</td>
+<td align="center"><code>&lt;tag   onkeydown="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('keydown', gest)</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>input</code></td>
+<td align="center">à chaque changement de valeur réalisé par l’utilisateur dans <code>&lt;input&gt;</code> ou <code>&lt;select&gt;</code></td>
+<td align="center"><code>&lt;tag      oninput="gest()"&gt;</code></td>
+<td align="center"><code>v.addEventListener('input', gest)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="travaux-pratiques" class="slide section level1">
+<h1>Travaux pratiques</h1>
+<div class="exercice">
+<p>Ouvrir un navigateur Web et accéder à la page <a href="https://repl.it/@fredericjunier/1NSI-Javascript-Ex3-Eleve" class="uri">https://repl.it/@fredericjunier/1NSI-Javascript-Ex3-Eleve</a>.</p>
+<p>On arrive dans un environnement de développement Web en <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTML</a>/<a href="https://developer.mozilla.org/fr/docs/Glossaire/CSS">CSS</a>/<a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> sur la plateforme <a href="https://repl.it">https://repl.it</a>.</p>
+<p><img src="images/exo-replit.png" title="TP replit" alt="“TP replit”" /><br />
+</p>
+<p>La page d’accueil contient une liste de liens vers des pages dynamiques qui contiennent ou sont liés à des codes <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> à compléter. À une exception près, ces activités présentées ont déjà été implémentés à l’aide de formulaires et de scritps côté serveur dans le chapitre précédent. Ici l’interactivité sera assurée côté client par <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Depuis la page d’accueil, suivre le lien vers l’activité <strong>Calcul d’âge</strong> de la page <code>age.html</code>.</p>
+<ul>
+<li><p>Quel élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTM</a> a reçu un gestionnaire d’événement ? Quel événement est surveillé ?</p></li>
+<li><p>Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> dans le fichier <code>code-age.js</code> afin que la page puisse calculer l’âge de l’utilisateur à partir de sa date de naissance?</p></li>
+</ul></li>
+<li><p>Revenir sur la page d’accueil et suivre le lien vers l’activité <strong>Jouer avec les événements I</strong>. Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui se trouve dans l’en-tête du fichier <code>evenements.html</code> pour :</p>
+<ul>
+<li><p>attacher un gestionnaire d’événement <code>click</code> à l’élément d’identifiant <code>titre</code></p></li>
+<li><p>un clic sur cet élément doit déclencher l’apparition d’une fenêtre pop-up avec le message “Attention, je peux griffer !”</p></li>
+</ul></li>
+<li><p>Revenir sur la page d’accueil et suivre le lien vers l’activité <strong>Jouer avec les événements II</strong>. Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui se trouve dans l’en-tête du fichier <code>evenements2html</code> pour :</p>
+<ul>
+<li><p>attacher un gestionnaire d’événement <code>click</code> à l’élément <code>img</code> d’identifiant <code>chat</code></p></li>
+<li><p>un clic sur cet élément doit déclencher le changement de sa propriété <code>src</code>, qui doit prendre pour valeur le chemin “images/chat-bonjour.png”, ainsi un clic sur l’image devra provoquer son changement.</p></li>
+</ul></li>
+<li><p>Revenir sur la page d’accueil et suivre le lien vers l’activité <strong>Colorpicker</strong>. La page <code>rgb.html</code> propose d’afficher une couleur dans un carré à partir de ses composantes (R,G,B). Le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> se trouve dans le fichier <code>code-rgb.js</code>.</p>
+<ul>
+<li><p>Quel élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTM</a> a reçu un gestionnaire d’événement ? Quel événement est surveillé ?</p></li>
+<li><p>Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui se trouve dans le fichier <code>code-rgb.js</code> pour rendre la page <code>rgb.html</code> fonctionnelle.</p></li>
+</ul></li>
+<li><p>Revenir sur la page d’accueil et suivre le lien vers l’activité <strong>Conversion d’unité de température</strong>. La page <code>temperature.html</code> propose de convertir une mesure de température de Celsius en Fahrenheit ou réciproquement. Le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> se trouve dans le fichier <code>code-temperature.js</code>.</p>
+<ul>
+<li><p>Quel élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTM</a> a reçu un gestionnaire d’événement ? Quel événement est surveillé ?</p></li>
+<li><p>Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui se trouve dans le fichier <code>code-temperature.js</code> pour rendre la page <code>temperature.html</code> fonctionnelle.</p></li>
+</ul></li>
+<li><p>Revenir sur la page d’accueil et suivre le lien vers l’activité <strong>Calcul de la force d’un mot de passe</strong>. La page <code>force-mot-passe.html</code> propose de tester la force d’un mot de passe en fonction de son nombre de caractères et de la taille de l’alphabet où sont choisis les caractères.<br />
+Le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> se trouve dans le fichier <code>code-force-mot-passe.js</code>.<br />
+Tester d’abord le formulaire de l’ANSSI qui a inspiré cette activité : <a href="https://www.ssi.gouv.fr/administration/precautions-elementaires/calculer-la-force-dun-mot-de-passe/">https://www.ssi.gouv.fr/administration/precautions-elementaires/calculer-la-force-dun-mot-de-passe/</a>.</p>
+<ul>
+<li><p>Quel élément <a href="https://developer.mozilla.org/fr/docs/Glossaire/HTML">HTM</a> a reçu un gestionnaire d’événement ? Quel événement est surveillé ?</p></li>
+<li><p>Compléter le code <a href="https://developer.mozilla.org/fr/docs/Glossaire/JavaScript">Javascript</a> qui se trouve dans le fichier <code>code-force-mot-passe.js</code> pour rendre la page <code>force-mot-passe.html</code> fonctionnelle.</p></li>
+</ul></li>
+</ol>
+<p><img src="images/force-mot-passe.png" title="Force d&#39;un mot de passe" style="width:60.0%" alt="“Force d’un mot de passe”" /><br />
+</p>
+</div>
+</div>
+<div id="qcm-e3c2" class="slide section level1">
+<h1>QCM E3C2</h1>
+<div class="exercice">
+<p><em>QCM</em> de type E3C2.</p>
+<ol style="list-style-type: decimal">
+<li><p>On souhaite qu’un menu apparaisse à chaque fois que l’utilisateur passe sa souris sur l’image de bannière du site. L’attribut de la balise <code>img</code> dans lequel on doit mettre un code Javascript à cet effet est :</p>
+<ul>
+<li>Réponse A : <code>onclick</code></li>
+<li>Réponse B : <code>src</code></li>
+<li>Réponse C : <code>alt</code></li>
+<li>Réponse D : <code>onmouseover</code></li>
+</ul></li>
+<li><p>Lors de la consultation d’une page HTML contenant un bouton auquel est associée la fonction suivante, que se passe-t-il quand on clique sur ce bouton ?</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">function</span> <span class="at">action</span>(event) <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="kw">this</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="op">}</span></span></code></pre></div>
+<ul>
+<li>Réponse A : le texte de la page passe en bleu</li>
+<li>Réponse B : le texte du bouton passe en bleu</li>
+<li>Réponse C : le texte du bouton est changé et affiche maintenant le mot “bleu”</li>
+<li>Réponse D : le pointeur de la souris devient bleu quand il arrive sur le bouton</li>
+</ul></li>
+<li><p>Parmi les propriétés suivantes d’une balise <code>&lt;button&gt;</code> dans une page HTML, laquelle doit être rédigée en langage JavaScript ?</p>
+<ul>
+<li>Réponse A : la propriété <code>name</code></li>
+<li>Réponse B : la propriété <code>type</code></li>
+<li>Réponse C : la propriété <code>onclick</code></li>
+<li>Réponse D : la propriété <code>id</code></li>
+</ul></li>
+<li><p>Dans une page HTML, lequel de ces codes permet la présence d’un bouton qui appelle la fonction javascript <code>afficher_reponse()</code> lorsque l’utilisateur clique dessus ?</p>
+<ul>
+<li>Réponse A : <code>&lt;a href="afficher_reponse()"&gt;Cliquez ici&lt;/a&gt;</code></li>
+<li>Réponse B : <code>&lt;button if_clicked="afficher_reponse()"&gt;Cliquez ici&lt;/button&gt;</code></li>
+<li>Réponse C : <code>&lt;button value="Cliquez ici"&gt;&lt;a&gt;afficher_reponse()&lt;/a&gt;&lt;/button&gt;</code></li>
+<li>Réponse D : <code>&lt;button onclick="afficher_reponse()"&gt;Cliquez ici&lt;/button&gt;</code></li>
+</ul></li>
+<li><p>Quel est le nom de l’événement généré lorsque l’utilisateur clique sur un bouton de type button dans une page HTML ?</p>
+<ul>
+<li>Réponse A : <code>action</code></li>
+<li>Réponse B : <code>mouse</code></li>
+<li>Réponse C : <code>submit</code></li>
+<li>Réponse D : <code>click</code></li>
+</ul></li>
+<li><p>Un navigateur affiche la page HTML suivante :</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;fr&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;style.css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">&lt;title&gt;</span>Un bouton<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="kw">&lt;button</span><span class="ot"> onclick=</span><span class="st">&quot;maFonction()&quot;</span><span class="kw">&gt;</span>Cliquer ici<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;script.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>Lorsque l’on clique sur le bouton, l’action déclenchée par <code>maFonction()</code> est définie :</p>
+<ul>
+<li>Réponse A : dans le fichier HTML seul</li>
+<li>Réponse B : dans le fichier <code>style.css</code></li>
+<li>Réponse C : dans une bibliothèque prédéfinie du navigateur</li>
+<li>Réponse D : dans le fichier <code>script.js</code></li>
+</ul></li>
+<li><p>Voici un extrait d’une page HTML :</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="kw">function</span> <span class="at">sommeNombres</span>(formulaire) <span class="op">{</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="kw">var</span> somme <span class="op">=</span> <span class="va">formulaire</span>.<span class="va">n1</span>.<span class="at">value</span> <span class="op">+</span> <span class="va">formulaire</span>.<span class="va">n2</span>.<span class="at">value</span><span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="va">console</span>.<span class="at">log</span>(somme)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="op">}</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">&lt;/script&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">&lt;form&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>Nombre 1 : <span class="kw">&lt;input</span><span class="ot"> name=</span><span class="st">&quot;n1&quot;</span><span class="ot"> value=</span><span class="st">&quot;30&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;br&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>Nombre 2 : <span class="kw">&lt;input</span><span class="ot"> name=</span><span class="st">&quot;n2&quot;</span><span class="ot"> value=</span><span class="st">&quot;10&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;br&gt;</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;Somme&quot;</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="ot">onclick=</span><span class="st">&quot;sommeNombres(this.form)&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<p>Quand l’utilisateur clique sur le bouton Somme, le calcul de la fonction <code>sommeNombre()</code> se fait :</p>
+<ul>
+<li>Réponse A : uniquement dans le navigateur</li>
+<li>Réponse B : uniquement sur le serveur qui héberge la page</li>
+<li>Réponse C : à la fois dans le navigateur et sur le serveur</li>
+<li>Réponse D : si le calcul est complexe, le navigateur demande au serveur de faire le calcul</li>
+</ul></li>
+<li><p>On considère cet extrait de fichier HTML représentant les onglets d’une barre de navigation :</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">function</span> <span class="at">BoutonGris</span>() <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="kw">var</span> btn <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(\<span class="st">&quot;BUTTON</span><span class="sc">\&quot;</span><span class="st">);</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="va">btn</span>.<span class="at">innerHTML</span> <span class="op">=</span> \<span class="st">&quot;Annulation</span><span class="sc">\&quot;</span><span class="st">;</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="va">document</span>.<span class="at">getElementById</span>(\<span class="st">&quot;DIV</span><span class="sc">\&quot;</span><span class="st">).appendChild(btn);</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li>Réponse A : elle remplace un élément DIV par un bouton</li>
+<li>Réponse B : elle annule l’élément BUTTON</li>
+<li>Réponse C : elle crée un bouton comportant le texte “Annulation”</li>
+<li>Réponse D : elle recherche le bouton “BUTTON” et crée une copie appelée “btn”</li>
+</ul></li>
+</ol>
+</div>
+<div class="figure">
+<img src="images/types.png" title="XKCD 1537 : Types" style="width:25.0%" alt="" />
+<p class="caption">“XKCD 1537 : Types”</p>
+</div>
+</div>
+<div class="footnotes slide">
+<hr />
+<ol>
+<li id="fn1"><p>Note : <a href="https://developer.mozilla.org/fr/docs/Glossaire/API">API</a> est l’acronyme d’Application Programming Interface<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Note : <a href="https://developer.mozilla.org/fr/docs/Glossaire/DOM">DOM</a> est l’acronyme de Document Object Model<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+</body>
+</html>

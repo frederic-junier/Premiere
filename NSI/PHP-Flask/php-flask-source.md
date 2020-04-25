@@ -88,6 +88,9 @@ _Ce cours est largement inspiré du chapitre 29 du manuel NSI de la collection T
 :::cours
 [PHP][PHP] est un langage interprété qui s'exécute sur un serveur Web. Lorsque le serveur reçoit les données d'un formulaire d'un client, il peut les transmettre à un script [PHP][PHP] qui pourra les utiliser pour modifier une base de données ou générer à la volée le contenu [HTML][HTML] qui sera retournée au client.
 
+Une page Web est dite __dynamique__ si son contenu dépend du client qui la demande et de son  contexte (temps, espace, plateforme).
+Par opposition, une page Web est __statique__ si son contenu est le même quel que soit le client et le contexte.
+
 Un __site Web dynamique__ s'appuie sur trois composants : un langage interprété comme [PHP][PHP], [Python][Python] ou [Node.js][Node.js], un serveur Web comme [Apache][Apache] ou [Nginx][Nginx] et un système de gestion de bases de données comme [MySQL][MySQL] ou [MariaDb][MariaDb].
 
 [PHP][PHP] est souvent associé avec [Apache][Apache] et [MysSQL][MySQL] pour former la pile [Lamp][Lamp] nécessaire pour accueillir un __site Web dynamique__ comme un [CMS][CMS] de type Wordpress ou Drupal.
