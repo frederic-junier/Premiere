@@ -16,8 +16,8 @@ collection Tortue chez Ellipse, auteurs : Ballabonski, Conchon,
 Filliatre, N’Guyen. J’ai également consulté le prepabac Première NSI de
 Guillaume Connan chez Hatier, le cours de [Romain
 Janvier](http://nsi.janviercommelemois.fr/), le tutoriel PHP de
-<https://www.w3schools.com/php/default.asp>* et la documentation du
-module [Flask](https://flask.palletsprojects.com/en/1.1.x/) de Python.
+<https://www.w3schools.com/php/default.asp> et la documentation du
+module [Flask](https://flask.palletsprojects.com/en/1.1.x/) de Python.*
 
 <!-- Définition des hyperliens  -->
 

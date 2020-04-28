@@ -12,7 +12,7 @@ geometry:
  
 # Crédits {-} 
  
-_Ce cours est largement inspiré du chapitre 29 du manuel NSI de la collection Tortue chez Ellipse,  auteurs : Ballabonski, Conchon, Filliatre, N'Guyen. J'ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier,  le cours de [Romain Janvier](http://nsi.janviercommelemois.fr/), le tutoriel PHP de [https://www.w3schools.com/php/default.asp](https://www.w3schools.com/php/default.asp)_ et la documentation du module [Flask](https://flask.palletsprojects.com/en/1.1.x/) de Python.
+_Ce cours est largement inspiré du chapitre 29 du manuel NSI de la collection Tortue chez Ellipse,  auteurs : Ballabonski, Conchon, Filliatre, N'Guyen. J'ai également consulté le prepabac Première NSI de Guillaume Connan chez Hatier,  le cours de [Romain Janvier](http://nsi.janviercommelemois.fr/), le tutoriel PHP de [https://www.w3schools.com/php/default.asp](https://www.w3schools.com/php/default.asp) et la documentation du module [Flask](https://flask.palletsprojects.com/en/1.1.x/) de Python._
 
 
 <!-- Définition des hyperliens  -->
