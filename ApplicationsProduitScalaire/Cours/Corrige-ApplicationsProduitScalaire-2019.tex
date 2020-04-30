@@ -1,0 +1,994 @@
+\documentclass[11pt, hyperref={urlcolor=red,% Liens vers une page web
+            linkcolor=blue, %Liens internes au document
+            colorlinks=true}]{beamer}  
+            
+\usetheme{Warsaw} 
+
+%thèmes prédéfinis de Beamer 
+%Antibes, boxes, classic, Darmstadt, Madrid
+% Montpellier, Warsaw, Bergen, Berkeley, Goettingen, sidebar
+
+
+%%%%%%%Tit\title{Titre principal}
+
+\title[suites]{Exemples du cours Applications du produit scalaire 2019/2020}
+%\subtitle{Sous titre}
+\author[F.Junier]{Fr\'ed\'eric Junier}
+\institute[Le Parc]{{\centering Lyc\'ee du Parc \\
+1 Boulevard Anatole France \\ 69006 Lyon }}
+\date[\today]{\today}
+
+\usepackage{etex}
+
+%%%%%%%%%%%%Encodage du fichier source %%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage[np]{numprint}
+
+
+%%%%%%%%%%%%Là encore il y a de grosses différences entre le monde anglo-saxon et les francophones.Le séparateur des décimales est un point en anglais et une virgule en français. Leséparateur des milliers est une virgule en anglais et une espace insécable en français. Ilest préférable dutiliser le package numprint (\usepackage{numprint}) qui associé àfrenchb produira la bonne typographie.
+%123456789 = 123456789 \numprint{123456789} = 123 456 789  \numprint{3,1415926535897932384626} = 3,141 592 653 589 793 238 462 6  \numprint{12.34} = 12,34  En plus tu peux préciser les unités de cette façon : \numprint[kg]{12.34} = 12,34 kg ou encore \numprint[\degres C]{22} = 22°C Si tu veux utiliser le raccourci \np{} au lieu de \numprint{}, il te faut charger le package de cette façon : \usepackage[np]{numprint}
+
+
+%%%%%%%%%%PSTricks%%%%%%%%%%%%
+
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math,pstricks-add,pst-xkey,pst-eucl}
+
+
+%%%%%%%Tikz%%%%%%%%%%%%%%%
+\usepackage{pgf,tikz,tkz-tab}
+% Pour les tableaux de signes ou de variations avec tkz-tab voir https://zestedesavoir.com/tutoriels/439/des-tableaux-de-variations-et-de-signes-avec-latex/#1-13389_tikz-un-package-qui-en-a-dans-le-ventre
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{petri}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows}
+\usetikzlibrary{math}
+ %Variables must be declared in a tikzmath environment but
+       % can be used outside
+%       \tikzmath{int \n; \n = 508; \x1 = 1; \y1 =1; 
+%                   %computations are also possible
+%                    \x2 = \x1 + 1; \y2 =\y1 +3; } 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%Commandes Tikz Perso%%%%%%%%%%%%%%%
+
+% Définition des nouvelles options xmin, xmax, ymin, ymax
+% Valeurs par défaut : -3, 3, -3, 3
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmax=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=3, ymax=3,
+}
+% Commande qui trace la grille entre (xmin,ymin) et (xmax,ymax)
+\newcommand {\grille}[2]
+{\draw[help lines,black, thick] (\xmin,\ymin) grid[xstep=#1, ystep=#2] (\xmax,\ymax);}
+% Commande \axes
+\newcommand {\axes} {
+\draw[->,very thick] (\xmin,0) -- (\xmax,0);
+\draw[->,very thick] (0,\ymin) -- (0,\ymax);
+\draw (0.95*\xmax, 0) node[above] {$x$};
+\draw (0, 0.95*\ymax) node[left] {$y$};
+}
+% Commande qui limite l?affichage à (xmin,ymin) et (xmax,ymax)
+\newcommand {\fenetre}
+{\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
+
+%Exemple d'utilisation
+
+%\begin{center}
+%\begin{tikzpicture} [xmin=-2,xmax=2,ymin=0,ymax=5]
+%\grille{1} \axes \fenetre
+%\draw plot[smooth] (\x,\x^2);
+%\end{tikzpicture}
+%\end{center}
+
+%style pour la perspective cavalière française
+%voir Tikz pour l'impatient page 68
+\tikzset{math3d/.style=
+{x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+%%%%%%%Symbole pour code calculatrice%%%%%%
+
+%Flèche remplie pour défilement de menu
+
+\newcommand{\flechefillright}{
+\begin{tikzpicture}[scale=0.15] \fill (0,0)--(2,1)--(0,2)--cycle;
+\end{tikzpicture}}
+
+%%%%%%%%%%%%%Symboles pour calculatrice Casio%%%%
+\newcommand{\execasio}{\Pisymbol{psy}{191}} %Retour chariot
+\newcommand{\dispcasio}{\begin{pspicture}(.1,.1)\pspolygon*(.1,0)(.1,.1)\end{pspicture}} %Triangle Â« Disp Â»
+\newcommand{\dispcasiotikz}{\begin{tikzpicture}[scale=0.2]
+\fill (0,0) -- (1,0) -- (1,1) -- cycle;
+\end{tikzpicture}} %Triangle Â« Disp Â»
+%
+
+
+%%%%%%%%%%%%%%%%%%%Présentation de codes sources%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+%On utilise l?environnement lstlisting pour insérer
+%un code source.
+%En plus de l?environnement lstlisting, on peut également utiliser la
+%commande \lstinline qui fonctionne comme la commande \verb, en ce
+%sens qu?on peut utiliser n?importe quel caractère comme délimiteur. Enfin,
+%la commande \lstinputlisting permet de charger un code source depuis
+%un fichier externe.
+%Il y a deux manières de préciser des options : soit via l?option de l?envi-
+%ronnement ou de la commande, soit en utilisant la commande \lstset
+%qui permet de définir des options de manière globale.
+
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\ttfamily,           % the size of the fonts that are used for the code
+  %numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny,  % the style that is used for the line-numbers
+  %stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  breakindent=1cm,
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{red},       % comment style
+  %stringstyle=\ttfamily\color{green},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+  morekeywords={*,...},              % if you want to add more keywords to the set
+  deletekeywords={...}              % if you want to delete keywords from the given language
+  upquote=true,columns=flexible,
+xleftmargin=1cm,xrightmargin=1cm,
+ inputencoding=utf8,			%Les lignes qui suivent sont pour le codage utf8
+  extendedchars=true,
+  literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a} }}1
+            {î}{{\^{i}}}1
+            {ô}{{\^{o}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1
+}
+
+\lstdefinestyle{rond}{
+  numbers=none,
+  frameround =tttt
+}
+
+\lstdefinestyle{compil}{
+  numbers=none,
+  backgroundcolor=\color{gristclair}
+}
+%\lstset{language=Python,basicstyle=\small , frame=single,tabsize=4,showspaces=false,showtabs=false,showstringspaces=false,numbers=left,numberstyle=\tiny , extendedchars=true}
+
+%%%%%%%%%%%AmsMaths%%%%%%
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{pifont,fourier}
+\usepackage{ bclogo}
+
+
+%%%%%Commande \DeclareMathOperator pour définir de nouveaux opérateurs (en lettres romaines droites)%%%%%
+%\DeclareMathOperator{\sh}{sh}
+%\DeclareMathOperator{\ch}{ch}
+
+%%%%%%%%%%%%%%%%%%Maths divers%%%%%%%%%%%%%%%%%%%%%%%%%
+%Delimiteurs
+\newcommand{\delim}[3]{\raise #1\hbox{$\left #2\vbox to #3{}\right.$}}
+
+
+%%%%%%%%%%%%%Nombres%%%%%%%%%%%%%%%%
+
+%Ensemble prive de...
+%\newcommand{\prive}{\boi}%{\backslash}
+
+%Ensembles de nombres%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\df}{~\ensuremath{]0;+\infty[}~}
+\newcommand{\K}{\mathbb{K}}
+
+%%%%%%%%Arithmetique%%%%%%%%%%
+%PGCD, PPCM
+\newcommand{\PGCD}{\mathop{\rm PGCD}\nolimits}
+\newcommand{\PPCM}{\mathop{\rm PPCM}\nolimits}
+
+%Intervalles
+\newcommand{\interoo}[2]{]#1\, ;\, #2[}
+\newcommand{\Interoo}[2]{\left]#1\, ;\, #2\right[}
+\newcommand{\interof}[2]{]#1\, ;\, #2]}
+\newcommand{\Interof}[2]{\left]#1\, ;\, #2\right]}
+\newcommand{\interfo}[2]{[#1\, ;\, #2[}
+\newcommand{\Interfo}[2]{\left[#1\, ;\, #2\right[}
+\newcommand{\interff}[2]{[#1\, ;\, #2]}
+\newcommand{\Interff}[2]{\left[#1\, ;\, #2\right]}
+%\newcommand\interentiers #1#2{[\! [#1\, ;\, #2]\! ]}
+\newcommand{\interentiers}[2]{\llbracket #1\, ;\, #2\rrbracket}
+%
+
+
+%%%%%%%%%%%%%%Nombres complexes%%%%%
+
+\newcommand{\ic}{\text{i}}
+%\newcommand{\I}{\text{i}}
+\newcommand{\im}[1]{\text{Im}\left(#1\right)}
+\newcommand{\re}[1]{\text{Re}\left(#1\right)}
+\newcommand{\Arg}[1]{\text{arg}\left(#1\right)}
+\newcommand{\Mod}[1]{\left[#1\right]}
+%Parties entiÃ¨re, rÃ©elle, imaginaire, nombre i
+\newcommand{\ent}[1]{\text{E}\left(#1\right)}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\i}{\textrm{i}}
+
+%%%%%%%%%%%Probabilites et statistiques%%%%%
+\newcommand{\loibinom}[2]{\mathcal{B}\left(#1\ ; \ #2 \right)}
+\newcommand{\loinorm}[2]{\mathcal{N}\left(#1\ ; \ #2 \right)}
+\newcommand{\loiexp}[1]{\mathcal{E}\left(#1\right)}
+\newcommand{\proba}[1]{\mathbb{P}\big(#1\big)}
+\newcommand{\probacond}[2]{\mathbb{P}_{#2}\big(#1\big)}
+\newcommand{\esperance}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\variance}[1]{\mathbb{V}\left(#1\right)}
+\newcommand{\ecart}[1]{\sigma\left(#1\right)}
+\newcommand{\dnormx}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{x^2}{2}}}
+\newcommand{\dnormt}{\frac{1}{\sqrt{2\pi}} \text{e}^{-\frac{t^2}{2}}}
+\newcommand{\nbalea}[2]{\reinitrand[first=#1, last=#2, counter=num]  \rand $\thenum$}  %retourne un entier aleatoire antre les bornes #1 et #2 comprises
+%Covariance
+\newcommand{\cov}{\mathop{\rm cov}\nolimits}
+%
+
+
+%%%%%%%%%%Analyse%%%%%%%%%%%
+
+%%%%%%%%%%%Courbe%%%%%%%%%%%%
+\newcommand{\courbe}[1]{\ensuremath{\mathcal{C}_{#1}}}
+
+%%%%%%%Fonction exponentielle%%%%%
+\newcommand{\fe}{~fonction exponentielle~}
+\newcommand{\e}{\text{e}}
+
+%Fonction cotangente
+\newcommand{\cotan}{\mathop{\rm cotan}\nolimits}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Fonctions hyperboliques
+\newcommand{\ch}{\mathop{\rm ch}\nolimits}
+\newcommand{\sh}{\mathop{\rm sh}\nolimits}
+
+
+%%%%%%%%%%%%%%Limites%%%%%%
+\newcommand{\limite}[2]{\lim\limits
+_{x \to #1} #2}
+\newcommand{\limitesuite}[1]{\lim\limits
+_{n \to +\infty} #1}
+\newcommand{\limiteg}[2]{\lim\limits
+_{\substack{x \to #1 \\ x < #1 }} #2}
+\newcommand{\limited}[2]{\lim\limits
+_{\substack{x \to #1 \\ x > #1 }} #2}
+
+%%%%%%%%%%Continuité%%%%%%%%%%%
+\newcommand{\TVI}{théorème des valeurs intermédiaires}
+
+%%%%%%%%%%%Suites%%%%%%%%%%%%
+\newcommand{\suite}[1]{\ensuremath{\left(#1_{n}\right)}}
+\newcommand{\Suite}[2]{\ensuremath{\left(#1\right)_{#2}}}
+%
+
+%%%%%%%%%%%%%%%Calcul intégral%%%%%%
+\newcommand{\dx}{\ensuremath{\text{d}x}}		% dx
+\newcommand{\dt}{\ensuremath{\text{d}t}}		% dt
+\newcommand{\dtheta}{\ensuremath{\text{d}\theta}}		% dtheta
+\newcommand{\dy}{\ensuremath{\text{d}y}}		% dy
+\newcommand{\dq}{\ensuremath{\text{d}q}}		% dq
+
+%%%Intégrale%%%
+\newcommand{\integralex}[3]{\int_{#1}^{#2} #3 \ \dx}
+\newcommand{\integralet}[3]{\int_{#1}^{#2} #3 \ \dt}
+\newcommand{\integraletheta}[3]{\int_{#1}^{#2} #3 \ \dtheta}
+
+%%%%%Equivalent%%
+\newcommand{\equivalent}[1]{\build\sim_{#1}^{}}
+
+%o et O%%%%
+\renewcommand{\o}[2]{\build o_{#1\to #2}^{}}
+\renewcommand{\O}[2]{\build O_{#1\to #2}^{}}
+
+
+
+%%%%%%%%%%%%%%%Geometrie%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%Reperes%%%%%%%%%%%%%%
+\def\Oij{\ensuremath{\left(\text{O},~\vect{\imath},~\vect{\jmath}\right)}}
+\def\Oijk{\ensuremath{\left(\text{O},~\vect{\imath},~ \vect{\jmath},~ \vect{k}\right)}}
+\def\Ouv{\ensuremath{\left(\text{O},~\vect{u},~\vect{v}\right)}}
+\renewcommand{\ij}{(\vec\imath\, ;\vec\jmath\,)}
+\newcommand{\ijk}{(\vec\imath\, ;\vec\jmath\, ;\vec k\,)}
+\newcommand{\OIJ}{(O\,;\, I\,;\, J\,)}
+\newcommand{\repere}[3]{\big(#1\, ;\,\vect{#2} ;\vect{#3}\big)}
+\newcommand{\reperesp}[4]{\big(#1\, ;\,\vect{#2} ;\vect{#3} ;\vect{#4}\big)}
+
+%%%%%%%%%Coordonnees%%%%%%%%%%%%%%
+\newcommand{\coord}[2]{(#1\, ;\, #2)}
+\newcommand{\bigcoord}[2]{\big(#1\, ;\, #2\big)}
+\newcommand{\Coord}[2]{\left(#1\, ;\, #2\right)}
+\newcommand{\coordesp}[3]{(#1\, ;\, #2\, ;\, #3)}
+\newcommand{\bigcoordesp}[3]{\big(#1\, ;\, #2\, ;\, #3\big)}
+\newcommand{\Coordesp}[3]{\left(#1\, ;\, #2\, ;\, #3\right)}
+\newcommand{\Vcoord}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
+%Symboles entre droites
+%\newcommand{\paral}{\sslash}
+\newcommand{\paral}{\mathop{/\!\! /}}
+%
+
+%%%%%%%%%Produit scalaire, Angles%%%%%%%%%%
+\newcommand{\scal}[2]{\vect{#1} \, \cdot \, \vect{#2}}
+\newcommand{\Angle}[2]{\left(\vect{#1} \, , \, \vect{#2}\right)}
+\newcommand{\Anglegeo}[2]{\left(\widehat{\vect{#1} \, ; \, \vect{#2}}\right)}
+\renewcommand{\angle}[1]{\widehat{#1}}
+\newcommand{\anglevec}[2]{\left(\vect {#1}\, ,\,\vect {#2} \right)}
+\newcommand{\anglevecteur}[2]{(#1\, , \, #2)}
+\newcommand{\Anglevec}[2]{(\vecteur{#1}\, ,\,\vecteur{#2})}
+\newcommand{\prodscal}[2]{#1 \, \cdot \, #2}
+%
+
+
+%Arc
+%\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\arcoriente}[1]{\overset{\curvearrowright}{#1}}
+%
+%
+
+
+%%%%%%%%%%%%%%%Normes%%%%%%%%%%%%%%%%
+\newcommand{\norme}[1]{\left\| #1\right\|}
+\newcommand{\normebis}[1]{\delim{2pt}{\|}{9pt}\! #1\delim{2pt}{\|}{9pt}}
+\newcommand{\normetriple}[1]{\left |\kern -.07em\left\| #1\right |\kern -.07em\right\|}
+\newcommand{\valabs}[1]{\big| \, #1 \, \big|}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%Degré%%%%%%
+%\newcommand{\Degre}{\ensuremath{^\circ}}
+%La commande \degre est déjà définie dans le package babel
+
+%%%%%%%%%%Vecteurs%%%%%%%%%%%
+\newcommand{\vect}[1]{\mathchoice%
+{\overrightarrow{\displaystyle\mathstrut#1\,\,}}%
+{\overrightarrow{\textstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptstyle\mathstrut#1\,\,}}%
+{\overrightarrow{\scriptscriptstyle\mathstrut#1\,\,}}}
+
+
+
+%%%%%%%%%%%%%Algebre%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%Systemes%%%%%%%%%%%
+%Systemes
+\newcommand{\sys}[2]{
+\left\lbrace
+ \begin{array}{l}
+  \negthickspace\negthickspace #1\\
+  \negthickspace\negthickspace #2\\
+ \end{array}
+\right.\negthickspace\negthickspace}
+\newcommand{\Sys}[3]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+ \end{array}
+\right.}
+\newcommand{\Sysq}[4]{
+\left\lbrace
+ \begin{array}{l}
+  #1\\
+  #2\\
+  #3\\
+  #4\\
+ \end{array}
+\right.}
+%
+%
+
+%%%%%%%%%%%%%%%%Matrices%%%%%%%%%%%%%%%%%%
+%Comatrice
+\newcommand{\com}{\mathop{\rm com}\nolimits}
+%
+%
+%Trace
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+%
+%
+%Transposee
+\newcommand{\transposee}[1]{{\vphantom{#1}}^t\negmedspace #1}
+%
+%
+%Noyau
+\newcommand{\Ker}{\mathop{\rm Ker}\nolimits}
+%
+%
+
+%
+%Matrices
+\newcommand{\Mn}{\mathcal M_n}
+\newcommand{\matrice}[4]{
+\left(
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right)}
+
+\newcommand{\Matrice}[9]{
+\left(
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right)}
+\newcommand{\Vect}[3]{
+\left(\negmedspace
+ \begin{array}{c}
+  #1\\
+  #2\\
+  #3
+ \end{array}\negmedspace
+\right)}
+\newcommand{\Ideux}{\matrice{1}{0}{0}{1}}
+\newcommand{\Itrois}{\Matrice{1}{0}{0}{0}{1}{0}{0}{0}{1}}
+%
+%
+%Determinants
+\newcommand{\determinant}[4]{
+\left|
+ \begin{array}{cc}
+  #1 & #2 \\
+  #3 & #4
+ \end{array}
+\right|}
+\newcommand{\Determinant}[9]{
+\left|
+ \begin{array}{ccc}
+  #1 & #2 & #3\\
+  #4 & #5 & #6\\
+  #7 & #8 & #9
+ \end{array}
+\right|}
+
+%%%%%%%%%%%%%%Calculs en Latex%%%%%%%%%%%%%
+
+\usepackage[first=1,last=100]{lcg}  %%%%%%%générer des nombres pseudo aléatoires
+%%%%
+\usepackage{calc} %   pour faire des calculs%%
+
+
+%%%%Mise en page%%%%%
+\usepackage{fancybox}
+\usepackage{lastpage}
+\usepackage{hyperref}
+%À mettre dans le préambule pour faire apparaitre le plan à chaque section 
+
+\AtBeginSection[ ]
+{
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+%%%%%%%¨Puces%%%%%%%%%%%%
+\usepackage{enumerate}
+
+
+%%%%%%%%%%%%Graphiques%%%%%%%%%%%%%%
+\usepackage{graphicx,pgf}				
+\usepackage{pstricks,pst-plot,pst-text,pst-tree,pst-eps,pst-node,pst-math,pstricks-add}
+ 
+
+
+%%%%%%Numérotation des automatismes%%%%%%
+\newcounter{autocompteur}
+\setcounter{autocompteur}{0}
+\newcommand{\automatisme}[1]{\addtocounter{autocompteur}{1}\frametitle{Automatisme  \theautocompteur  \textit{ thème : #1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%Francisation%%%%%%%%%%%%%%
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+ 
+
+
+\begin{frame}
+\frametitle{Table des matières}
+\begin{itemize}
+    \item \hyperlink{capacite1}{Capacité 1}
+    \item \hyperlink{capacite2}{Capacité 2}
+        \item \hyperlink{capacite3}{Capacité 3}
+            \item \hyperlink{capacite4}{Capacité 4}
+                \item \hyperlink{capacite5}{Capacité 5}
+                    \item \hyperlink{capacite6}{Capacité 6}
+                     \item \hyperlink{capacite7}{Capacité 7}
+                      \item \hyperlink{capacite8}{Capacité 8}
+                       \item \hyperlink{algorithmique1}{Algorithmique 1}
+                        \item \hyperlink{capacite9}{Capacité 9}
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 1 : déterminer une ligne de niveau, partie 1}
+\label{capacite1}
+
+Soit un segment $[AB]$ de longueur $4$ et $I$ son milieu. 
+
+\begin{itemize}
+\pause \item Soit $M$ un point du plan tel que $\scal{MA}{MB}=2$.
+\begin{align*}
+\scal{MA}{MB}=2 &\Longleftrightarrow (\vect{MI} + \vect{IA}) \, \cdot \, (\vect{MI} + \vect{IB}) = 2 \\
+\intertext{$I$ milieu de $[AB]$ donc $\vect{IA}=-\vect{IB}$}
+\scal{MA}{MB}=2 &\Longleftrightarrow (\vect{MI} + \vect{IA}) \, \cdot \, (\vect{MI} - \vect{IA}) = 2 \\
+\scal{MA}{MB}=2 &\Longleftrightarrow \vect{MI}^{2} - \vect{IA}^{2} = 2 \\
+\scal{MA}{MB}=2 &\Longleftrightarrow MI^{2}- AI^{2} = 2
+\end{align*}
+\end{itemize}
+
+  
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 1 : déterminer une ligne de niveau, partie 2}
+\begin{itemize}
+ \item Soit $\Gamma$ l'ensemble des points $M$ du plan tels que  
+    $\scal{MA}{MB}=2$. 
+\begin{align*}
+M \in \Gamma \Longleftrightarrow  \scal{MA}{MB}=2 \\
+\intertext{d'après la question précédente :  }
+M \in \Gamma \Longleftrightarrow MI^{2}- AI^{2} = 2 \\
+M \in \Gamma \Longleftrightarrow MI^{2}=  AI^{2} + 2 \\
+\intertext{$AI=AB/2=2$  }
+M \in \Gamma \Longleftrightarrow MI^{2}= 6 \\
+\end{align*}
+\end{itemize}
+$\Gamma$ est donc le cercle de centre $I$ et de rayon $\sqrt{6}$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Capacité 2 : Calculer des angles ou des longueurs avec le produit scalaire, partie 1}
+
+Soit $ABC$ un triangle tel que $AB=4$, $AC=5$,$BC=6$.
+
+\begin{itemize}
+\pause \item  D'après la propriété d'\textit{Al-Kashi} :
+\begin{align*}
+AC^{2} &=AB^{2} + BC^{2} - 2 \times AB \times BC \times \cos(\widehat{ABC})\\
+\cos(\widehat{ABC}) &= (AB^{2} + BC^{2}  - AC^{2})/(2\times AB \times BC)\\
+\cos(\widehat{ABC}) &= (16 + 36  - 25)/(2\times 4\times 6)\\
+\cos(\widehat{ABC}) &= (16 + 36  - 25)/(2\times 4\times 6)\\
+\widehat{ABC} &\approx 56^{\circ} \text{ au degré près}
+\end{align*}
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\label{capacite2}
+\frametitle{Capacité 2 : Calculer des angles ou des longueurs avec le produit scalaire, partie 2}
+
+Soit $ABC$ un triangle tel que $BC=4$, $\widehat{ABC}=50$° et $AB=3$. Calculer la longueur $AC$.
+
+\begin{itemize}
+\pause \item  D'après la propriété d'\textit{Al-Kashi} :
+\begin{align*}
+AC^{2} &=AB^{2} + BC^{2} - 2 \times AB \times BC \times \cos(\widehat{ABC})\\
+AC^{2} &= 3^{2}+4^{2}-2 \times 3 \times 4 \cos(50) \\
+AC &= \sqrt{3^{2}+4^{2}-2 \times 3 \times 4 \cos(50)}\\
+A &\approx 3,1
+\end{align*}
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 2 : Calculer des angles ou des longueurs avec le produit scalaire, partie 3}
+
+Soit $ABC$ un triangle tel que $\widehat{BAC}=30$°, $AC=2$ et  $\scal{AB}{AC}=5$. Calculer la longueur $BC$.
+
+\begin{itemize}
+\pause \item  D'après la propriété du cosinus:
+\begin{align*}
+\scal{AB}{AC} &= AB \times AC \times \cos(\widehat{BAC}) \\
+5 &= 2\times AB \times \cos(30) \\
+AB &= \frac{5}{\sqrt{3}}=\frac{5\sqrt{3}}{3}
+\end{align*}
+\pause \item Ensuite, d'après la propriété d'Al-Kashi :
+\begin{align*}
+BC^{2} &=AB^{2} + AC^{2} - 2 \scal{AB}{AC}\\
+BC^{2} &= 25/3 + 4 - 10 \\
+BC &= \sqrt{\frac{7}{3}}
+\end{align*}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\label{capacite3}
+\frametitle{Capacité 3 : Déterminer un vecteur directeur ou un vecteur normal, partie 1}
+
+Dans le plan muni d'un repère orthonormé, soit les points $A\Coord{4}{5}$ et $B\Coord{6}{3}$.
+
+\begin{itemize}
+\pause \item  Un vecteur directeur de la droite $(AB)$ est $\vect{AB}\Coord{2}{-2}$.
+\pause \item Si $\vect{u}\Coord{c}{d}$ est un vecteur directeur d'une droite  alors $\vect{n}$  est un vecteur normal si et seulement si $\vect{n}\neq \vect{0}$ et $\vect{n} \, \cdot \, \vect{u}=0$, donc on peut choisir  $\vect{n}\Coord{-d}{c}$.
+
+Dans notre cas, $\vect{n}\Coord{2}{2}$ est un vecteur normal à $(AB)$
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Capacité 3 : Déterminer un vecteur directeur ou un vecteur normal, partie 2}
+
+Si $\mathcal{D}$ d'équation $ax+by+c=0$ alors un vecteur directeur est $\vect{u}\Coord{-b}{a}$ et un vecteur normal est $\vect{n}\Coord{a}{b}$. 
+
+\begin{itemize}
+\pause \item  $\mathcal{D}_{1}$ d'équation $y = x \Leftrightarrow x - y= 0$ admet pour vecteur normal $\vect{n}\Coord{1}{-1}$ et pour vecteur directeur $\vect{u}\Coord{1}{1}$.
+\pause \item $\mathcal{D}_{2}$ d'équation $y = -2x \Leftrightarrow 2x+y= 0$ admet pour vecteur normal $\vect{n}\Coord{2}{1}$ et pour vecteur directeur $\vect{u}\Coord{-1}{2}$.
+\pause \item $\mathcal{D}_{3}$ d'équation $y = 3 \Leftrightarrow y-3=0$ admet pour vecteur normal $\vect{n}\Coord{0}{1}$ et pour vecteur directeur $\vect{u}\Coord{1}{0}$.
+\pause \item $\mathcal{D}_{4}$ d'équation $x = 4 \Leftrightarrow x-4=0$ admet pour vecteur normal $\vect{n}\Coord{1}{0}$ et pour vecteur directeur $\vect{u}\Coord{0}{1}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\label{capacite4}
+\frametitle{Capacité 4 : Déterminer une équation cartésienne de droite à partir d'un point et d'un vecteur normal}
+
+Dans le plan muni d'un repère orthonormé, soit les points $A\Coord{2}{3}$ et $B\Coord{-5}{4}$, $I$ le milieu de $[AB]$ et $\Delta$ la médiatrice de $[AB]$.
+
+
+\begin{itemize}
+\pause \item  La médiatrice d'un segment est la perpendiculaire à ce segment en son milieu. On en déduit que :
+
+\begin{align*}
+M \in \Delta &\Leftrightarrow \vect{IM} \, \cdot \, \vect{AB}=0 \\
+\end{align*}
+
+\pause \item On a $\vect{AB}\Coord{-7}{1}$ et $I\Coord{-3/2}{7/2}$ donc si $M\Coord{x}{y}$, alors $\vect{IM}\Coord{x+3/2}{y-7/2}$.
+D'après la question précédente :
+
+\begin{align*}
+M(x;y) \in \Delta &\Leftrightarrow -7(x+3/2)+(y-7/2)=0 \\
+M(x;y) \in \Delta &\Leftrightarrow -7x+y-14=0
+\end{align*}
+
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\label{capacite5}
+\frametitle{Capacité 5 : Déterminer un vecteur normal à une droite Partie 1}
+
+Dans le plan muni d'un repère orthonormé, on considère la droite $\mathcal{D}_{1}$ d'équation $2y-3x+6=0$.
+
+
+\begin{itemize}
+\pause \item  Pour déterminer les coordonnées du point d'intersection de $\mathcal{D}_{1}$ avec l'axe des abscisses, on résout le système :
+$$\sys{2y-3x+6=0}{y=0} \Leftrightarrow \sys{x=2}{y=0}$$
+$\mathcal{D}$ coupe l'axe des abscisses au point de coordonnées $\Coord{2}{0}$.
+\pause \item  Pour déterminer les coordonnées du point d'intersection de $\mathcal{D}_{1}$ avec l'axe des ordonnées, on résout le système :
+$$\sys{2y-3x+6=0}{x=0} \Leftrightarrow \sys{y=-3}{x=0}$$
+$\mathcal{D}$ coupe l'axe des ordonnées au point de coordonnées $\Coord{0}{-3}$.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Capacité 5 : Déterminer un vecteur normal à une droite Partie 2}
+
+Dans le plan muni d'un repère orthonormé, on considère la droite $\mathcal{D}_{1}$ d'équation $2y-3x+6=0$.
+
+\begin{itemize}
+\pause \item Un vecteur normal à $\mathcal{D}_{1}$ est $\vect{n}\Coord{-3}{2}$, c'est aussi un vecteur normal à la droite $\mathcal{D}_{2}$  parallèle à $\mathcal{D}_{1}$ et passant par $B\Coord{1}{2}$.  
+\pause \item Une équation de $\mathcal{D}_{2}$ est donc de la forme $-3x+2y+c=0$. 
+\pause \item   
+\begin{align*}
+B\Coord{1}{2}\in \mathcal{D}_{2} &\Leftrightarrow -3+4+c=0 \\
+B\Coord{1}{2}\in \mathcal{D}_{2} &\Leftrightarrow c=-1
+\end{align*}
+Une équation de $\mathcal{D}_{2}$  est $-3x+2y-1=0$
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Capacité 5 : Déterminer un vecteur normal à une droite Partie 3}
+
+Dans le plan muni d'un repère orthonormé, on considère la droite $\mathcal{D}_{1}$ d'équation $2y-3x+6=0$.
+
+\begin{itemize}
+\pause \item Un vecteur directeur e $\mathcal{D}_{1}$ est $\vect{u}\Coord{-2}{-3}$, c'est aussi un vecteur normal à la droite $\mathcal{D}_{3}$  perpendiculaire à $\mathcal{D}_{1}$ et passant par $B\Coord{1}{2}$.  
+\pause \item Une équation de $\mathcal{D}_{3}$ est donc de la forme $-2x-3y+c=0$. 
+\pause \item   
+\begin{align*}
+B\Coord{1}{2}\in \mathcal{D}_{3} &\Leftrightarrow -2-6+c=0\\
+B\Coord{1}{2}\in \mathcal{D}_{3} &\Leftrightarrow c=8
+\end{align*}
+Une équation de $\mathcal{D}_{3}$  est $-2x-3y+8=0$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\label{capacite6}
+\frametitle{Capacité 6 : Déterminer les coordonnées du projeté orthogonal d'un point sur une droite, Partie 1}
+
+Dans le plan muni d'un repère orthonormé, on considère la droite $\mathcal{D}$ d'équation $x+2y-4=0$ et le point $A\Coord{3}{3}$.
+
+
+\begin{itemize}
+\pause \item  Soit $\Delta$  la droite perpendiculaire à $\mathcal{D}$ passant $A$. $\vect{u}\Coord{-2}{1}$ est un vecteur directeur de $\mathcal{D}$ et donc un vecteur normal à $\Delta$.
+\pause \item  Une équation de $\Delta$  est donc de la forme $-2x+y+c=0$. 
+\pause \item 
+\begin{align*}
+A\Coord{3}{3} \in \Delta &\Leftrightarrow -6+3+c=0 \\
+A\Coord{3}{3} \in \Delta &\Leftrightarrow c=3 
+\end{align*}
+\pause \item Une équation de $\Delta$  est donc $-2x+y+3=0$.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Capacité 6 : Déterminer les coordonnées du projeté orthogonal d'un point sur une droite, Partie 2}
+
+Dans le plan muni d'un repère orthonormé, on considère la droite $\mathcal{D}$ d'équation $x+2y-4=0$ et le point $A\Coord{3}{3}$.
+On a démontrée qu'une équation de $\Delta$  la perpendiculaire à  $\mathcal{D}$ passant par $A$ est $-2x+y+3=0$.
+
+
+\begin{itemize}
+\pause \item Le projeté orthogonal $H$ de $A$ sur $\mathcal{D}$ est le point d'intersection de $\mathcal{D}$ et de $\Delta$.
+\pause \item Les coordonnées de  $H$ sont solutions du système :
+\begin{align*}
+\sys{-2x+y+3=0}{x+2y-4=0}  &\Leftrightarrow \sys{y=2x-3}{x+2(2x-3)-4=0} \Leftrightarrow \sys{y=2x-3}{5x=10} \\
+\sys{-2x+y+3=0}{x+2y-4=0}  &\Leftrightarrow  \sys{y=1}{x=2} 
+\end{align*}
+Les coordonnées de $H$ sont donc $\Coord{2}{1}$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\label{capapcite7}
+\frametitle{Capacité 7 : Déterminer et utiliser une équation d'un cercle à partir de son centre et de son rayon, Partie 1}
+
+Dans le plan muni d'un repère orthonormé, soit les points $A\Coord{2}{1}$ et $B\Coord{5}{3}$.
+
+Soit $\Gamma$ le cercle de diamètre $[AB]$.
+
+\begin{itemize}
+\pause \item Le centre $I$ du cercle  $\Gamma$ est le milieu du segment $[AB]$, ses coordonnées sont $\Coord{\frac{2+5}{2}}{\frac{1+3}{2}}$ soit $\Coord{\frac{7}{2}}{2}$.
+\pause \item Le rayon du cercle est $\frac{AB}{2}=\frac{\sqrt{(5-2)^{2}+(3-1)^{2}}}{2}=\frac{\sqrt{13}}{2}$.
+\pause \item Une équation de $\Gamma$ est donc $(x-\frac{7}{2})^{2}+(y-2)^{2}=\frac{13}{4}$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Capacité 7 : Déterminer et utiliser une équation d'un cercle à partir de son centre et de son rayon, Partie 2}
+
+Dans le plan muni d'un repère orthonormé, soit les points $A\Coord{2}{1}$ et $B\Coord{5}{3}$.  Soit $\mathcal{T}$ la tangente à $\Gamma$ au point $A$.
+
+\begin{itemize}
+\pause \item Le centre du cercle  $\Gamma$ est  $I\Coord{\frac{7}{2}}{2}$ donc $\vect{AI}\Coord{\frac{3}{2}}{1}$ est un vecteur normal à $\mathcal{T}$.
+\pause \item Une équation de $\mathcal{T}$ est donc de la forme $\frac{3}{2}x+y+c=0$
+\pause \item \begin{align*}
+A\Coord{2}{1} \in \mathcal{T} &\Leftrightarrow 1+1+c=0 \\
+A\Coord{2}{1} \in \mathcal{T} &\Leftrightarrow c=-2 
+\end{align*}
+\pause \item Une équation de $ \mathcal{T}$  est donc $\frac{3}{2}x+y-2=0$.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Capacité 7 : Déterminer et utiliser une équation d'un cercle à partir de son centre et de son rayon, Partie 3}
+
+Dans le plan muni d'un repère orthonormé, soit les points $A\Coord{2}{1}$ et $B\Coord{5}{3}$. Une équation de $\Gamma$ est donc $(x-\frac{7}{2})^{2}+(y-2)^{2}=\frac{13}{4}$. On considère la droite $\Delta$ d'équation $x+y=6$.
+
+\begin{itemize}
+\pause \item Les coordonnées d'un point d'intersection de $\Gamma$ et de la droite $\Delta$  sont solutions du système :
+\begin{align*}
+\sys{(x-\frac{7}{2})^{2}+(y-2)^{2}=\frac{13}{4}}{x+y=6}  &\Leftrightarrow \sys{(x-\frac{7}{2})^{2}+(4-x)^{2}=\frac{13}{4}}{y=6-x} \\
+\sys{(x-\frac{7}{2})^{2}+(y-2)^{2}=\frac{13}{4}}{x+y=6}  &\Leftrightarrow \sys{2x^{2}-15x+25=0}{y=6-x} 
+\intertext{On résout l'équation $2x^{2}-15x+25=0$ de discriminant $b^{2}-4ac=25$ et de racines $5$ et $\frac{5}{2}$}
+\sys{(x-\frac{7}{2})^{2}+(y-2)^{2}=\frac{13}{4}}{x+y=6}  &\Leftrightarrow \boxed{\sys{x=5}{y=1} \text{ ou }  \sys{x=5/2}{y=3,5}}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Capacité 8 : Reconnaître le centre et le rayon d’un cercle à partir de son équation, Partie 1}
+Le plan muni d'un repère orthonormé.
+
+\begin{itemize}
+\pause \item Soit $\Gamma$ l'ensemble des points $M(x;y)$ dont les coordonnées vérifient $x^{2}+y^{2}+2=0$.   
+
+
+\begin{align*}
+M(x;y) \in \Gamma  &\Leftrightarrow x^{2}+y^{2}+2=0 \\
+M(x;y) \in \Gamma  &\Leftrightarrow x^{2}+y^{2}=-2 \\
+\intertext{Or pour tout couple de réels $(x,y)$, on a  $x^{2}+y^{2}\geqslant 0$}
+\end{align*}
+
+\pause \item On en déduit que $\Gamma$ est un ensemble vide.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Capacité 8 : Reconnaître le centre et le rayon d’un cercle à partir de son équation, Partie 2}
+Le plan muni d'un repère orthonormé.
+
+\begin{itemize}
+\pause \item Soit $\Gamma$ l'ensemble des points $M(x;y)$ dont les coordonnées vérifient $x^{2}-2x+y^{2}+6y+26=0$.   
+
+
+\begin{align*}
+M(x;y) \in \Gamma  &\Leftrightarrow x^{2}-2x+y^{2}+6y+26=0 \\
+M(x;y) \in \Gamma  &\Leftrightarrow x^{2}-2x+1+y^{2}+6y+9-1-9-26=0 \\
+M(x;y) \in \Gamma  &\Leftrightarrow (x-1)^{2}+(y+3)^{2}-1-9-26=0 \\
+M(x;y) \in \Gamma  &\Leftrightarrow (x-1)^{2}+(y+3)^{2}=6^{2}
+\end{align*}
+
+\pause \item On en déduit que $\Gamma$ est le cercle de centre $\Omega\Coord{1}{-3}$ et de rayon $6$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\label{algorithmique1}
+\frametitle{Algorithmique 1, Partie 1}
+Le plan muni d'un repère orthonormé.
+
+\begin{itemize}
+\pause \item Une équation cartésienne du cercle de centre $O\Coord{0}{0}$ et de rayon $1$ est $x^{2}+y^{2}=1^{2}$.
+\pause \item Si on suppose $x \geqslant 0$ et $y \geqslant 0$, alors : 
+$$\sys{x^2+y^2 =1}{x \geqslant 0 \text{ et } y \geqslant 0} \Leftrightarrow \sys{y= \sqrt{1-x^{2}}}{x \geqslant 0}$$
+\pause \item L'aire $\mathcal{A}$ est celle d'un quart de disque de rayon 1, sa valeur est donc de $\frac{\pi}{4}$.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Algorithmique 1, Partie 2}
+Calculs des sommes d'aires de rectangles.
+
+\begin{itemize}
+\pause \item \begin{lstlisting}[style=rond]
+from math import sqrt
+
+def sommeRectGauche(n):
+    s = 0
+    for k in range(n):
+        s = s + sqrt(1 - (k/n) ** 2)
+    return s
+\end{lstlisting}
+\pause \item \begin{lstlisting}[style=rond]
+from math import sqrt
+
+def sommeRectDroite(n):
+    s = 0
+    for k in range(n):
+        s = s + sqrt(1 - ((k+1)/n) ** 2)
+    return s
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Algorithmique 1, Partie 3}
+On encadre  l'aire du demi-disque par deux sommes d'aires de rectangles.
+
+\begin{itemize}
+\pause \item \begin{lstlisting}[style=rond]
+epsilon = 0.001
+n = 1
+while 4 * (sommeRectDroite(n) - sommeRectGauche(n)) >= epsilon:
+    n += 1
+print(n, 4 * sommeRectDroite(n), 4 * sommeRectGauche(n))
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\label{capacite9}
+\frametitle{Capacité 9, Déterminer l'axe de symétrie et le sommet d'une parabole, Partie 1}
+Une parabole $\mathcal{P}$  coupe l'axe des abscisses aux abscisses $-4$ et $2$ et l'axe des ordonnées à l'ordonnée $6$.
+
+
+\begin{itemize}
+\pause \item Une équation de $\mathcal{P}$ est de la forme $y=ax^{2}+bx+c$.
+\pause \item L'abscisse $\alpha$ où l'axe de symétrie coupe l'axe des abscisses, est le milieu de l'intervalle $\Interff{-4}{2}$ donc $\alpha = \frac{-4+2}{2}=-1$. On a donc $-\frac{b}{2a}=-1$ et donc $b=2a$.
+\pause \item Par hypothèse on a $6=a\times 0^{2}+ b \times 0 + c$ donc $c=6$.
+\pause \item Toujours par hypothèse, on a $0 = a \times 2^{2} + 2b+c$. On déduit de ce qui précède que $0=4a+4a+6 \Leftrightarrow a =-\frac{3}{4}$.
+\pause \item Une équation de $\mathcal{P}$  est donc $y=-\frac{3}{4}x^{2}-\frac{3}{2}x+6$.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}

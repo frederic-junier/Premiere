@@ -1,0 +1,12 @@
+\frametitle{Algorithmique 1, Partie 3}
+On encadre  l'aire du demi-disque par deux sommes d'aires de rectangles.
+
+\begin{itemize}
+\pause \item \begin{lstlisting}[style=rond]
+epsilon = 0.001
+n = 1
+while 4 * (sommeRectDroite(n) - sommeRectGauche(n)) >= epsilon:
+    n += 1
+print(n, 4 * sommeRectDroite(n), 4 * sommeRectGauche(n))
+\end{lstlisting}
+\end{itemize}
