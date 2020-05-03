@@ -33,16 +33,13 @@ Lancer un Notebook pour tous les documents du dépo : [![Binder](https://mybinde
 
 * Une question ? 
   * Vous m'envoyez un mail et on convient d'un rendez-vous sur ma classe virtuelle
-* J'exposerai quelques points de cours lors de sessions de ma  classe virtuelle :
-  * le jeudi 19/03 de 14 h à 15 h
-  * le lundi 23/03 de 9h à 10 h
-  * le jeudi 26/03 de 14 h à 15 h
+
   
 * Sites de ressources en lignes :
   * Plateforme [Maspemaths](maspemaths.cned.fr/) du CNED
   * [Classes ouvertes Wims](https://wims.math.cnrs.fr/wims/wims.cgi?lang=fr&+module=adm%2Fclass%2Fclasses&+type=example)
 
-* Continuité pédagogique :
+* Continuité pédagogique (chaque séance est liée à une classe virtuelle) :
 
   - [Séance du 16/03/2020](ContinuitePedagogique/seance-16-03-2020.md)
   - [Séance du 19/03/2020](ContinuitePedagogique/seance-19-03-2020.md)
