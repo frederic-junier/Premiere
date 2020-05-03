@@ -1,4 +1,6 @@
-\documentclass[11pt]{beamer}  
+\documentclass[11pt, hyperref={urlcolor=red,% Liens vers une page web
+            linkcolor=blue, %Liens internes au document
+            colorlinks=true}]{beamer}  
 
 \usetheme{Warsaw} 
 
@@ -9,7 +11,7 @@
 
 %%%%%%%Tit\title{Titre principal}
 
-\title[automatismes]{Automatismes en premi\'ere 2019/2020}
+\title[exponentielle]{Exercices sur les suites Partie 2 2019/2020}
 %\subtitle{Sous titre}
 \author[F.Junier]{Fr\'ed\'eric Junier}
 \institute[Le Parc]{{\centering Lyc\'ee du Parc \\
@@ -494,7 +496,7 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 %%%%Mise en page%%%%%
 \usepackage{fancybox}
 \usepackage{lastpage}
-\usepackage{hyperref}
+
 %À mettre dans le préambule pour faire apparaitre le plan à chaque section 
 
 \AtBeginSection[ ]
@@ -533,163 +535,52 @@ _{\substack{x \to #1 \\ x > #1 }} #2}
 
 \frame{\titlepage}
 
-\section{Dérivation Globale}
+\section{Exercices du manuel Barbazo}
 
-\label{derivationglobale}
+\label{barbazo}
+
 
 \begin{frame}
-\automatisme{dérivation}
-
-Déterminer une expression de la fonction dérivée pour la fonction $f$ dérivable sur l'intervalle I.
+\frametitle{Table des matières}
 \begin{itemize}
-\item $f:x \mapsto \frac{x^3-1}{5x^{2}+1}$ sur $\R$ ;
- \item $f:x \mapsto x^2\sqrt{x}$ sur $\Interoo{0}{+\infty}$ ;
- \item $f:x \mapsto \left(8-3x\right)^{7}$ sur $\Interoo{0}{+\infty}$ ; 
- \item $f:x \mapsto 4x-\frac{1}{x-3}$ sur $\Interoo{3}{+\infty}$.
+	\item \hyperlink{exo39}{Exercice 39 p. 33}
+	\item \hyperlink{exo40}{Exercice 40 p. 33}
+		\item \hyperlink{exo41}{Exercice 41 p. 33}
+			\item \hyperlink{exo42}{Exercice 42 p. 33}
+				\item \hyperlink{exo43}{Exercice 43 p. 33}
+				\item \hyperlink{exo44}{Exercice 44 p. 33}
+				\item \hyperlink{exo844}{Exercice 84 p. 41}
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
+\label{exo39}
+\frametitle{Barbazo, exercice 39 p.33}
 
-\automatisme{dérivation}
-
-Soit $f$ une fonction dérivable sur $\Interff{-8}{6}$ dont on donne le tableau de variation ci-dessous.
-
-%:-+-+-+-+- Engendré par : http://math.et.info.free.fr/TikZ/TableauxVariations/
 \begin{center}
-\begin{tikzpicture}[scale=0.5]
-% Styles 
-\tikzstyle{cadre}=[thin]
-\tikzstyle{fleche}=[->,>=latex,thin]
-\tikzstyle{nondefini}=[lightgray]
-% Dimensions Modifiables
-\def\Lrg{1.5}
-\def\HtX{1}
-\def\HtY{0.5}
-% Dimensions Calculées
-\def\lignex{-0.5*\HtX}
-\def\lignef{-1.5*\HtX}
-\def\separateur{-0.5*\Lrg}
-% Largeur du tableau
-\def\gauche{-1.5*\Lrg}
-\def\droite{8.5*\Lrg}
-% Hauteur du tableau
-\def\haut{0.5*\HtX}
-\def\bas{-1.5*\HtX-2*\HtY}
-% Ligne de l'abscisse : x
-\node at (-1*\Lrg,0) {$x$};
-\node at (0*\Lrg,0) {$-8$};
-\node at (2*\Lrg,0) {$-5$};
-\node at (4*\Lrg,0) {$2$};
-\node at (6*\Lrg,0) {$3$};
-\node at (8*\Lrg,0) {$6$};
-% Ligne de la fonction : f(x)
-\node  at (-1*\Lrg,{-1*\HtX+(-1)*\HtY}) {$f(x)$};
-\node (f1) at (0*\Lrg,{-1*\HtX+(0)*\HtY}) {$4$};
-\node (f2) at (2*\Lrg,{-1*\HtX+(-1)*\HtY}) {$0$};
-\node (f3) at (4*\Lrg,{-1*\HtX+(-2)*\HtY}) {$-1$};
-\node (f4) at (6*\Lrg,{-1*\HtX+(-1)*\HtY}) {$0$};
-\node (f5) at (8*\Lrg,{-1*\HtX+(0)*\HtY}) {$$};
-% Flèches
-\draw[fleche] (f1) -- (f2);
-\draw[fleche] (f2) -- (f3);
-\draw[fleche] (f3) -- (f4);
-\draw[fleche] (f4) -- (f5);
-% Encadrement
-\draw[cadre] (\separateur,\haut) -- (\separateur,\bas);
-\draw[cadre] (\gauche,\haut) rectangle  (\droite,\bas);
-\draw[cadre] (\gauche,\lignex) -- (\droite,\lignex);
-\end{tikzpicture}
+\includegraphics[scale=0.4]{exo39.png}
 \end{center}
-%:-+-+-+-+- Fin
-
-%:>>>>> code du tableau à ré-injecter
-%[
-%	["x", "f'(x)", "f(x)"],
-%	["-8", "", "-", "4"],
-%	["-5", "", "-", "0"],
-%	["2", "", "+", "-1"],
-%	["3", "", "+", "0"],
-%	["6", "7", "?", ""]
-%]
-
-\begin{enumerate}
-	\item Dresser le tableau de signes de la fonction dérivée $f'$ de $f$ sur l'intervalle $\Interff{-8}{6}$.
-	
-	\item Dresser le tableau de variations d'une fonction $F$ dérivable sur l'intervalle $\Interff{-8}{6}$ et dont la dérivée est $f$.
-	
-\end{enumerate}
-
 \end{frame}
-
 
 
 \begin{frame}
-\automatisme{dérivation}
-
-Déterminer une expression de la fonction dérivée pour la fonction $f$ dérivable sur l'intervalle I.
-\begin{itemize}
-\item $f:x \mapsto \sqrt{3x+1}$ sur $\Interoo{-\frac{1}{3}}{+\infty}$ ;
- \item $f:x \mapsto (5x-3)\sqrt{x}$ sur $\Interoo{0}{+\infty}$ ;
- \item $f:x \mapsto \left(605x-3\right)^{607}$ sur $\R$ ; 
- \item $f:x \mapsto \frac{1}{3}-\frac{2}{3-x}$ sur $\Interoo{3}{+\infty}$.
-\end{itemize}
-
-\end{frame}
-
-
-
-
-\section{Suites numériques}
-
-
-
-\begin{frame}
-\automatisme{suites}
-
-
-\begin{itemize}
-\item Soit la suite $\suite{u}$ définie pour tout entier naturel $n$ par $u_{n}=n^{2}-n$. Calculer $u_{4}$ et $u_{7}$.
- \item Soit la suite $\suite{u}$ définie pour tout entier naturel $n$ par $u_{0}=4$ et $u_{n+1}=2u_{n}-1$. Calculer $u_{1}$, $u_{2}$ et $u_{3}$.
- \item Soit la suite $\suite{u}$ définie pour tout entier naturel $n$ par $u_{0}=1$ et $u_{n}=u_{n-1}-n+1$. Calculer $u_{1}$, $u_{2}$ et $u_{3}$.
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-\automatisme{suites}
-\begin{lstlisting}
-#On définit la suite (Un) par Un=f(n)
-def f(n):
-  if n==0:
-    return 1
-  else:
-    return 1/n**2  
-# n**2 signifie le carré de n
-\end{lstlisting}
-
-Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
-
-\begin{itemize}
-	\item $u_{0}=1$ Vrai ou Faux ?
-	\item $u_{1}=0,5$ Vrai ou Faux ?
-	\item $u_{50}=0,0004$ Vrai ou Faux ?
-	\item La suite n'est pas d\'efinie en $0$. Vrai ou Faux ?
-\end{itemize}
-\end{frame}
-
-
-\section{Application du produit scalaire}
-
-\label{prodscalaire}
-
-\begin{frame}
-\automatisme{Application du produit scalaire}
+\label{exo40}
+\frametitle{Barbazo, exercice 40 p.33}
 
 \begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-1.png}
+\includegraphics[scale=0.4]{exo40.png}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+\label{exo41}
+\frametitle{Barbazo, exercice 41 p.33}
+
+\begin{center}
+\includegraphics[scale=0.4]{exo41.png}
 \end{center}
 
 
@@ -697,10 +588,25 @@ Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
 
 
 \begin{frame}
-\automatisme{Application du produit scalaire}
+\label{exo42}
+\frametitle{Barbazo, exercice 42 p.33}
+
 
 \begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-2.png}
+\includegraphics[scale=0.4]{exo42.png}
+\end{center}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\label{exo43}
+\frametitle{Barbazo, exercice 43 p.33 Partie 1}
+
+\begin{center}
+\includegraphics[scale=0.4]{exo43-part1.png}
 \end{center}
 
 
@@ -708,10 +614,11 @@ Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
 
 
 \begin{frame}
-\automatisme{Application du produit scalaire}
+
+\frametitle{Barbazo, exercice 43 p.33 Partie 2}
 
 \begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-3.png}
+\includegraphics[scale=0.4]{exo43-part2.png}
 \end{center}
 
 
@@ -719,55 +626,11 @@ Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
 
 
 \begin{frame}
-\automatisme{Application du produit scalaire}
+\label{exo44}
+\frametitle{Barbazo, exercice 44 p.33}
 
 \begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-4.png}
-\end{center}
-
-
-\end{frame}
-
-
-\begin{frame}
-\automatisme{Application du produit scalaire}
-
-\begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-5.png}
-\end{center}
-
-
-\end{frame}
-
-
-\begin{frame}
-\automatisme{Application du produit scalaire}
-
-\begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-6.png}
-\end{center}
-
-
-\end{frame}
-
-
-\begin{frame}
-\automatisme{Application du produit scalaire}
-
-\begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-7.png}
-\end{center}
-
-
-\end{frame}
-
-
-
-\begin{frame}
-\automatisme{Application du produit scalaire}
-
-\begin{center}
-\includegraphics[scale=0.3]{ressources/prodscal-8.png}
+\includegraphics[scale=0.4]{exo44.png}
 \end{center}
 
 
@@ -776,7 +639,42 @@ Interpr\'eteur en ligne : \url{https://repl.it/@Reformelycee/suite-explicite}.
 
 
 
+\begin{frame}
+\label{exo84}
+\frametitle{Barbazo, exercice 84 p.41 Partie 1}
+
+\begin{center}
+\includegraphics[scale=0.4]{exo84-partie1.png}
+\end{center}
+
+
+\end{frame}
 
 
 
+
+\begin{frame}
+
+\frametitle{Barbazo, exercice 84 p.41 Partie 2}
+
+\begin{center}
+\includegraphics[scale=0.4]{exo84-partie2.png}
+\end{center}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+\frametitle{Barbazo, exercice 84 p.41 Partie 3}
+
+\begin{center}
+\includegraphics[scale=0.4]{exo84-partie3.png}
+\end{center}
+
+
+\end{frame}
 \end{document}
