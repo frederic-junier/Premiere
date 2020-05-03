@@ -201,7 +201,7 @@ echo "Bienvenue " . $_GET['prenom'] . " " .  $_GET['nom'] ;
    
    ![Entête GET](images/entete-get.png "Entête GET"){width=80%}\
 
-   Sélectionner l'onglet Paramètres et vérifier qu'on obtient les paramètres tranmise dans l'[URL][URL} dans la chaîne de requête comme dans l'exercice 3.
+   Sélectionner l'onglet Paramètres et vérifier qu'on obtient les paramètres tranmis dans l'[URL][URL] par la chaîne de requête comme dans l'exercice 3.
 
    * Afficher le code source de la page `formulaire-get.html` avec le raccourci clavier `CRTL + U`. On devrait obtenir le texte ci-dessous :
  
@@ -266,7 +266,7 @@ qui contient un ou plusieurs widgets, des éléments [HTML][HTML] permettant de 
 
 ![Page web dynamique](images/Php_arch_shema.png "Page web dynamique"){width=80%}\
 
-Le formulaire du fichier `formulaire-get.html` de l'exemple 1 contient deux  widgets `<input>`. Chacun va fournir un couple `nom=valeur`, le nom est désigné par l'attibut `name` et la valeur par le texte saisi  dans   l'élément `<input>`.  Chacun est associépar son attribut  `id`   à une étiquette contenue dans un élément `<label>`.
+Le formulaire du fichier `formulaire-get.html` de l'exemple 1 contient deux  widgets `<input>`. Chacun va fournir un couple `nom=valeur`, le nom est désigné par l'attibut `name` et la valeur par le texte saisi  dans   l'élément `<input>`.  Chacun est associé par son attribut  `id`   à une étiquette contenue dans un élément `<label>`.
 
 Caractéristiques de la méthode [GET][GET] : 
 
