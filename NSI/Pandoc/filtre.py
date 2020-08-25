@@ -17,7 +17,7 @@ def latex(x):
     return RawBlock('latex', x)
 
 def convertdivs(key, value, format, meta):
-    global compteur_exercice, compteur_theoreme, compteur_definition, compteur_propriete, compteur_cours, compteur_exemple
+    global compteur_exercice, compteur_theoreme, compteur_definition, compteur_propriete, compteur_cours, compteur_exemple,compteur_methode
     if key == 'Div':
         [[ident, classes, kvs], contents] = value
         #if ["latex","true"] in kvs:
@@ -76,6 +76,8 @@ def convertdivs(key, value, format, meta):
             elif classes[0] == "exemple":
                 compteur_exemple += 1
                 return  [{'t': 'Plain', 'c': [ {'t': 'Strong', 'c' : [{'t': 'Str', 'c' : 'Exemple ' + str(compteur_exemple)}]}]}]     + contents
+            elif classes[0] == "memo":
+                return  [{'t': 'Plain', 'c': [ {'t': 'Strong', 'c' : [{'t': 'Str', 'c' : 'À retenir'}]}]}]     + contents
             elif "minipage" or "center" in classes:
                 return   contents
 
@@ -87,6 +89,7 @@ compteur_definition = 0
 compteur_propriete = 0
 compteur_exemple = 0
 compteur_cours = 0
+compteur_methode = 0
 #f = open('sortie3.txt', 'w') #deboggage
 
 if __name__ == "__main__":
